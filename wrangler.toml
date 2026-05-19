@@ -4,6 +4,9 @@ compatibility_date = "2026-05-01"
 compatibility_flags = ["nodejs_compat"]
 workers_dev = true
 
+# 誤って別Cloudflareアカウントへデプロイするのを防ぐため固定（watanabe76128@gmail.com）
+account_id = "9d6f3fa3806aa5b5fcd9aa692cdbaa95"
+
 # シークレットは `wrangler secret put <NAME>` で登録する（このファイルに書かない）：
 #   LINE_CHANNEL_SECRET
 #   LINE_CHANNEL_ACCESS_TOKEN
