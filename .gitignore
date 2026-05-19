@@ -1,0 +1,12 @@
+.env
+.env.local
+.env.*.local
+node_modules/
+.wrangler/
+.dev.vars
+dist/
+*.log
+.DS_Store
+
+# 今回のセッションでサルベージした会話履歴（kintai-bot本体とは別件）
+salvage/

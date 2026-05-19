@@ -1,0 +1,23 @@
+{
+  "name": "kintai-bot",
+  "version": "0.1.0",
+  "description": "LINE Bot で打刻・業務報告・日報を回す勤怠管理（Notion バックエンド / Cloudflare Workers）",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "tail": "wrangler tail",
+    "typecheck": "tsc --noEmit",
+    "setup:notion": "node scripts/setup-notion.mjs"
+  },
+  "dependencies": {
+    "@notionhq/client": "^2.2.15"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20240512.0",
+    "dotenv": "^16.4.5",
+    "typescript": "^5.4.5",
+    "wrangler": "^4.91.0"
+  }
+}

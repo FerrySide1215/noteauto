@@ -1,0 +1,23 @@
+name = "kintai-bot"
+main = "src/index.ts"
+compatibility_date = "2026-05-01"
+compatibility_flags = ["nodejs_compat"]
+workers_dev = true
+
+# シークレットは `wrangler secret put <NAME>` で登録する（このファイルに書かない）：
+#   LINE_CHANNEL_SECRET
+#   LINE_CHANNEL_ACCESS_TOKEN
+#   NOTION_TOKEN
+#   NOTION_DB_STAFF
+#   NOTION_DB_PUNCH
+#   NOTION_DB_WORKLOG
+#   NOTION_DB_REPORT
+#   ADMIN_LINE_USER_IDS   # カンマ区切り。ODBなど管理者の LINE userId
+#   TZ_OFFSET_MIN         # 例: "540"（JST = +9h）
+
+[vars]
+TZ_OFFSET_MIN = "540"
+
+# CRON: 5分おきに打刻忘れリマインダー＆業務内容ナッジを走らせる
+[triggers]
+crons = ["*/5 * * * *"]
