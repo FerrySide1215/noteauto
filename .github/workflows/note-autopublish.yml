@@ -1,0 +1,52 @@
+name: note.com 自動投稿
+
+on:
+  schedule:
+    # 毎朝9時JST（= 00:00 UTC）に実行
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "DRY RUN（投稿せず動作確認のみ）"
+        type: boolean
+        default: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+          cache-dependency-path: scripts/note-publisher/package.json
+
+      - name: 依存パッケージをインストール
+        working-directory: scripts/note-publisher
+        run: npm install
+
+      - name: Playwright ブラウザをインストール
+        working-directory: scripts/note-publisher
+        run: npx playwright install chromium --with-deps
+
+      - name: note.com に投稿
+        working-directory: scripts/note-publisher
+        env:
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+          NOTION_DB_ARTICLE: ${{ secrets.NOTION_DB_ARTICLE }}
+          NOTE_EMAIL: ${{ secrets.NOTE_EMAIL }}
+          NOTE_PASSWORD: ${{ secrets.NOTE_PASSWORD }}
+          DRY_RUN: ${{ inputs.dry_run && '1' || '0' }}
+        run: npm start
+
+      - name: エラー時スクリーンショットを保存
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: error-screenshots
+          path: /tmp/note-error-*.png
+          retention-days: 7

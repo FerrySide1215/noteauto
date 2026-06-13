@@ -1,0 +1,16 @@
+{
+  "name": "note-publisher",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "tsx index.ts",
+    "dry-run": "DRY_RUN=1 tsx index.ts"
+  },
+  "dependencies": {
+    "playwright": "^1.44.0"
+  },
+  "devDependencies": {
+    "tsx": "^4.11.0",
+    "typescript": "^5.4.0"
+  }
+}
