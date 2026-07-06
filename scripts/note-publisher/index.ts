@@ -133,7 +133,17 @@ async function loginNote(page: Page) {
   await emailInput.fill(NOTE_EMAIL);
   await page.locator('#password, input[name="password"], input[type="password"]').first().fill(NOTE_PASSWORD);
   await page.getByRole("button", { name: "ログイン", exact: true }).click();
-  await page.waitForURL((u) => !u.toString().includes("/login"), { timeout: 20_000 });
+  try {
+    await page.waitForURL((u) => !u.toString().includes("/login"), { timeout: 20_000 });
+  } catch (e) {
+    // ログイン後に /login から遷移しない場合の診断情報を残す
+    const shot = `/tmp/note-error-login-${Date.now()}.png`;
+    await page.screenshot({ path: shot, fullPage: true });
+    const bodyText = (await page.locator("body").innerText().catch(() => "")).slice(0, 1500);
+    console.error(`  ログイン後に遷移せず。URL=${page.url()}`);
+    console.error(`  画面テキスト抜粋:\n${bodyText}`);
+    throw e;
+  }
   console.log("  ログイン完了");
 }
 
