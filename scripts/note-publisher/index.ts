@@ -125,10 +125,15 @@ async function loginNote(page: Page) {
   await page.waitForLoadState("networkidle");
 
   // メールアドレス入力
-  await page.locator('input[name="email"], input[type="email"]').fill(NOTE_EMAIL);
-  await page.locator('input[name="password"], input[type="password"]').fill(NOTE_PASSWORD);
-  await page.locator('button[type="submit"]').click();
-  await page.waitForURL((u) => !u.toString().includes("/login"), { timeout: 15_000 });
+  // 2026-07: note.com ログインUI変更。メール欄は id="email"/type="text"（name無し）、
+  // パスワードは id="password"、送信ボタンは type="button" の「ログイン」に変わった。
+  // 旧セレクタも OR で残しつつ、現行の #email/#password を優先。
+  const emailInput = page.locator('#email, input[name="email"], input[type="email"]').first();
+  await emailInput.waitFor({ state: "visible", timeout: 20_000 });
+  await emailInput.fill(NOTE_EMAIL);
+  await page.locator('#password, input[name="password"], input[type="password"]').first().fill(NOTE_PASSWORD);
+  await page.getByRole("button", { name: "ログイン", exact: true }).click();
+  await page.waitForURL((u) => !u.toString().includes("/login"), { timeout: 20_000 });
   console.log("  ログイン完了");
 }
 
