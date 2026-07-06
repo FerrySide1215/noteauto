@@ -6,8 +6,9 @@ import { pipeline } from "stream/promises";
 // ── 環境変数 ───────────────────────────────────────────────
 const NOTION_TOKEN   = env("NOTION_TOKEN");
 const NOTION_DB      = env("NOTION_DB_ARTICLE"); // 記事アイデア帳 DB ID
-const NOTE_EMAIL     = env("NOTE_EMAIL");
-const NOTE_PASSWORD  = env("NOTE_PASSWORD");
+const NOTE_EMAIL     = process.env.NOTE_EMAIL ?? "";     // セッション方式では未使用でも可
+const NOTE_PASSWORD  = process.env.NOTE_PASSWORD ?? "";  // セッション方式では未使用でも可
+const NOTE_STORAGE_STATE = process.env.NOTE_STORAGE_STATE ?? ""; // 保存済みログインセッション(JSON)
 const DRY_RUN        = process.env.DRY_RUN === "1";
 const NOTION_VERSION = "2022-06-28";
 
@@ -147,6 +148,23 @@ async function loginNote(page: Page) {
   console.log("  ログイン完了");
 }
 
+// 保存済みセッションでログイン状態か確認する。
+// note.com はログインに reCAPTCHA を要求するため CI では毎回ログインできない。
+// ローカルで一度手動ログインした storageState を使い回し、有効性だけ確認する。
+async function ensureLoggedIn(page: Page) {
+  // 認証必須の投稿エディタへ。未ログインなら /login にリダイレクトされる。
+  await page.goto("https://note.com/notes/new");
+  await page.waitForLoadState("networkidle");
+  if (page.url().includes("/login")) {
+    throw new Error(
+      "note.com のセッションが無効/期限切れです。ローカルで " +
+      "`npx tsx save-session.ts` を実行して再ログインし、" +
+      "出力された note-state.json を GitHub secret NOTE_STORAGE_STATE に更新してください。"
+    );
+  }
+  console.log("  保存済みセッションでログイン確認OK");
+}
+
 async function publishArticle(
   page: Page,
   article: Article,
@@ -272,15 +290,23 @@ async function main() {
 
   console.log(`${articles.length}件を処理します\n`);
 
+  const useSession = NOTE_STORAGE_STATE.length > 0;
+  if (useSession) console.log("保存済みセッション(storageState)でログインします");
+
   const browser = await chromium.launch({ headless: true });
   const context: BrowserContext = await browser.newContext({
     permissions: ["clipboard-read", "clipboard-write"],
     locale: "ja-JP",
+    ...(useSession ? { storageState: JSON.parse(NOTE_STORAGE_STATE) } : {}),
   });
   const page = await context.newPage();
 
   try {
-    await loginNote(page);
+    if (useSession) {
+      await ensureLoggedIn(page);
+    } else {
+      await loginNote(page);
+    }
 
     for (const article of articles) {
       console.log(`\n▸ ${article.title}`);

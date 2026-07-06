@@ -40,6 +40,8 @@ jobs:
           NOTION_DB_ARTICLE: ${{ secrets.NOTION_DB_ARTICLE }}
           NOTE_EMAIL: ${{ secrets.NOTE_EMAIL }}
           NOTE_PASSWORD: ${{ secrets.NOTE_PASSWORD }}
+          # note.com は reCAPTCHA でCI自動ログイン不可 → ローカル取得の保存済みセッションを使用
+          NOTE_STORAGE_STATE: ${{ secrets.NOTE_STORAGE_STATE }}
           DRY_RUN: ${{ inputs.dry_run && '1' || '0' }}
         run: npm start
 
