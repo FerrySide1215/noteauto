@@ -1,2 +1,8 @@
 note-state.json
 node_modules/
+inspect-editor.ts
+api-probe.ts
+note-error-*.png
+.env
+chrome-profile/
+dump.ts

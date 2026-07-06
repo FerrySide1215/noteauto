@@ -1,9 +1,11 @@
 name: note.com 自動投稿
 
 on:
-  schedule:
-    # 毎朝9時JST（= 00:00 UTC）に実行
-    - cron: "0 0 * * *"
+  # ⚠️ 2026-07-07: note.com がログイン/公開に reCAPTCHA を必須化し、ヘッドレスCIでは
+  #    公開不可と判明。運用はローカルの publish-local.ts（実ブラウザ+確認ゲート）へ移行。
+  #    毎朝の自動cronは失敗し続けるため無効化。手動実行(workflow_dispatch)のみ残す。
+  # schedule:
+  #   - cron: "0 0 * * *"
   workflow_dispatch:
     inputs:
       dry_run:
