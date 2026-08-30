@@ -977,7 +977,9 @@
           "start": 9.65,
           "end": 12.27,
           "text": "それでも根を張り続ける。",
-          "red": []
+          "red": [
+            "根を張り"
+          ]
         },
         {
           "start": 12.27,
@@ -1025,7 +1027,7 @@
           "end": 11.26,
           "lines": [
             {
-              "text": "岩の上に根を張る",
+              "text": "岩の上に根を張る松の",
               "style": "onscreen",
               "dy": 0
             }
@@ -1047,15 +1049,30 @@
           "end": 16.91,
           "lines": [
             {
-              "text": "常盤に栄ゆる",
+              "text": "常盤にみどり栄ゆる",
               "style": "onscreen",
               "dy": 0
+            }
+          ]
+        },
+        {
+          "start": 8.48,
+          "end": 16.61,
+          "lines": [
+            {
+              "text": "岩に根を張り栄えるように楽しい時期が到来します",
+              "style": "onscreen",
+              "red": [
+                "根を張り",
+                "楽しい時期が到来"
+              ],
+              "dy": 300
             }
           ]
         }
       ],
       "nat_sound_break": false,
-      "provenance_warning": "服部神社おみくじは仕様書のみ。実写真と要照合。"
+      "provenance_warning": null
     },
     {
       "id": "hattori_read",

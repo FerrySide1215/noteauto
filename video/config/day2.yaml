@@ -65,9 +65,8 @@ scenes:
       highlights:
         - text: "次第次第に運がひらけて盛んになります"
           red: ["次第次第に運がひらけて"]
-        - text: "一足飛びに事をしようとするとあやまります"
-          red: ["一足飛び"]
-    provenance_warning: "那谷寺おみくじは仕様書のみ。実写真と要照合。"
+        - text: "一足とびにとんで事をしようとするとあやまります"
+          red: ["一足とび"]
 
   - id: natadera_beat
     kind: interstitial
@@ -91,8 +90,8 @@ scenes:
     kind: shrine
     narration_ref: uhashi
     group: uhashi
-    # 正式漢字表記は看板・素材で確認してから確定（仕様書 §1）
-    location_card: { name: "うはし神社", region: "石川県", name_unconfirmed: true }
+    # 正式名称: 菟橋神社（読み うはし）。ユーザー確認済。
+    location_card: { name: "菟橋神社", reading: "うはし", region: "石川県" }
     omikuji:
       group: uhashi_omikuji
       highlights:
@@ -100,7 +99,7 @@ scenes:
           red: ["初めにきをつけねば"]
         - text: "争事　相手を見極めよ"
           red: ["見極めよ"]
-    provenance_warning: "うはし神社は名称・おみくじとも実写真と要照合。看板表記を確認。"
+    provenance_warning: "菟橋神社のおみくじ本文は仕様書のみ。実写真と要照合（名称は確認済）。"
 
   - id: uhashi_read
     kind: omikuji_read

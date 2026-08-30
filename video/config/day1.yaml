@@ -126,12 +126,14 @@ scenes:
     omikuji:
       group: hattori_omikuji
       label: "中吉"
-      # 和歌は一気に出さず順番に（仕様書 §10）
+      # 和歌は一気に出さず順番に（仕様書 §10・実物写真どおり）
       waka_reveal:
-        - "岩の上に根を張る"
+        - "岩の上に根を張る松の"
         - "風雪に耐えて"
-        - "常盤に栄ゆる"
-    provenance_warning: "服部神社おみくじは仕様書のみ。実写真と要照合。"
+        - "常盤にみどり栄ゆる"
+      highlights:
+        - text: "岩に根を張り栄えるように楽しい時期が到来します"
+          red: ["根を張り", "楽しい時期が到来"]
 
   - id: hattori_read
     kind: omikuji_read

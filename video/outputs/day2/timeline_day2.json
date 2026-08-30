@@ -391,10 +391,10 @@
           "end": 20.64,
           "lines": [
             {
-              "text": "一足飛びに事をしようとするとあやまります",
+              "text": "一足とびにとんで事をしようとするとあやまります",
               "style": "onscreen",
               "red": [
-                "一足飛び"
+                "一足とび"
               ],
               "dy": 300
             }
@@ -402,7 +402,7 @@
         }
       ],
       "nat_sound_break": true,
-      "provenance_warning": "那谷寺おみくじは仕様書のみ。実写真と要照合。"
+      "provenance_warning": null
     },
     {
       "id": "natadera_beat",
@@ -547,14 +547,14 @@
         {
           "path": null,
           "type": "placeholder",
-          "label": "うはし神社",
+          "label": "菟橋神社",
           "dur": 6.2,
           "kenburns": "none"
         },
         {
           "path": null,
           "type": "placeholder",
-          "label": "うはし神社",
+          "label": "菟橋神社",
           "dur": 6.2,
           "kenburns": "none"
         },
@@ -645,7 +645,7 @@
           "end": 3.8,
           "lines": [
             {
-              "text": "うはし神社（表記要確認）",
+              "text": "菟橋神社（うはし）",
               "style": "location",
               "dy": 380
             },
@@ -686,7 +686,7 @@
         }
       ],
       "nat_sound_break": false,
-      "provenance_warning": "うはし神社は名称・おみくじとも実写真と要照合。看板表記を確認。"
+      "provenance_warning": "菟橋神社のおみくじ本文は仕様書のみ。実写真と要照合（名称は確認済）。"
     },
     {
       "id": "uhashi_read",

@@ -143,6 +143,8 @@ def _scene_cards(scene: dict, project: dict, duration: float) -> list[dict]:
     loc = scene.get("location_card")
     if loc:
         name = loc["name"] + ("（表記要確認）" if loc.get("name_unconfirmed") else "")
+        if loc.get("reading"):
+            name = f"{name}（{loc['reading']}）"
         region = loc.get("region", "")
         cards.append({"start": 0.5, "end": min(duration, 3.8),
                       "lines": [{"text": f"{name}", "style": "location", "dy": 380},
