@@ -94,12 +94,15 @@ scenes:
     location_card: { name: "菟橋神社", reading: "うはし", region: "石川県" }
     omikuji:
       group: uhashi_omikuji
+      label: "第四十一番　小吉"
+      onscreen:
+        - { text: "第四十一番", style: onscreen }
+        - { text: "小吉", style: onscreen }
       highlights:
         - text: "願望　初めにきをつけねば中途でやぶれる"
           red: ["初めにきをつけねば"]
         - text: "争事　相手を見極めよ"
           red: ["見極めよ"]
-    provenance_warning: "菟橋神社のおみくじ本文は仕様書のみ。実写真と要照合（名称は確認済）。"
 
   - id: uhashi_read
     kind: omikuji_read
@@ -116,7 +119,11 @@ scenes:
     prefer_komorebi: true   # 木漏れ日重視の静かな写真
     omikuji:
       group: ataka_omikuji
-      label: "第四十一番　吉"
+      # 実物は第四十番（仕様書§16の「第四十一番」は菟橋神社と番号が入替わっていた）
+      label: "第四十番　吉"
+      onscreen:
+        - { text: "第四十番", style: onscreen }
+        - { text: "吉", style: onscreen }
       highlights:
         - text: "時期を考えてはやくあらため進むがよい"
           red: ["時期を考えて", "あらため"]
@@ -124,7 +131,6 @@ scenes:
           red: ["力あわせて"]
         - text: "けれどわるいみちと知りつつ進めばわるし"
           red: ["わるいみちと知りつつ"]
-    provenance_warning: "安宅住吉神社おみくじは仕様書のみ。実写真と要照合。"
 
   # 軌道修正（大きく画面表示）
   - id: kidou_shusei
