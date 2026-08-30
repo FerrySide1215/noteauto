@@ -1,0 +1,93 @@
+# 叶結び 石川編 — 全体設定（仕様書 §0,§4,§5,§6,§21 準拠）
+# ここを1か所直すと DAY1/DAY2 両方に反映される。
+
+brand:
+  channel: "叶結び"
+  tagline: "神社で答え合わせ"
+  # スタンス（断定しない）。字幕・タイトルの言い回しチェックにも使う。
+  voice: "私はこう受け取った / 今の自分にはこう読めた / 振り返るとこう見えた"
+
+video:
+  width: 1920
+  height: 1080
+  # ソースが十分高解像度なら 2560x1440 も可（--quality wqhd で切替）。
+  wqhd: [2560, 1440]
+  fps: 30
+  vcodec: "libx264"
+  crf: 18
+  preset: "medium"
+  pix_fmt: "yuv420p"
+  # プレビューは軽く速く。
+  preview:
+    height: 720
+    crf: 26
+    preset: "veryfast"
+
+audio:
+  acodec: "aac"
+  sample_rate: 48000
+  bitrate: "256k"
+  # 最終ラウドネス（仕様書 §4）
+  loudnorm_i: -14.0      # Integrated Loudness (LUFS)
+  loudnorm_tp: -1.0      # True Peak (dB) 上限
+  loudnorm_lra: 11.0
+  # BGMはナレーションを邪魔しない。ナレーション中は大きく下げる。
+  bgm_gain_db: -22.0            # BGMベースのゲイン
+  bgm_duck_db: -12.0           # ナレーション区間でさらに下げる量（ducking）
+
+# 色（仕様書 §5）。ピンクのキラキラ系は禁止。
+colors:
+  kinari: "&HF2F4F5&"      # 生成り（ASSは &HBBGGRR& / AABBGGRR）
+  white:  "&HFFFFFF&"
+  sumi:   "&H1A1A1A&"      # 墨色
+  vermilion: "&H2430C0&"   # 神社の朱色 (RGB C03024 → BGR 2430C0)
+  gold:   "&H2FA8C8&"      # 控えめな金色 (RGB C8A82F)
+  # 字幕用
+  caption_fill: "&HFFFFFF&"        # 白文字
+  caption_outline: "&H1A1A1A&"     # 濃色の薄い縁取り
+  keyword_red: "&H2430C0&"         # 重要語＝赤
+  keyword_gold: "&H2FA8C8&"        # 重要語＝金（代替）
+
+# フォント（仕様書 §4）。ローカルにインストールされている名前を上から順に探す。
+# タイトル・章タイトルは明朝、通常字幕はゴシック可。
+fonts:
+  mincho_priority: ["Hiragino Mincho ProN", "YuMincho", "Yu Mincho", "Noto Serif JP", "Noto Serif CJK JP"]
+  gothic_priority: ["Hiragino Kaku Gothic ProN", "YuGothic", "Yu Gothic", "Noto Sans JP", "Noto Sans CJK JP"]
+  title_size: 96
+  chapter_size: 64
+  caption_size: 52
+  onscreen_size: 72
+
+# 字幕ルール（仕様書 §4）
+caption:
+  max_lines: 2
+  # 画面最下部ギリギリには置かない → 下から約12%上げる
+  bottom_margin_px: 130
+  # 全文を常時字幕にしすぎない：長いブロックは要点行だけ字幕化するフラグ
+  full_narration_as_caption: false
+
+# 静止画の扱い（仕様書 §6）
+stills:
+  default_dur: 5.5           # 通常 4〜7秒
+  min_dur: 4.0
+  max_dur: 7.0
+  kenburns_start: 1.02       # 100〜104%
+  kenburns_end: 1.11         # 108〜114%
+  # おみくじ写真：全体を数秒→要点へ寄る
+  omikuji_overview_dur: 2.5
+  omikuji_zoom_dur: 4.5
+
+# BGMムード → supplied_audio/ 内の該当ファイル名（存在すれば使用、無ければ無音）
+# 仕様書 §21。外部から著作権不明の曲を勝手にDLしない。
+bgm:
+  day1: "bgm_day1_quiet_tension.*"       # 静か・少し緊張感・和風アンビエント
+  day2_early: "bgm_day2_serene.*"        # 静謐・自然・寺院
+  day2_natadera: "bgm_day2_brighten.*"   # 那谷寺以降 少し明るく
+  day2_ataka: "bgm_day2_hope.*"          # 穏やか・希望
+
+# 素材の分類（仕様書 §3）
+assets:
+  day1_date: "2026-08-22"
+  day2_date: "2026-08-23"
+  unknown_group: "travel_broll"
+  dedup_hamming_threshold: 6   # perceptual hash ハミング距離これ以下は重複扱い

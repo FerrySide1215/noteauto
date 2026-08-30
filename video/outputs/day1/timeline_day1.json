@@ -1,0 +1,1330 @@
+{
+  "day": 1,
+  "theme": "いったん止まって、整える。",
+  "resolution": [
+    1920,
+    1080
+  ],
+  "fps": 30,
+  "total_duration": 245.74,
+  "fonts": {
+    "mincho": "Hiragino Mincho ProN",
+    "gothic": "Hiragino Kaku Gothic ProN"
+  },
+  "scenes": [
+    {
+      "id": "cold_open",
+      "kind": "cold_open",
+      "start": 0.0,
+      "duration": 29.76,
+      "shots": [
+        {
+          "path": null,
+          "type": "placeholder",
+          "label": "kinkengu",
+          "dur": 4.25,
+          "kenburns": "none"
+        },
+        {
+          "path": null,
+          "type": "placeholder",
+          "label": "kinkengu_omikuji",
+          "dur": 4.25,
+          "kenburns": "none"
+        },
+        {
+          "path": null,
+          "type": "placeholder",
+          "label": "shirayama",
+          "dur": 4.25,
+          "kenburns": "none"
+        },
+        {
+          "path": null,
+          "type": "placeholder",
+          "label": "shirayama_kaiun_omikuji",
+          "dur": 4.25,
+          "kenburns": "none"
+        },
+        {
+          "path": null,
+          "type": "placeholder",
+          "label": "shirayama_futsu_omikuji",
+          "dur": 4.25,
+          "kenburns": "none"
+        },
+        {
+          "path": null,
+          "type": "placeholder",
+          "label": "hattori",
+          "dur": 4.25,
+          "kenburns": "none"
+        },
+        {
+          "path": null,
+          "type": "placeholder",
+          "label": "hattori_omikuji",
+          "dur": 4.26,
+          "kenburns": "none"
+        }
+      ],
+      "audio": {
+        "narration": null,
+        "narration_dur": null,
+        "bgm_key": "day1"
+      },
+      "captions": [
+        {
+          "start": 0.0,
+          "end": 4.41,
+          "text": "金運で知られる神社から始まった、今回の石川の旅。",
+          "red": []
+        },
+        {
+          "start": 4.41,
+          "end": 7.83,
+          "text": "最初のおみくじに書かれていたのは、",
+          "red": []
+        },
+        {
+          "start": 7.83,
+          "end": 10.68,
+          "text": "「商売、思いがけぬ損あり」",
+          "red": []
+        },
+        {
+          "start": 10.68,
+          "end": 12.25,
+          "text": "でした。",
+          "red": []
+        },
+        {
+          "start": 12.25,
+          "end": 15.09,
+          "text": "そして次に訪れた神社でも、",
+          "red": []
+        },
+        {
+          "start": 15.09,
+          "end": 17.66,
+          "text": "また別のおみくじでも、",
+          "red": []
+        },
+        {
+          "start": 17.66,
+          "end": 20.93,
+          "text": "なぜか似たような言葉が続きます。",
+          "red": []
+        },
+        {
+          "start": 20.93,
+          "end": 23.21,
+          "text": "これは偶然なのか。",
+          "red": []
+        },
+        {
+          "start": 23.21,
+          "end": 26.77,
+          "text": "今回は、おみくじを一枚ずつではなく、",
+          "red": []
+        },
+        {
+          "start": 26.77,
+          "end": 29.76,
+          "text": "旅の流れとして読んでみます。",
+          "red": []
+        }
+      ],
+      "cards": [],
+      "nat_sound_break": false,
+      "provenance_warning": null
+    },
+    {
+      "id": "title",
+      "kind": "title",
+      "start": 29.76,
+      "duration": 4.0,
+      "shots": [
+        {
+          "path": null,
+          "type": "placeholder",
+          "label": "石川編 DAY1",
+          "dur": 4.0,
+          "kenburns": "none"
+        }
+      ],
+      "audio": {
+        "narration": null,
+        "narration_dur": null,
+        "bgm_key": "day1"
+      },
+      "captions": [],
+      "cards": [
+        {
+          "start": 0.4,
+          "end": 3.7,
+          "lines": [
+            {
+              "text": "叶結び",
+              "style": "title",
+              "dy": -110
+            },
+            {
+              "text": "石川編 DAY1",
+              "style": "chapter",
+              "dy": 0
+            },
+            {
+              "text": "同じ警告が、何度も続いた日",
+              "style": "subtitle",
+              "dy": 110
+            }
+          ]
+        }
+      ],
+      "nat_sound_break": false,
+      "provenance_warning": null
+    },
+    {
+      "id": "kinkengu",
+      "kind": "shrine",
+      "start": 33.76,
+      "duration": 40.02,
+      "shots": [
+        {
+          "path": null,
+          "type": "placeholder",
+          "label": "金劔宮",
+          "dur": 11.01,
+          "kenburns": "none"
+        },
+        {
+          "path": null,
+          "type": "placeholder",
+          "label": "金劔宮",
+          "dur": 11.01,
+          "kenburns": "none"
+        },
+        {
+          "path": null,
+          "type": "placeholder",
+          "label": "末吉",
+          "dur": 18.01,
+          "kenburns": "none"
+        }
+      ],
+      "audio": {
+        "narration": null,
+        "narration_dur": null,
+        "bgm_key": "day1"
+      },
+      "captions": [
+        {
+          "start": 0.0,
+          "end": 2.69,
+          "text": "最初に訪れたのは金劔宮。",
+          "red": []
+        },
+        {
+          "start": 2.69,
+          "end": 6.78,
+          "text": "金運のことも少し意識しながら来た場所でした。",
+          "red": []
+        },
+        {
+          "start": 6.78,
+          "end": 10.03,
+          "text": "ところが引いたおみくじは、末吉。",
+          "red": []
+        },
+        {
+          "start": 10.03,
+          "end": 12.44,
+          "text": "しかも商売の欄には、",
+          "red": []
+        },
+        {
+          "start": 12.44,
+          "end": 14.84,
+          "text": "「思いがけぬ損あり」",
+          "red": [
+            "思いがけぬ損"
+          ]
+        },
+        {
+          "start": 14.84,
+          "end": 16.69,
+          "text": "とあります。",
+          "red": []
+        },
+        {
+          "start": 16.69,
+          "end": 18.81,
+          "text": "さらに全体では、",
+          "red": []
+        },
+        {
+          "start": 18.81,
+          "end": 21.36,
+          "text": "大きな問題というより、",
+          "red": []
+        },
+        {
+          "start": 21.36,
+          "end": 24.61,
+          "text": "小さなところを疎かにしないこと。",
+          "red": []
+        },
+        {
+          "start": 24.61,
+          "end": 28.0,
+          "text": "思いがけない出来事に慌てないこと。",
+          "red": []
+        },
+        {
+          "start": 28.0,
+          "end": 31.11,
+          "text": "そんな注意が書かれていました。",
+          "red": []
+        },
+        {
+          "start": 31.11,
+          "end": 33.52,
+          "text": "正直、この時はまだ、",
+          "red": []
+        },
+        {
+          "start": 33.52,
+          "end": 37.33,
+          "text": "「まあ、おみくじだからこういう時もある」",
+          "red": []
+        },
+        {
+          "start": 37.33,
+          "end": 40.02,
+          "text": "くらいに思っていました。",
+          "red": []
+        }
+      ],
+      "cards": [
+        {
+          "start": 0.5,
+          "end": 3.8,
+          "lines": [
+            {
+              "text": "金劔宮",
+              "style": "location",
+              "dy": 380
+            },
+            {
+              "text": "石川県",
+              "style": "location",
+              "dy": 430
+            }
+          ]
+        },
+        {
+          "start": 12.006,
+          "end": 14.606,
+          "lines": [
+            {
+              "text": "末吉",
+              "style": "onscreen",
+              "dy": 0
+            }
+          ]
+        },
+        {
+          "start": 20.01,
+          "end": 29.51,
+          "lines": [
+            {
+              "text": "小さい処に注意なさい",
+              "style": "onscreen",
+              "red": [
+                "小さい処"
+              ],
+              "dy": 300
+            }
+          ]
+        },
+        {
+          "start": 29.01,
+          "end": 38.52,
+          "lines": [
+            {
+              "text": "商売　思いがけぬ損あり",
+              "style": "onscreen",
+              "red": [
+                "思いがけぬ損"
+              ],
+              "dy": 300
+            }
+          ]
+        }
+      ],
+      "nat_sound_break": false,
+      "provenance_warning": null
+    },
+    {
+      "id": "shirayama_kaiun",
+      "kind": "shrine",
+      "start": 73.78,
+      "duration": 28.16,
+      "shots": [
+        {
+          "path": null,
+          "type": "placeholder",
+          "label": "白山比咩神社",
+          "dur": 7.74,
+          "kenburns": "none"
+        },
+        {
+          "path": null,
+          "type": "placeholder",
+          "label": "白山比咩神社",
+          "dur": 7.74,
+          "kenburns": "none"
+        },
+        {
+          "path": null,
+          "type": "placeholder",
+          "label": "第二十番　小吉　〔風地観〕",
+          "dur": 12.68,
+          "kenburns": "none"
+        }
+      ],
+      "audio": {
+        "narration": null,
+        "narration_dur": null,
+        "bgm_key": "day1"
+      },
+      "captions": [
+        {
+          "start": 0.0,
+          "end": 2.22,
+          "text": "次は白山比咩神社。",
+          "red": []
+        },
+        {
+          "start": 2.22,
+          "end": 5.51,
+          "text": "ここでは、開運みくじを引きました。",
+          "red": []
+        },
+        {
+          "start": 5.51,
+          "end": 7.59,
+          "text": "第二十番、小吉。",
+          "red": []
+        },
+        {
+          "start": 7.59,
+          "end": 9.13,
+          "text": "風地観。",
+          "red": []
+        },
+        {
+          "start": 9.13,
+          "end": 11.35,
+          "text": "内容を読んでいて、",
+          "red": []
+        },
+        {
+          "start": 11.35,
+          "end": 14.38,
+          "text": "一つ気になったことがあります。",
+          "red": []
+        },
+        {
+          "start": 14.38,
+          "end": 17.4,
+          "text": "外へ向かって何かを増やすより、",
+          "red": []
+        },
+        {
+          "start": 17.4,
+          "end": 20.03,
+          "text": "まず自分自身をよく見る。",
+          "red": []
+        },
+        {
+          "start": 20.03,
+          "end": 22.51,
+          "text": "精神的な努力を重ねる。",
+          "red": []
+        },
+        {
+          "start": 22.51,
+          "end": 24.32,
+          "text": "自分を磨く。",
+          "red": []
+        },
+        {
+          "start": 24.32,
+          "end": 28.16,
+          "text": "そんな意味合いがとても強いおみくじでした。",
+          "red": []
+        }
+      ],
+      "cards": [
+        {
+          "start": 0.5,
+          "end": 3.8,
+          "lines": [
+            {
+              "text": "白山比咩神社",
+              "style": "location",
+              "dy": 380
+            },
+            {
+              "text": "石川県",
+              "style": "location",
+              "dy": 430
+            }
+          ]
+        },
+        {
+          "start": 8.448,
+          "end": 11.448,
+          "lines": [
+            {
+              "text": "第二十番",
+              "style": "onscreen",
+              "dy": -96
+            },
+            {
+              "text": "小吉",
+              "style": "onscreen",
+              "dy": 0
+            },
+            {
+              "text": "風地観",
+              "style": "onscreen",
+              "dy": 96
+            }
+          ]
+        }
+      ],
+      "nat_sound_break": false,
+      "provenance_warning": null
+    },
+    {
+      "id": "shirayama_kaiun_money",
+      "kind": "omikuji_read",
+      "start": 101.94,
+      "duration": 17.44,
+      "shots": [
+        {
+          "path": null,
+          "type": "placeholder",
+          "label": "shirayama_kaiun_omikuji",
+          "dur": 9.59,
+          "kenburns": "none"
+        },
+        {
+          "path": null,
+          "type": "placeholder",
+          "label": "おみくじ",
+          "dur": 7.85,
+          "kenburns": "none"
+        }
+      ],
+      "audio": {
+        "narration": null,
+        "narration_dur": null,
+        "bgm_key": "day1"
+      },
+      "captions": [
+        {
+          "start": 0.0,
+          "end": 2.36,
+          "text": "そして、お金の部分。",
+          "red": []
+        },
+        {
+          "start": 2.36,
+          "end": 4.17,
+          "text": "意外な出費。",
+          "red": []
+        },
+        {
+          "start": 4.17,
+          "end": 7.2,
+          "text": "他人の金儲けが目につきやすい。",
+          "red": [
+            "他人の金儲け"
+          ]
+        },
+        {
+          "start": 7.2,
+          "end": 10.37,
+          "text": "ここで私は少し引っかかりました。",
+          "red": []
+        },
+        {
+          "start": 10.37,
+          "end": 12.19,
+          "text": "金劔宮でも、",
+          "red": []
+        },
+        {
+          "start": 12.19,
+          "end": 14.27,
+          "text": "「思いがけぬ損」",
+          "red": []
+        },
+        {
+          "start": 14.27,
+          "end": 17.44,
+          "text": "と言われたばかりだったからです。",
+          "red": []
+        }
+      ],
+      "cards": [
+        {
+          "start": 8.72,
+          "end": 17.07,
+          "lines": [
+            {
+              "text": "意外の失費　他人の金儲けばかり目につく",
+              "style": "onscreen",
+              "red": [
+                "意外の失費",
+                "他人の金儲け"
+              ],
+              "dy": 300
+            }
+          ]
+        }
+      ],
+      "nat_sound_break": false,
+      "provenance_warning": null
+    },
+    {
+      "id": "shirayama_futsu",
+      "kind": "omikuji_read",
+      "start": 119.38,
+      "duration": 32.76,
+      "shots": [
+        {
+          "path": null,
+          "type": "placeholder",
+          "label": "shirayama_futsu_omikuji",
+          "dur": 18.02,
+          "kenburns": "none"
+        },
+        {
+          "path": null,
+          "type": "placeholder",
+          "label": "第二十七番　小吉　〔山雷頤〕",
+          "dur": 14.74,
+          "kenburns": "none"
+        }
+      ],
+      "audio": {
+        "narration": null,
+        "narration_dur": null,
+        "bgm_key": "day1"
+      },
+      "captions": [
+        {
+          "start": 0.0,
+          "end": 3.62,
+          "text": "さらに、普通のおみくじも引いてみました。",
+          "red": []
+        },
+        {
+          "start": 3.62,
+          "end": 5.54,
+          "text": "こちらも小吉。",
+          "red": []
+        },
+        {
+          "start": 5.54,
+          "end": 8.51,
+          "text": "そして、また似た言葉が出ます。",
+          "red": []
+        },
+        {
+          "start": 8.51,
+          "end": 10.95,
+          "text": "他人の出世を羨まない。",
+          "red": []
+        },
+        {
+          "start": 10.95,
+          "end": 13.66,
+          "text": "自分の仕事を嫌にならない。",
+          "red": []
+        },
+        {
+          "start": 13.66,
+          "end": 15.45,
+          "text": "欲を抑える。",
+          "red": []
+        },
+        {
+          "start": 15.45,
+          "end": 17.23,
+          "text": "そして特に、",
+          "red": []
+        },
+        {
+          "start": 17.23,
+          "end": 18.63,
+          "text": "「口」",
+          "red": [
+            "口"
+          ]
+        },
+        {
+          "start": 18.63,
+          "end": 21.33,
+          "text": "つまり言葉に注意すること。",
+          "red": []
+        },
+        {
+          "start": 21.33,
+          "end": 23.12,
+          "text": "勢いで言う。",
+          "red": []
+        },
+        {
+          "start": 23.12,
+          "end": 24.9,
+          "text": "感情で言う。",
+          "red": []
+        },
+        {
+          "start": 24.9,
+          "end": 27.35,
+          "text": "大きなことを言い切る。",
+          "red": []
+        },
+        {
+          "start": 27.35,
+          "end": 29.92,
+          "text": "そういったことへの注意が",
+          "red": []
+        },
+        {
+          "start": 29.92,
+          "end": 32.76,
+          "text": "かなり強く書かれていました。",
+          "red": []
+        }
+      ],
+      "cards": [
+        {
+          "start": 9.828,
+          "end": 12.828,
+          "lines": [
+            {
+              "text": "第二十七番",
+              "style": "onscreen",
+              "dy": -96
+            },
+            {
+              "text": "小吉",
+              "style": "onscreen",
+              "dy": 0
+            },
+            {
+              "text": "山雷頤",
+              "style": "onscreen",
+              "dy": 96
+            }
+          ]
+        },
+        {
+          "start": 16.38,
+          "end": 31.62,
+          "lines": [
+            {
+              "text": "「口は禍の門」　言語に注意",
+              "style": "onscreen",
+              "red": [
+                "口",
+                "言語に注意"
+              ],
+              "dy": 300
+            }
+          ]
+        }
+      ],
+      "nat_sound_break": false,
+      "provenance_warning": null
+    },
+    {
+      "id": "shirayama_futsu_beat",
+      "kind": "interstitial",
+      "start": 152.14,
+      "duration": 4.28,
+      "shots": [
+        {
+          "path": null,
+          "type": "placeholder",
+          "label": "shirayama_futsu_omikuji",
+          "dur": 4.28,
+          "kenburns": "none"
+        }
+      ],
+      "audio": {
+        "narration": null,
+        "narration_dur": null,
+        "bgm_key": "day1"
+      },
+      "captions": [
+        {
+          "start": 0.0,
+          "end": 1.71,
+          "text": "……あれ？",
+          "red": []
+        },
+        {
+          "start": 1.71,
+          "end": 4.28,
+          "text": "また同じ方向じゃない？",
+          "red": []
+        }
+      ],
+      "cards": [
+        {
+          "start": 0.4,
+          "end": 3.9800000000000004,
+          "lines": [
+            {
+              "text": "また同じこと？",
+              "style": "onscreen",
+              "dy": 0
+            }
+          ]
+        }
+      ],
+      "nat_sound_break": false,
+      "provenance_warning": null
+    },
+    {
+      "id": "day1_midsummary",
+      "kind": "summary",
+      "start": 156.42,
+      "duration": 19.04,
+      "shots": [
+        {
+          "path": null,
+          "type": "placeholder",
+          "label": "broll_day1",
+          "dur": 19.04,
+          "kenburns": "none"
+        }
+      ],
+      "audio": {
+        "narration": null,
+        "narration_dur": null,
+        "bgm_key": "day1"
+      },
+      "captions": [
+        {
+          "start": 0.0,
+          "end": 2.3,
+          "text": "吉か凶かは違っても、",
+          "red": []
+        },
+        {
+          "start": 2.3,
+          "end": 4.6,
+          "text": "内容を並べてみると、",
+          "red": []
+        },
+        {
+          "start": 4.6,
+          "end": 8.2,
+          "text": "不思議なくらい同じ方向を向いていました。",
+          "red": []
+        },
+        {
+          "start": 8.2,
+          "end": 10.62,
+          "text": "新しいものを追うより、",
+          "red": []
+        },
+        {
+          "start": 10.62,
+          "end": 12.92,
+          "text": "今あるものを整える。",
+          "red": []
+        },
+        {
+          "start": 12.92,
+          "end": 14.83,
+          "text": "外を見るより、",
+          "red": []
+        },
+        {
+          "start": 14.83,
+          "end": 17.0,
+          "text": "自分の足元を見る。",
+          "red": []
+        },
+        {
+          "start": 17.0,
+          "end": 19.04,
+          "text": "そんな感じです。",
+          "red": []
+        }
+      ],
+      "cards": [
+        {
+          "start": 0.5,
+          "end": 18.74,
+          "lines": [
+            {
+              "text": "焦らない",
+              "style": "listitem",
+              "dy": -240
+            },
+            {
+              "text": "他人と比べない",
+              "style": "listitem",
+              "dy": -144
+            },
+            {
+              "text": "お金を雑に使わない",
+              "style": "listitem",
+              "dy": -48
+            },
+            {
+              "text": "言葉に注意",
+              "style": "listitem",
+              "dy": 48
+            },
+            {
+              "text": "人と争わない",
+              "style": "listitem",
+              "dy": 144
+            },
+            {
+              "text": "小さいことを疎かにしない",
+              "style": "listitem",
+              "dy": 240
+            }
+          ]
+        }
+      ],
+      "nat_sound_break": false,
+      "provenance_warning": null
+    },
+    {
+      "id": "hattori",
+      "kind": "shrine",
+      "start": 175.46,
+      "duration": 16.96,
+      "shots": [
+        {
+          "path": null,
+          "type": "placeholder",
+          "label": "服部神社",
+          "dur": 4.66,
+          "kenburns": "none"
+        },
+        {
+          "path": null,
+          "type": "placeholder",
+          "label": "服部神社",
+          "dur": 4.66,
+          "kenburns": "none"
+        },
+        {
+          "path": null,
+          "type": "placeholder",
+          "label": "中吉",
+          "dur": 7.64,
+          "kenburns": "none"
+        }
+      ],
+      "audio": {
+        "narration": null,
+        "narration_dur": null,
+        "bgm_key": "day1"
+      },
+      "captions": [
+        {
+          "start": 0.0,
+          "end": 2.62,
+          "text": "1日目、最後のおみくじ。",
+          "red": []
+        },
+        {
+          "start": 2.62,
+          "end": 4.96,
+          "text": "ここで出てきたのは、",
+          "red": []
+        },
+        {
+          "start": 4.96,
+          "end": 7.31,
+          "text": "岩の上に根を張る松。",
+          "red": []
+        },
+        {
+          "start": 7.31,
+          "end": 9.65,
+          "text": "風や雪に耐えながら、",
+          "red": []
+        },
+        {
+          "start": 9.65,
+          "end": 12.27,
+          "text": "それでも根を張り続ける。",
+          "red": []
+        },
+        {
+          "start": 12.27,
+          "end": 14.75,
+          "text": "そして、やがて栄える。",
+          "red": []
+        },
+        {
+          "start": 14.75,
+          "end": 16.96,
+          "text": "という言葉でした。",
+          "red": []
+        }
+      ],
+      "cards": [
+        {
+          "start": 0.5,
+          "end": 3.8,
+          "lines": [
+            {
+              "text": "服部神社",
+              "style": "location",
+              "dy": 380
+            },
+            {
+              "text": "石川県",
+              "style": "location",
+              "dy": 430
+            }
+          ]
+        },
+        {
+          "start": 5.088,
+          "end": 7.688000000000001,
+          "lines": [
+            {
+              "text": "中吉",
+              "style": "onscreen",
+              "dy": 0
+            }
+          ]
+        },
+        {
+          "start": 7.63,
+          "end": 11.26,
+          "lines": [
+            {
+              "text": "岩の上に根を張る",
+              "style": "onscreen",
+              "dy": 0
+            }
+          ]
+        },
+        {
+          "start": 10.46,
+          "end": 14.09,
+          "lines": [
+            {
+              "text": "風雪に耐えて",
+              "style": "onscreen",
+              "dy": 0
+            }
+          ]
+        },
+        {
+          "start": 13.29,
+          "end": 16.91,
+          "lines": [
+            {
+              "text": "常盤に栄ゆる",
+              "style": "onscreen",
+              "dy": 0
+            }
+          ]
+        }
+      ],
+      "nat_sound_break": false,
+      "provenance_warning": "服部神社おみくじは仕様書のみ。実写真と要照合。"
+    },
+    {
+      "id": "hattori_read",
+      "kind": "omikuji_read",
+      "start": 192.42,
+      "duration": 18.92,
+      "shots": [
+        {
+          "path": null,
+          "type": "placeholder",
+          "label": "hattori",
+          "dur": 18.92,
+          "kenburns": "none"
+        }
+      ],
+      "audio": {
+        "narration": null,
+        "narration_dur": null,
+        "bgm_key": "day1"
+      },
+      "captions": [
+        {
+          "start": 0.0,
+          "end": 2.86,
+          "text": "ここまでのおみくじを重ねると、",
+          "red": []
+        },
+        {
+          "start": 2.86,
+          "end": 4.98,
+          "text": "今すぐ大きく動け、",
+          "red": []
+        },
+        {
+          "start": 4.98,
+          "end": 6.6,
+          "text": "ではない。",
+          "red": []
+        },
+        {
+          "start": 6.6,
+          "end": 8.09,
+          "text": "むしろ、",
+          "red": []
+        },
+        {
+          "start": 8.09,
+          "end": 9.59,
+          "text": "焦らず、",
+          "red": []
+        },
+        {
+          "start": 9.59,
+          "end": 11.95,
+          "text": "余計なものを増やさず、",
+          "red": []
+        },
+        {
+          "start": 11.95,
+          "end": 14.32,
+          "text": "今いる場所で根を張れ。",
+          "red": []
+        },
+        {
+          "start": 14.32,
+          "end": 16.8,
+          "text": "そう言われているように、",
+          "red": []
+        },
+        {
+          "start": 16.8,
+          "end": 18.92,
+          "text": "私には見えました。",
+          "red": []
+        }
+      ],
+      "cards": [],
+      "nat_sound_break": false,
+      "provenance_warning": null
+    },
+    {
+      "id": "day1_ending",
+      "kind": "answer",
+      "start": 211.34,
+      "duration": 30.4,
+      "shots": [
+        {
+          "path": null,
+          "type": "placeholder",
+          "label": "broll_day1",
+          "dur": 30.4,
+          "kenburns": "none"
+        }
+      ],
+      "audio": {
+        "narration": null,
+        "narration_dur": null,
+        "bgm_key": "day1"
+      },
+      "captions": [
+        {
+          "start": 0.0,
+          "end": 2.22,
+          "text": "石川の旅、1日目。",
+          "red": []
+        },
+        {
+          "start": 2.22,
+          "end": 5.13,
+          "text": "私が受け取ったメッセージは、",
+          "red": []
+        },
+        {
+          "start": 5.13,
+          "end": 8.03,
+          "text": "「いったん止まって、整える」",
+          "red": []
+        },
+        {
+          "start": 8.03,
+          "end": 9.57,
+          "text": "でした。",
+          "red": []
+        },
+        {
+          "start": 9.57,
+          "end": 11.25,
+          "text": "焦らない。",
+          "red": []
+        },
+        {
+          "start": 11.25,
+          "end": 13.21,
+          "text": "人と比べない。",
+          "red": []
+        },
+        {
+          "start": 13.21,
+          "end": 15.29,
+          "text": "言葉、人、お金、",
+          "red": []
+        },
+        {
+          "start": 15.29,
+          "end": 18.33,
+          "text": "そして小さな部分を丁寧に扱う。",
+          "red": []
+        },
+        {
+          "start": 18.33,
+          "end": 21.64,
+          "text": "ただ、この旅はここで終わりません。",
+          "red": []
+        },
+        {
+          "start": 21.64,
+          "end": 23.05,
+          "text": "翌日。",
+          "red": []
+        },
+        {
+          "start": 23.05,
+          "end": 25.82,
+          "text": "那谷寺を訪れたところから、",
+          "red": []
+        },
+        {
+          "start": 25.82,
+          "end": 28.04,
+          "text": "おみくじの流れが、",
+          "red": []
+        },
+        {
+          "start": 28.04,
+          "end": 30.4,
+          "text": "少し変わり始めます。",
+          "red": []
+        }
+      ],
+      "cards": [
+        {
+          "start": 0.4,
+          "end": 30.099999999999998,
+          "lines": [
+            {
+              "text": "いったん止まって、整える。",
+              "style": "answer",
+              "dy": 0
+            }
+          ]
+        }
+      ],
+      "nat_sound_break": false,
+      "provenance_warning": null
+    },
+    {
+      "id": "next_ep",
+      "kind": "outro",
+      "start": 241.74,
+      "duration": 4.0,
+      "shots": [
+        {
+          "path": null,
+          "type": "placeholder",
+          "label": "broll_day1",
+          "dur": 4.0,
+          "kenburns": "none"
+        }
+      ],
+      "audio": {
+        "narration": null,
+        "narration_dur": null,
+        "bgm_key": "day1"
+      },
+      "captions": [
+        {
+          "start": 0.0,
+          "end": 4.0,
+          "text": "続きは石川編 DAY2へ。",
+          "red": []
+        }
+      ],
+      "cards": [
+        {
+          "start": 0.4,
+          "end": 3.7,
+          "lines": [
+            {
+              "text": "次回",
+              "style": "chapter",
+              "dy": -55
+            },
+            {
+              "text": "那谷寺で流れが変わった",
+              "style": "subtitle",
+              "dy": 55
+            }
+          ]
+        }
+      ],
+      "nat_sound_break": false,
+      "provenance_warning": null
+    }
+  ],
+  "warnings": [
+    "[cold_open] グループ 'kinkengu' に素材なし → placeholder",
+    "[cold_open] グループ 'kinkengu_omikuji' に素材なし → placeholder",
+    "[cold_open] グループ 'shirayama' に素材なし → placeholder",
+    "[cold_open] グループ 'shirayama_kaiun_omikuji' に素材なし → placeholder",
+    "[cold_open] グループ 'shirayama_futsu_omikuji' に素材なし → placeholder",
+    "[cold_open] グループ 'hattori' に素材なし → placeholder",
+    "[cold_open] グループ 'hattori_omikuji' に素材なし → placeholder",
+    "[kinkengu] グループ 'kinkengu' に素材なし → placeholder",
+    "[kinkengu] グループ 'kinkengu' に素材なし → placeholder",
+    "[kinkengu] おみくじ素材 'kinkengu_omikuji' なし → placeholder",
+    "[shirayama_kaiun] グループ 'shirayama' に素材なし → placeholder",
+    "[shirayama_kaiun] グループ 'shirayama' に素材なし → placeholder",
+    "[shirayama_kaiun] おみくじ素材 'shirayama_kaiun_omikuji' なし → placeholder",
+    "[shirayama_kaiun_money] グループ 'shirayama_kaiun_omikuji' に素材なし → placeholder",
+    "[shirayama_kaiun_money] おみくじ素材 'None' なし → placeholder",
+    "[shirayama_futsu] グループ 'shirayama_futsu_omikuji' に素材なし → placeholder",
+    "[shirayama_futsu] おみくじ素材 'None' なし → placeholder",
+    "[shirayama_futsu_beat] グループ 'shirayama_futsu_omikuji' に素材なし → placeholder",
+    "[day1_midsummary] グループ 'broll_day1' に素材なし → placeholder",
+    "[hattori] グループ 'hattori' に素材なし → placeholder",
+    "[hattori] グループ 'hattori' に素材なし → placeholder",
+    "[hattori] おみくじ素材 'hattori_omikuji' なし → placeholder",
+    "[hattori_read] グループ 'hattori' に素材なし → placeholder",
+    "[day1_ending] グループ 'broll_day1' に素材なし → placeholder",
+    "[next_ep] グループ 'broll_day1' に素材なし → placeholder"
+  ]
+}

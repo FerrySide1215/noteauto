@@ -10,3 +10,22 @@ dist/
 
 # 今回のセッションでサルベージした会話履歴（kintai-bot本体とは別件）
 salvage/
+
+# --- 叶結び 石川編 動画パイプライン ---
+# 撮影素材・録音・BGM（ユーザーのプライベート素材はコミットしない）
+video/assets/*
+!video/assets/.gitkeep
+!video/assets/README.txt
+video/voiceover/*
+!video/voiceover/.gitkeep
+!video/voiceover/README.txt
+video/supplied_audio/*
+!video/supplied_audio/.gitkeep
+!video/supplied_audio/README.txt
+# 生成された重いバイナリ（テキスト成果物は追跡可）
+video/outputs/**/*.mp4
+video/outputs/**/*.mov
+video/outputs/**/*.m4a
+video/outputs/**/*.aiff
+video/**/.venv/
+video/**/__pycache__/

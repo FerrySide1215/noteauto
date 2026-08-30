@@ -1,0 +1,7 @@
+# 叶結び 石川編 ビルドパイプライン依存
+PyYAML>=6.0
+Pillow>=10.0     # 画像EXIF / 解像度 / 重複判定(average hash)
+# 動画レンダーには外部の ffmpeg / ffprobe が必要（pip では入りません）:
+#   macOS:   brew install ffmpeg
+#   Ubuntu:  sudo apt-get install ffmpeg
+# 日本語フォント（明朝・ゴシック）が使えること（macOSはヒラギノ標準搭載）。

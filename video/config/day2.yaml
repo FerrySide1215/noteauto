@@ -1,0 +1,176 @@
+# 叶結び 石川編 DAY2 — 編集台本（EDL）  仕様書 §12〜§20
+# narration_ref は scripts/day2_narration.txt の [id] と対応。
+
+day: 2
+capture_date: "2026-08-23"
+theme: "方向転換ではなく、軌道修正。"
+target_minutes: [10, 14]
+
+title:
+  channel: "叶結び"
+  chapter: "石川編 DAY2"
+  subtitle: "那谷寺で、流れが変わった"
+
+rules:
+  no_ai_footage: true
+  omikuji_no_rewrite: true
+
+scenes:
+  # 0:00–0:30 コールドオープン：那谷寺の奇岩から。DAY1と映像の空気を変える。
+  - id: cold_open
+    kind: cold_open
+    narration_ref: cold_open
+    group: natadera
+    bgm: day2_natadera
+    mood_shift: true
+
+  - id: title
+    kind: title
+    bgm: day2_early
+    onscreen:
+      - { text: "叶結び", style: title }
+      - { text: "石川編 DAY2", style: chapter }
+      - { text: "那谷寺で、流れが変わった", style: subtitle }
+
+  # DAY1 recap（15〜25秒のみ・長くしない）
+  - id: day1_recap
+    kind: recap
+    narration_ref: day1_recap
+    group: broll_day2
+    bgm: day2_early
+    max_seconds: 25
+    onscreen_list:
+      - "DAY1"
+      - "整える"
+      - "焦らない"
+      - "根を張る"
+
+  # 那谷寺（最大の見せ場・テンポを落とす・BGMを変える）
+  - id: natadera
+    kind: shrine
+    narration_ref: natadera
+    group: natadera
+    bgm: day2_natadera
+    location_card: { name: "那谷寺", region: "石川県" }
+    slow_tempo: true
+    # 自然音のある素材では一度ナレーションを止めて聞かせる余白
+    nat_sound_break: true
+    hero_shots: [奇岩遊仙境, 岩窟, 三重塔, 自然, 階段, 鳥居]
+    omikuji:
+      group: natadera_omikuji
+      label: "末吉"
+      waka_reveal:
+        - "もえ出ずる若葉の色ぞ美しき"
+        - "花さき実る末も見えつつ"
+      highlights:
+        - text: "次第次第に運がひらけて盛んになります"
+          red: ["次第次第に運がひらけて"]
+        - text: "一足飛びに事をしようとするとあやまります"
+          red: ["一足飛び"]
+    provenance_warning: "那谷寺おみくじは仕様書のみ。実写真と要照合。"
+
+  - id: natadera_beat
+    kind: interstitial
+    narration_ref: natadera_beat
+    group: natadera
+    onscreen:
+      - { text: "止まって整える", style: onscreen, role: from }
+      - { text: "急がず育てる", style: onscreen, role: to }
+    transition_arrow: true
+
+  - id: natadera_read
+    kind: omikuji_read
+    narration_ref: natadera_read
+    group: natadera
+    onscreen:
+      - { text: "那谷寺", style: chapter }
+      - { text: "今回の旅の転換点", style: subtitle }
+
+  # うはし神社
+  - id: uhashi
+    kind: shrine
+    narration_ref: uhashi
+    group: uhashi
+    # 正式漢字表記は看板・素材で確認してから確定（仕様書 §1）
+    location_card: { name: "うはし神社", region: "石川県", name_unconfirmed: true }
+    omikuji:
+      group: uhashi_omikuji
+      highlights:
+        - text: "願望　初めにきをつけねば中途でやぶれる"
+          red: ["初めにきをつけねば"]
+        - text: "争事　相手を見極めよ"
+          red: ["見極めよ"]
+    provenance_warning: "うはし神社は名称・おみくじとも実写真と要照合。看板表記を確認。"
+
+  - id: uhashi_read
+    kind: omikuji_read
+    narration_ref: uhashi_read
+    group: uhashi
+
+  # 安宅住吉神社（DAY2＝石川編全体のクライマックス）
+  - id: ataka
+    kind: shrine
+    narration_ref: ataka
+    group: ataka
+    bgm: day2_ataka
+    location_card: { name: "安宅住吉神社", region: "石川県" }
+    prefer_komorebi: true   # 木漏れ日重視の静かな写真
+    omikuji:
+      group: ataka_omikuji
+      label: "第四十一番　吉"
+      highlights:
+        - text: "時期を考えてはやくあらため進むがよい"
+          red: ["時期を考えて", "あらため"]
+        - text: "人と人と互に力あわせてすればよきみちあり"
+          red: ["力あわせて"]
+        - text: "けれどわるいみちと知りつつ進めばわるし"
+          red: ["わるいみちと知りつつ"]
+    provenance_warning: "安宅住吉神社おみくじは仕様書のみ。実写真と要照合。"
+
+  # 軌道修正（大きく画面表示）
+  - id: kidou_shusei
+    kind: answer
+    narration_ref: kidou_shusei
+    group: ataka
+    onscreen:
+      - { text: "方向転換ではなく、", style: answer_sub }
+      - { text: "軌道修正。", style: answer }
+    layout: center_whitespace
+
+  # 神の教（裏面・全文は読まない）
+  - id: kami_no_oshie
+    kind: omikuji_read
+    narration_ref: kami_no_oshie
+    group: ataka_omikuji
+    omikuji:
+      label: "神の教"
+      highlights:
+        - text: "散りゆく花に流す涙は、稔りの秋の糧となる"
+          red: ["稔りの秋の糧"]
+
+  # 最終答え合わせ（6か所を時系列で）
+  - id: final_answer
+    kind: recap_full
+    narration_ref: final_answer
+    group: montage
+    timeline_sequence: [kinkengu, shirayama, hattori, natadera, uhashi, ataka]
+    onscreen_columns:
+      - { head: "DAY1", items: ["整理", "警告", "足元固め", "根を張る"] }
+      - { head: "DAY2", items: ["再生", "育てる", "見極める", "軌道修正"] }
+
+  # 最終締め
+  - id: closing
+    kind: answer
+    narration_ref: closing
+    group: broll_day2
+    bgm: day2_ataka
+    onscreen:
+      - { text: "叶結び", style: title }
+      - { text: "神社で答え合わせ", style: subtitle }
+
+  - id: cta
+    kind: outro
+    narration_ref: cta
+    group: broll_day2
+    cta: "チャンネル登録して、次の神社旅でまたお会いしましょう。"
+    no_flashy_animation: true

@@ -1,0 +1,157 @@
+# 叶結び 石川編 DAY1 — 編集台本（EDL）  仕様書 §7〜§11
+# narration_ref は scripts/day1_narration.txt の [id] と対応。
+# group は assets/manifest.yaml のグループ名。素材が無いグループはプレースホルダ札で埋め、
+# preflight が警告を出す（黒画面は入れない・仕様書 §25）。
+
+day: 1
+capture_date: "2026-08-22"
+theme: "いったん止まって、整える。"
+target_minutes: [10, 14]
+bgm: day1
+
+title:
+  channel: "叶結び"
+  chapter: "石川編 DAY1"
+  subtitle: "同じ警告が、何度も続いた日"
+
+# 章をまたぐ共通ルール
+rules:
+  no_ai_footage: true
+  omikuji_no_rewrite: true
+
+scenes:
+  # 0:00–0:35 コールドオープン（高速すぎないテンポで6要素を提示）
+  - id: cold_open
+    kind: cold_open
+    narration_ref: cold_open
+    group: montage
+    montage_sequence: [kinkengu, kinkengu_omikuji, shirayama, shirayama_kaiun_omikuji, shirayama_futsu_omikuji, hattori, hattori_omikuji]
+    beats:
+      # 「商売、思いがけぬ損あり」を見せた直後に軽い間
+      - after_phrase: "思いがけぬ損あり"
+        hold: 0.5
+
+  # 0:35–0:45 タイトル
+  - id: title
+    kind: title
+    onscreen:
+      - { text: "叶結び", style: title }
+      - { text: "石川編 DAY1", style: chapter }
+      - { text: "同じ警告が、何度も続いた日", style: subtitle }
+
+  # 0:45– 金劔宮
+  - id: kinkengu
+    kind: shrine
+    narration_ref: kinkengu
+    group: kinkengu
+    location_card: { name: "金劔宮", region: "石川県" }
+    omikuji:
+      group: kinkengu_omikuji
+      label: "末吉"
+      highlights:
+        - text: "小さい処に注意なさい"
+          red: ["小さい処"]
+        - text: "商売　思いがけぬ損あり"
+          red: ["思いがけぬ損"]
+    beats:
+      - after_phrase: "思いがけぬ損あり"
+        hold: 0.5
+
+  # 白山比咩神社 — 開運みくじ
+  - id: shirayama_kaiun
+    kind: shrine
+    narration_ref: shirayama_kaiun
+    group: shirayama
+    location_card: { name: "白山比咩神社", region: "石川県" }
+    subtheme: "外を見るより、自分を見る"
+    omikuji:
+      group: shirayama_kaiun_omikuji
+      label: "第二十番　小吉　〔風地観〕"
+      onscreen:
+        - { text: "第二十番", style: onscreen }
+        - { text: "小吉", style: onscreen }
+        - { text: "風地観", style: onscreen }
+
+  - id: shirayama_kaiun_money
+    kind: omikuji_read
+    narration_ref: shirayama_kaiun_money
+    group: shirayama_kaiun_omikuji
+    omikuji:
+      highlights:
+        - text: "意外の失費　他人の金儲けばかり目につく"
+          red: ["意外の失費", "他人の金儲け"]
+
+  # 白山比咩神社 — 普通のおみくじ
+  - id: shirayama_futsu
+    kind: omikuji_read
+    narration_ref: shirayama_futsu
+    group: shirayama_futsu_omikuji
+    omikuji:
+      label: "第二十七番　小吉　〔山雷頤〕"
+      onscreen:
+        - { text: "第二十七番", style: onscreen }
+        - { text: "小吉", style: onscreen }
+        - { text: "山雷頤", style: onscreen }
+      highlights:
+        - text: "「口は禍の門」　言語に注意"
+          red: ["口", "言語に注意"]
+
+  - id: shirayama_futsu_beat
+    kind: interstitial
+    narration_ref: shirayama_futsu_beat
+    group: shirayama_futsu_omikuji
+    onscreen:
+      - { text: "また同じこと？", style: onscreen }
+    hold_after: 0.6
+
+  # 中間まとめ（共通点の一覧）
+  - id: day1_midsummary
+    kind: summary
+    narration_ref: day1_midsummary
+    group: broll_day1
+    onscreen_list:
+      - "焦らない"
+      - "他人と比べない"
+      - "お金を雑に使わない"
+      - "言葉に注意"
+      - "人と争わない"
+      - "小さいことを疎かにしない"
+
+  # 服部神社（中吉・松の和歌）
+  - id: hattori
+    kind: shrine
+    narration_ref: hattori
+    group: hattori
+    location_card: { name: "服部神社", region: "石川県" }
+    omikuji:
+      group: hattori_omikuji
+      label: "中吉"
+      # 和歌は一気に出さず順番に（仕様書 §10）
+      waka_reveal:
+        - "岩の上に根を張る"
+        - "風雪に耐えて"
+        - "常盤に栄ゆる"
+    provenance_warning: "服部神社おみくじは仕様書のみ。実写真と要照合。"
+
+  - id: hattori_read
+    kind: omikuji_read
+    narration_ref: hattori_read
+    group: hattori
+
+  # エンディング（答え）
+  - id: day1_ending
+    kind: answer
+    narration_ref: day1_ending
+    group: broll_day1
+    onscreen:
+      - { text: "いったん止まって、整える。", style: answer }
+    layout: center_whitespace
+
+  - id: next_ep
+    kind: outro
+    narration_ref: day1_cta
+    group: broll_day1
+    onscreen:
+      - { text: "次回", style: chapter }
+      - { text: "那谷寺で流れが変わった", style: subtitle }
+    cta: "続きは石川編 DAY2へ。"
