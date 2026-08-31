@@ -64,11 +64,11 @@ def _render_shot(shot: dict, res: list[int], fps: int, tmp: Path, idx: int,
     common = ["-c:v", "libx264", "-preset", "medium", "-crf", "18",
               "-pix_fmt", "yuv420p", "-r", str(fps), "-an"]
     if shot["type"] == "placeholder":
-        ff = font_file(project["fonts"]["_resolved_mincho"]) or ""
-        label = _drawtext_escape(f"［素材未挿入］{shot.get('label','')}")
-        vf = (f"color=c=0xF2F4F5:s={w}x{h}:r={fps},"
-              f"drawtext=fontfile='{ff}':text='{label}':fontcolor=0x1A1A1A:"
-              f"fontsize=54:x=(w-tw)/2:y=(h-th)/2")
+        # 素材不足の札は「無地カード（生成り）」だけを敷く。ロケーション名・おみくじ・
+        # 字幕は ASS レイヤーで焼き込まれるので文字はそちらが担う。
+        # （drawtext は fontfile の .ttc 解決やテキストのエスケープに環境依存で落ちるため使わない。
+        #   黒画面は入れない=§25 は満たし、「未挿入」通知は preflight 警告が担う。）
+        vf = f"color=c=0xF2F4F5:s={w}x{h}:r={fps},format=yuv420p"
         util.run(["ffmpeg", "-y", "-f", "lavfi", "-i", vf, "-t", str(shot["dur"]),
                   *common, str(out)])
     elif shot["type"] == "video":
