@@ -1,5 +1,7 @@
 # 叶結び 石川編 DAY2 — 編集台本（EDL）  仕様書 §12〜§20
 # narration_ref は scripts/day2_narration.txt の [id] と対応。
+# おみくじ読みシーンは「各社の風景を土台＋おみくじ寄り(allow_repeat)」で連続同写真を避ける。
+# final_answer は DAY2素材のみで構成（DAY跨ぎ混入を避ける・§25）。DAY1の振り返りはテロップで行う。
 
 day: 2
 capture_date: "2026-08-23"
@@ -16,16 +18,18 @@ rules:
   omikuji_no_rewrite: true
 
 scenes:
-  # 0:00–0:30 コールドオープン：那谷寺の奇岩から。DAY1と映像の空気を変える。
+  # コールドオープン：那谷寺の奇岩から。DAY1と空気を変える。
   - id: cold_open
     kind: cold_open
     narration_ref: cold_open
     group: natadera
+    montage_sequence: [natadera, natadera, natadera]
     bgm: day2_natadera
     mood_shift: true
 
   - id: title
     kind: title
+    group: natadera
     bgm: day2_early
     onscreen:
       - { text: "叶結び", style: title }
@@ -36,7 +40,7 @@ scenes:
   - id: day1_recap
     kind: recap
     narration_ref: day1_recap
-    group: broll_day2
+    group: natadera
     bgm: day2_early
     max_seconds: 25
     onscreen_list:
@@ -45,7 +49,7 @@ scenes:
       - "焦らない"
       - "根を張る"
 
-  # 那谷寺（最大の見せ場・テンポを落とす・BGMを変える）
+  # 那谷寺（最大の見せ場・テンポを落とす）
   - id: natadera
     kind: shrine
     narration_ref: natadera
@@ -53,9 +57,7 @@ scenes:
     bgm: day2_natadera
     location_card: { name: "那谷寺", region: "石川県" }
     slow_tempo: true
-    # 自然音のある素材では一度ナレーションを止めて聞かせる余白
     nat_sound_break: true
-    hero_shots: [奇岩遊仙境, 岩窟, 三重塔, 自然, 階段, 鳥居]
     omikuji:
       group: natadera_omikuji
       label: "末吉"
@@ -65,6 +67,14 @@ scenes:
       highlights:
         - text: "次第次第に運がひらけて盛んになります"
           red: ["次第次第に運がひらけて"]
+
+  - id: natadera_setsumei
+    kind: omikuji_read
+    narration_ref: natadera_setsumei
+    group: natadera
+    omikuji:
+      group: natadera_omikuji
+      highlights:
         - text: "一足とびにとんで事をしようとするとあやまります"
           red: ["一足とび"]
 
@@ -81,16 +91,18 @@ scenes:
     kind: omikuji_read
     narration_ref: natadera_read
     group: natadera
+    omikuji:
+      group: natadera_omikuji
+      label: "那谷寺　御神籤"
     onscreen:
       - { text: "那谷寺", style: chapter }
       - { text: "今回の旅の転換点", style: subtitle }
 
-  # うはし神社
+  # 菟橋神社（風景1枚のみ→ n_shots=1 の omikuji_read 扱いで連続回避）
   - id: uhashi
-    kind: shrine
+    kind: omikuji_read
     narration_ref: uhashi
     group: uhashi
-    # 正式名称: 菟橋神社（読み うはし）。ユーザー確認済。
     location_card: { name: "菟橋神社", reading: "うはし", region: "石川県" }
     omikuji:
       group: uhashi_omikuji
@@ -101,13 +113,28 @@ scenes:
       highlights:
         - text: "願望　初めにきをつけねば中途でやぶれる"
           red: ["初めにきをつけねば"]
-        - text: "争事　相手を見極めよ"
-          red: ["見極めよ"]
 
   - id: uhashi_read
     kind: omikuji_read
     narration_ref: uhashi_read
     group: uhashi
+    omikuji:
+      group: uhashi_omikuji
+      highlights:
+        - text: "相手を見極めよ"
+          red: ["見極めよ"]
+
+  # 裏面「神の教」（笑う門）— 実物どおり
+  - id: uhashi_kami
+    kind: omikuji_read
+    narration_ref: uhashi_kami
+    group: uhashi
+    omikuji:
+      group: uhashi_omikuji
+      label: "神の教（笑う門）"
+      highlights:
+        - text: "笑う門には幸来る"
+          red: ["笑う門には幸"]
 
   # 安宅住吉神社（DAY2＝石川編全体のクライマックス）
   - id: ataka
@@ -116,10 +143,9 @@ scenes:
     group: ataka
     bgm: day2_ataka
     location_card: { name: "安宅住吉神社", region: "石川県" }
-    prefer_komorebi: true   # 木漏れ日重視の静かな写真
+    prefer_komorebi: true
     omikuji:
       group: ataka_omikuji
-      # 実物は第四十番（仕様書§16の「第四十一番」は菟橋神社と番号が入替わっていた）
       label: "第四十番　吉"
       onscreen:
         - { text: "第四十番", style: onscreen }
@@ -132,6 +158,24 @@ scenes:
         - text: "けれどわるいみちと知りつつ進めばわるし"
           red: ["わるいみちと知りつつ"]
 
+  - id: ataka_beat
+    kind: interstitial
+    narration_ref: ataka_beat
+    group: ataka
+    onscreen:
+      - { text: "ここで、つながった", style: onscreen }
+    hold_after: 0.6
+
+  - id: ataka_koumoku
+    kind: omikuji_read
+    narration_ref: ataka_koumoku
+    group: ataka
+    omikuji:
+      group: ataka_omikuji
+      highlights:
+        - text: "早くすれば他人の助けありて調う"
+          red: ["他人の助け"]
+
   # 軌道修正（大きく画面表示）
   - id: kidou_shusei
     kind: answer
@@ -142,23 +186,24 @@ scenes:
       - { text: "軌道修正。", style: answer }
     layout: center_whitespace
 
-  # 神の教（裏面・全文は読まない）
+  # 神の教（裏面・散りゆく花）
   - id: kami_no_oshie
     kind: omikuji_read
     narration_ref: kami_no_oshie
-    group: ataka_omikuji
+    group: ataka
     omikuji:
-      label: "神の教"
+      group: ataka_omikuji
+      label: "神の教（散りゆく花）"
       highlights:
         - text: "散りゆく花に流す涙は、稔りの秋の糧となる"
           red: ["稔りの秋の糧"]
 
-  # 最終答え合わせ（6か所を時系列で）
+  # 最終答え合わせ（DAY2素材で背景・6か所はテロップで振り返り）
   - id: final_answer
     kind: recap_full
     narration_ref: final_answer
     group: montage
-    timeline_sequence: [kinkengu, shirayama, hattori, natadera, uhashi, ataka]
+    timeline_sequence: [natadera, uhashi, ataka, natadera, uhashi, ataka]
     onscreen_columns:
       - { head: "DAY1", items: ["整理", "警告", "足元固め", "根を張る"] }
       - { head: "DAY2", items: ["再生", "育てる", "見極める", "軌道修正"] }
@@ -167,7 +212,7 @@ scenes:
   - id: closing
     kind: answer
     narration_ref: closing
-    group: broll_day2
+    group: ataka
     bgm: day2_ataka
     onscreen:
       - { text: "叶結び", style: title }
@@ -176,6 +221,6 @@ scenes:
   - id: cta
     kind: outro
     narration_ref: cta
-    group: broll_day2
+    group: ataka
     cta: "チャンネル登録して、次の神社旅でまたお会いしましょう。"
     no_flashy_animation: true
