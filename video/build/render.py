@@ -58,10 +58,12 @@ def _kenburns_vf(shot: dict, res: list[int], fps: int) -> str:
 
 
 def _render_shot(shot: dict, res: list[int], fps: int, tmp: Path, idx: int,
-                 project: dict) -> Path:
+                 project: dict, fast: bool = False) -> Path:
     w, h = res
     out = tmp / f"shot_{idx:03d}.mp4"
-    common = ["-c:v", "libx264", "-preset", "medium", "-crf", "18",
+    # プレビューは中間ショットを ultrafast + 低crf で高速化（最終は _burn で再エンコード）
+    preset, crf = ("ultrafast", "26") if fast else ("medium", "18")
+    common = ["-c:v", "libx264", "-preset", preset, "-crf", crf,
               "-pix_fmt", "yuv420p", "-r", str(fps), "-an"]
     if shot["type"] == "placeholder":
         # 素材不足の札は「無地カード（生成り）」だけを敷く。ロケーション名・おみくじ・
@@ -205,6 +207,14 @@ def render(day: int, quality: str = "hd", only_preview: bool = False) -> None:
     outdir = util.OUTPUTS_DIR / f"day{day}"
     outdir.mkdir(parents=True, exist_ok=True)
 
+    # プレビューのみのときは中間ショットを 720p で焼く（Ken Burns=zoompan と
+    # エンコードのコストを大幅に削減。最終プレビューも 720p なので画質劣化なし）。
+    if only_preview:
+        ph = project["video"]["preview"]["height"]
+        shot_res = [int(round(ph * 16 / 9 / 2)) * 2, ph]   # 例: 1280x720
+    else:
+        shot_res = res
+
     # ASS 生成
     cards_ass = outdir / "cards.ass"
     caps_ass = outdir / "captions.ass"
@@ -226,8 +236,8 @@ def render(day: int, quality: str = "hd", only_preview: bool = False) -> None:
                 kind = "札" if shot["type"] == "placeholder" else shot["type"]
                 print(f"  [{i+1:>2}/{n_shots}] {scene['id']} … {kind} {shot['dur']:.1f}s",
                       flush=True)
-                # WQHD 時はショット解像度も上げる
-                clips.append(_render_shot(shot, res, fps, tmp, i, project))
+                clips.append(_render_shot(shot, shot_res, fps, tmp, i, project,
+                                          fast=only_preview))
                 i += 1
         print("  連結中 …", flush=True)
         master = tmp / "master_silent.mp4"
