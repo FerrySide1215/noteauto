@@ -215,6 +215,7 @@ def main(src_dir: str) -> None:
             row["gps"] = "" if not rec.get("gps") else f"{rec['gps']['lat']},{rec['gps']['lon']}"
             w.writerow(row)
 
+    manifest_existed = (util.ASSETS_DIR / "manifest.yaml").exists()
     mpath = write_manifest_skeleton(items, project)
     n_dup = sum(1 for r in items if r.get("duplicate_of"))
     n1 = sum(1 for r in items if r.get("day") == 1)
@@ -222,7 +223,7 @@ def main(src_dir: str) -> None:
     print(f"スキャン完了: {len(items)}件  (DAY1={n1} DAY2={n2} 重複={n_dup} 日付不明={len(items)-n1-n2})")
     print(f"  → {util.OUTPUTS_DIR/'asset_inventory.json'}")
     print(f"  → {util.OUTPUTS_DIR/'asset_inventory.csv'}")
-    print(f"  → {mpath} {'(既存を保持)' if 'existed' else ''}")
+    print(f"  → {mpath} {'(既存を保持)' if manifest_existed else '(雛形を新規作成)'}")
     print("次: manifest.yaml の group を埋めてから  `python -m build.cli day1 --step timeline`")
 
 
