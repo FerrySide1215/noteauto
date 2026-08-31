@@ -211,6 +211,10 @@ def render(day: int, quality: str = "hd", only_preview: bool = False) -> None:
     cards_ass.write_text(ass.build_cards(timeline, project), encoding="utf-8")
     caps_ass.write_text(ass.build_captions(timeline, project), encoding="utf-8")
 
+    n_shots = sum(len(sc["shots"]) for sc in timeline["scenes"])
+    print(f"レンダー開始 DAY{day}: {len(timeline['scenes'])}シーン / {n_shots}ショット "
+          f"（ffmpeg出力は抑制。各ショットを1行ずつ表示します）", flush=True)
+
     with tempfile.TemporaryDirectory(prefix=f"kanau_day{day}_") as td:
         tmp = Path(td)
         # 視覚（ショット→連結）
@@ -219,23 +223,31 @@ def render(day: int, quality: str = "hd", only_preview: bool = False) -> None:
         for scene in timeline["scenes"]:
             for shot in scene["shots"]:
                 shot = dict(shot)
+                kind = "札" if shot["type"] == "placeholder" else shot["type"]
+                print(f"  [{i+1:>2}/{n_shots}] {scene['id']} … {kind} {shot['dur']:.1f}s",
+                      flush=True)
                 # WQHD 時はショット解像度も上げる
                 clips.append(_render_shot(shot, res, fps, tmp, i, project))
                 i += 1
+        print("  連結中 …", flush=True)
         master = tmp / "master_silent.mp4"
         _concat(clips, master, tmp)
 
         # 音声
+        print("  音声合成中（ナレーション/BGM/ラウドネス正規化）…", flush=True)
         audio = _build_audio(timeline, project, tmp)
 
         base = f"kanau_musubi_ishikawa_day{day}"
         if not only_preview:
+            print("  本編を書き出し中（字幕焼き込み）…", flush=True)
             _burn(master, audio, [cards_ass, caps_ass], outdir / f"{base}.mp4", project)
+            print("  字幕なし版を書き出し中 …", flush=True)
             _burn(master, audio, [cards_ass], outdir / f"{base}_no_caption.mp4", project)
+        print("  プレビューを書き出し中 …", flush=True)
         _burn(master, audio, [cards_ass, caps_ass], outdir / f"{base}_preview.mp4",
               project, preview=True)
 
-    print(f"レンダー完了 DAY{day} → {outdir}")
+    print(f"レンダー完了 DAY{day} → {outdir}", flush=True)
 
 
 if __name__ == "__main__":
