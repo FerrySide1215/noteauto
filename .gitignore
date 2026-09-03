@@ -10,3 +10,6 @@ dist/
 
 # 今回のセッションでサルベージした会話履歴（kintai-bot本体とは別件）
 salvage/
+
+# デザインキャンバスの書き出し（.dc.html + canvas.json から再生成可能）
+design/**/*-reel-cover.html

@@ -1,0 +1,11 @@
+{
+  "artboards": [
+    { "file": "Main.dc.html",       "x": 0,    "y": 0, "w": 1080, "h": 1920, "title": "A｜縦書き・墨" },
+    { "file": "GrainField.dc.html", "x": 1200, "y": 0, "w": 1080, "h": 1920, "title": "B｜一粒から、万倍へ" },
+    { "file": "Split.dc.html",      "x": 2400, "y": 0, "w": 1080, "h": 1920, "title": "C｜二分" }
+  ],
+  "annotations": [
+    { "id": "safe-zone", "x": 0, "y": -190, "w": 900, "text": "3案とも、主要な文字はy=420〜1500に収めてある。\nInstagramのグリッドで正方形にトリミングされてもコピーが全部読める寸法。" }
+  ],
+  "launch": { "view": "canvas" }
+}

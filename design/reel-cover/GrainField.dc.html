@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@400;600;800&display=swap">
+  <style>
+    body { margin: 0; }
+    a { color: #8a6d2f; } a:hover { color: #6d5524; }
+  </style>
+</helmet>
+<div style="position: relative; width: 1080px; height: 1920px; background: #ece7dc; overflow: hidden; font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', serif;">
+
+  <div style="position: absolute; left: 536px; top: 462px; width: 9px; height: 21px; border-radius: 50%; background: #a8843c; transform: rotate(-14deg);"></div>
+
+  <div style="position: absolute; left: 0; top: 640px; width: 1080px; text-align: center; font-size: 84px; font-weight: 600; line-height: 1.28; letter-spacing: 0.03em; color: #1a1712;">“万倍”になる、<br>2日間。</div>
+
+  <div style="position: absolute; left: 0; top: 928px; width: 1080px; text-align: center; font-size: 27px; font-weight: 400; letter-spacing: 0.3em; color: #8a6d2f;">── 良いことも、そうでないことも</div>
+
+  <sc-for list="{{grains}}" as="g" hint-placeholder-count="3"><div style="{{g.style}}"></div></sc-for>
+
+  <div style="position: absolute; left: 0; bottom: 0; width: 1080px; height: 260px; background: linear-gradient(to bottom, rgba(236,231,220,0) 0%, rgba(236,231,220,0.9) 78%, #ece7dc 100%);"></div>
+
+</div>
+</x-dc>
+<script data-dc-script data-props='{"$preview":{"width":1080,"height":1920}}'>
+class Component extends DCLogic {
+  renderVals() {
+    let seed = 20260906;
+    const rnd = () => { seed = (seed * 1103515245 + 12345) % 2147483648; return seed / 2147483648; };
+    const grains = [];
+    const cols = 24, rows = 22, left0 = 84, top0 = 1120, cw = (1080 - 168) / cols, rh = 33;
+    for (let r = 0; r < rows; r++) {
+      for (let c = 0; c < cols; c++) {
+        const density = 0.16 + 0.84 * (r / (rows - 1));
+        if (rnd() > density) continue;
+        const x = (left0 + c * cw + (rnd() - 0.5) * 16).toFixed(1);
+        const y = (top0 + r * rh + (rnd() - 0.5) * 16).toFixed(1);
+        const op = (0.3 + rnd() * 0.55).toFixed(2);
+        const rot = (rnd() * 170 - 85).toFixed(1);
+        grains.push({ style: 'position:absolute; left:' + x + 'px; top:' + y + 'px; width:8px; height:19px; border-radius:50%; background:#a8843c; opacity:' + op + '; transform:rotate(' + rot + 'deg);' });
+      }
+    }
+    return { grains };
+  }
+}
+</script>
+</body>
+</html>
