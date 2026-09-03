@@ -1,0 +1,797 @@
+<title>叶結び 石川編 台本</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;600;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap');
+
+  :root{
+    --ground:#F3EFE6; --surface:#FAF7F0; --surface-2:#ECE5D6; --sunk:#EAE3D3;
+    --ink:#23201B; --muted:#6E665A; --faint:#988C79;
+    --vermilion:#B23A2E; --gold:#9C7A34; --hairline:#DBD3C2; --hair-strong:#C9BEA6;
+    --serif:"Shippori Mincho B1","Hiragino Mincho ProN","Yu Mincho",serif;
+    --sans:"Zen Kaku Gothic New","Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;
+    --wrap:920px;
+  }
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){
+      --ground:#15120B; --surface:#1E1A12; --surface-2:#262016; --sunk:#120F09;
+      --ink:#ECE5D6; --muted:#B6AB97; --faint:#8A7F6D;
+      --vermilion:#DB6150; --gold:#C9A24A; --hairline:#3A3225; --hair-strong:#4A4132;
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#15120B; --surface:#1E1A12; --surface-2:#262016; --sunk:#120F09;
+    --ink:#ECE5D6; --muted:#B6AB97; --faint:#8A7F6D;
+    --vermilion:#DB6150; --gold:#C9A24A; --hairline:#3A3225; --hair-strong:#4A4132;
+  }
+
+  *{box-sizing:border-box}
+  body{background:var(--ground);color:var(--ink);font-family:var(--sans);
+    line-height:1.85;font-size:16px;-webkit-font-smoothing:antialiased;letter-spacing:.01em}
+  .wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
+  h1,h2,h3,.disp{font-family:var(--serif);font-weight:700;text-wrap:balance;letter-spacing:.02em}
+  a{color:var(--vermilion);text-underline-offset:3px}
+  mark.key{background:none;color:var(--vermilion);font-weight:700;
+    border-bottom:1.5px solid color-mix(in srgb,var(--vermilion) 45%,transparent);padding-bottom:1px}
+  .eyebrow{font-size:.72rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);
+    font-weight:700}
+  .quiet{color:var(--muted)}
+
+  /* ---------- masthead ---------- */
+  header.mast{padding:76px 0 34px;border-bottom:1px solid var(--hairline)}
+  .mark{font-family:var(--serif);font-weight:800;font-size:clamp(2.6rem,7vw,4.2rem);
+    letter-spacing:.14em;line-height:1;margin:0}
+  .mast .sub{margin:.7rem 0 0;font-family:var(--serif);font-size:1.05rem;color:var(--muted);letter-spacing:.24em}
+  .mast .doc{margin:1.8rem 0 0;font-size:.9rem;color:var(--faint);max-width:60ch}
+  .seal-inline{display:inline-flex;align-items:center;justify-content:center;
+    width:2.7em;height:2.7em;border:1.6px solid var(--vermilion);color:var(--vermilion);
+    border-radius:8px;font-family:var(--serif);font-weight:700;font-size:.62rem;letter-spacing:.08em;
+    line-height:1.15;text-align:center;transform:rotate(-3deg);vertical-align:middle}
+
+  /* ---------- index ---------- */
+  nav.idx{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--ground) 88%,transparent);
+    backdrop-filter:blur(8px);border-bottom:1px solid var(--hairline)}
+  nav.idx ul{display:flex;flex-wrap:wrap;gap:2px 26px;list-style:none;margin:0;padding:13px 24px;
+    max-width:var(--wrap);margin:0 auto;font-size:.82rem;letter-spacing:.06em}
+  nav.idx a{color:var(--muted);text-decoration:none}
+  nav.idx a:hover{color:var(--vermilion)}
+
+  section{padding:60px 0;border-bottom:1px solid var(--hairline)}
+  .sec-head{display:flex;align-items:baseline;gap:16px;margin:0 0 8px}
+  .sec-head h2{font-size:clamp(1.5rem,3.6vw,2.1rem);margin:0}
+  .sec-head .n{font-family:var(--serif);color:var(--gold);font-size:1.1rem;font-weight:700}
+  .lead{color:var(--muted);max-width:64ch;margin:.4rem 0 0}
+
+  /* ---------- concept ---------- */
+  .concept{display:grid;grid-template-columns:1fr;gap:18px;margin-top:26px}
+  .stance{background:var(--surface);border:1px solid var(--hairline);border-radius:4px;
+    padding:22px 24px}
+  .stance h3{margin:0 0 10px;font-size:1rem;letter-spacing:.06em}
+  .stance ul{margin:0;padding-left:1.1em}
+  .stance li{margin:.2em 0}
+  .yes{color:var(--ink)} .no{color:var(--faint);text-decoration:line-through;text-decoration-color:var(--hair-strong)}
+
+  /* ---------- throughline ---------- */
+  .route{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:24px}
+  .stop{background:var(--surface);border:1px solid var(--hairline);border-radius:4px;padding:16px 16px 18px;
+    position:relative}
+  .stop .day{font-size:.68rem;letter-spacing:.2em;color:var(--gold);font-weight:700}
+  .stop .nm{font-family:var(--serif);font-size:1.18rem;font-weight:700;margin:.25em 0 .1em}
+  .stop .rd{font-size:.72rem;color:var(--faint);letter-spacing:.08em}
+  .stop .fo{margin-top:.5em;font-family:var(--serif);color:var(--vermilion);font-size:.92rem;font-weight:600}
+  .pivot{margin:26px 0 4px;display:flex;gap:18px;align-items:stretch;flex-wrap:wrap}
+  .ans{flex:1 1 260px;background:var(--sunk);border:1px solid var(--hair-strong);border-radius:4px;
+    padding:20px 22px}
+  .ans .k{font-size:.72rem;letter-spacing:.22em;color:var(--gold);font-weight:700}
+  .ans .v{font-family:var(--serif);font-size:1.5rem;font-weight:800;margin-top:.35em;letter-spacing:.03em}
+  .ans.d2 .v{color:var(--vermilion)}
+
+  /* ---------- scenes ---------- */
+  .ep-head{margin:30px 0 6px}
+  .ep-head .t{font-family:var(--serif);font-size:1.7rem;font-weight:800;letter-spacing:.05em}
+  .ep-head .st{color:var(--vermilion);font-family:var(--serif);font-size:1.05rem;margin-top:.2em}
+  .ep-meta{font-size:.8rem;color:var(--faint);letter-spacing:.06em;margin-top:.5em}
+
+  .scene{display:grid;grid-template-columns:118px 1fr;gap:0;border:1px solid var(--hairline);
+    border-radius:4px;background:var(--surface);margin:16px 0;overflow:hidden}
+  .scene .rail{background:var(--surface-2);border-right:1px solid var(--hairline);padding:16px 14px;
+    display:flex;flex-direction:column;gap:8px}
+  .rail .tc{font-family:var(--serif);font-weight:700;font-size:.95rem;font-variant-numeric:tabular-nums}
+  .rail .kind{font-size:.72rem;letter-spacing:.1em;color:var(--muted)}
+  .rail .id{font-size:.64rem;letter-spacing:.08em;color:var(--faint);font-family:ui-monospace,monospace}
+  .scene .body{padding:16px 20px;min-width:0}
+  .row{padding:9px 0;border-top:1px dotted var(--hairline)}
+  .row:first-child{border-top:0;padding-top:2px}
+  .lab{display:inline-block;font-size:.68rem;letter-spacing:.16em;font-weight:700;color:var(--gold);
+    min-width:5.2em;vertical-align:top}
+  .row .c{display:inline}
+  .telops{display:inline-flex;flex-wrap:wrap;gap:7px;vertical-align:top}
+  .chip{font-family:var(--serif);font-size:.86rem;border:1px solid var(--hair-strong);border-radius:3px;
+    padding:2px 10px;background:var(--ground)}
+  .chip.big{font-size:1rem;font-weight:700;border-color:var(--vermilion);color:var(--vermilion)}
+  .arrow{color:var(--faint);align-self:center;font-size:.9rem}
+  .nara{font-family:var(--serif);font-size:1.02rem;line-height:2.05;white-space:pre-line;
+    color:var(--ink);margin-top:2px}
+  blockquote.mk{margin:6px 0 0;padding:12px 16px;background:var(--sunk);border-left:3px solid var(--vermilion);
+    border-radius:2px;font-family:var(--serif);font-size:.98rem;line-height:1.9}
+  blockquote.mk p{margin:.15em 0}
+  .cue{font-size:.8rem;color:var(--muted);font-style:normal}
+  .cue::before{content:"◦ ";color:var(--gold)}
+  .beat{font-size:.8rem;color:var(--vermilion);letter-spacing:.04em}
+
+  /* ---------- omikuji slips ---------- */
+  .slips{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:26px}
+  .slip{background:var(--surface);border:1px solid var(--hair-strong);border-radius:3px;padding:20px 20px 22px;
+    position:relative;box-shadow:0 1px 0 var(--hairline)}
+  .slip::before,.slip::after{content:"";position:absolute;left:12px;right:12px;height:4px;
+    background-image:repeating-linear-gradient(135deg,var(--hair-strong) 0 5px,transparent 5px 10px)}
+  .slip::before{top:6px}.slip::after{bottom:6px}
+  .slip .hd{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin:6px 0 12px}
+  .slip .nm{font-family:var(--serif);font-size:1.28rem;font-weight:800}
+  .slip .rd{font-size:.72rem;color:var(--faint);letter-spacing:.08em;margin-top:.15em}
+  .slip .no{font-size:.78rem;color:var(--muted);margin-top:.35em;letter-spacing:.05em}
+  .seal{flex:none;width:58px;height:58px;border:2px solid var(--vermilion);color:var(--vermilion);
+    border-radius:9px;display:flex;align-items:center;justify-content:center;font-family:var(--serif);
+    font-weight:800;font-size:1.15rem;transform:rotate(-4deg);letter-spacing:.02em}
+  .waka{font-family:var(--serif);font-size:1.02rem;line-height:1.95;margin:0 0 10px;
+    padding:10px 0;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline)}
+  .desc{font-size:.9rem;color:var(--muted);line-height:1.85;margin:0 0 12px}
+  .fields{display:grid;grid-template-columns:1fr 1fr;gap:2px 18px;font-size:.82rem;margin:0}
+  .fields div{padding:3px 0;border-top:1px dotted var(--hairline);display:flex;gap:8px}
+  .fields b{font-family:var(--serif);font-weight:700;color:var(--gold);min-width:3.4em;flex:none}
+  .oshie{margin-top:12px;padding:12px 14px;background:var(--sunk);border-radius:2px;font-size:.86rem;
+    line-height:1.85;color:var(--ink)}
+  .oshie .t{font-family:var(--serif);font-weight:700;color:var(--vermilion);font-size:.78rem;
+    letter-spacing:.1em;display:block;margin-bottom:.35em}
+  .keys{margin-top:10px;font-size:.78rem;color:var(--muted)}
+  .keys b{color:var(--gold);font-weight:700;letter-spacing:.06em}
+
+  /* ---------- notes ---------- */
+  .notes{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:24px}
+  .note{background:var(--surface);border:1px solid var(--hairline);border-radius:4px;padding:18px 20px}
+  .note h3{margin:0 0 8px;font-size:.95rem;letter-spacing:.06em}
+  .note ul{margin:0;padding-left:1.1em;font-size:.88rem;color:var(--muted)}
+  .note li{margin:.25em 0}
+  .prov{font-size:.82rem;color:var(--muted);margin-top:22px;padding:14px 16px;border:1px dashed var(--hair-strong);
+    border-radius:4px;background:var(--surface)}
+
+  footer{padding:44px 0 70px;color:var(--faint);font-size:.8rem}
+  footer .fm{font-family:var(--serif);color:var(--muted);font-size:1.4rem;letter-spacing:.14em}
+
+  @media (max-width:680px){
+    .route{grid-template-columns:1fr 1fr}
+    .slips,.notes{grid-template-columns:1fr}
+    .scene{grid-template-columns:1fr}
+    .scene .rail{flex-direction:row;align-items:center;gap:14px;border-right:0;border-bottom:1px solid var(--hairline)}
+    .fields{grid-template-columns:1fr}
+  }
+  @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
+</style>
+
+<header class="mast">
+  <div class="wrap">
+    <div class="eyebrow">神社で答え合わせ</div>
+    <h1 class="mark">叶結び</h1>
+    <p class="sub">石川編 ── 完全台本＆資料</p>
+    <p class="doc">石川で巡った六つの神社仏閣。別々の場所で引いたおみくじを、旅の流れとしてつなげて読み解く二本立て。
+    録音・編集がそのまま進められるよう、シーン順のナレーション、テロップ、おみくじ原文、そして翻刻資料を一つにまとめています。</p>
+  </div>
+</header>
+
+<nav class="idx"><ul>
+  <li><a href="#concept">この作品について</a></li>
+  <li><a href="#route">旅の流れ</a></li>
+  <li><a href="#day1">DAY1 台本</a></li>
+  <li><a href="#day2">DAY2 台本</a></li>
+  <li><a href="#shiryo">おみくじ資料</a></li>
+  <li><a href="#notes">制作メモ</a></li>
+</ul></nav>
+
+<!-- ============ CONCEPT ============ -->
+<section id="concept"><div class="wrap">
+  <div class="sec-head"><span class="n">序</span><h2>この作品について</h2></div>
+  <p class="lead">おみくじ一枚ごとの吉凶ではなく、旅の最後に振り返ると、複数のおみくじから一つの答えが浮かび上がる——それがこのチャンネルの核。
+  断定はしない。「私はこう受け取った」という視点で、静かに、論理的に共通点を拾う。</p>
+  <div class="concept">
+    <div class="stance">
+      <h3>語り口（ここは崩さない）</h3>
+      <ul>
+        <li class="yes">私はこう受け取った／今の自分にはこう読めた／振り返るとこう見えた</li>
+        <li class="no">神様がこう言った／未来は必ずこうなる／ここに行けば金運が上がる</li>
+      </ul>
+    </div>
+    <div class="stance">
+      <h3>世界観</h3>
+      <ul>
+        <li>神秘的・静か・旅の空気・少しドキュメンタリー・大人向け</li>
+        <li>実写の神社／自然／おみくじそのものが主役。生成り・墨・朱・控えめな金。</li>
+        <li>ピンクのキラキラ系にはしない。過剰な光・桜吹雪・金粉・派手な転換はなし。</li>
+      </ul>
+    </div>
+  </div>
+</div></section>
+
+<!-- ============ ROUTE ============ -->
+<section id="route"><div class="wrap">
+  <div class="sec-head"><span class="n">全体</span><h2>旅の流れ</h2></div>
+  <p class="lead">同じ方向を向いた警告が続くDAY1から、那谷寺を境に「育てる・見極める・直す」へ。最初と最後で言葉は変わるが、根本は矛盾しない。</p>
+  <div class="route">
+    <div class="stop"><div class="day">DAY1 ①</div><div class="nm">金劔宮</div><div class="rd">きんけんぐう</div><div class="fo">末吉</div></div>
+    <div class="stop"><div class="day">DAY1 ②</div><div class="nm">白山比咩神社</div><div class="rd">しらやまひめ</div><div class="fo">小吉 ×2</div></div>
+    <div class="stop"><div class="day">DAY1 ③</div><div class="nm">服部神社</div><div class="rd">はっとり</div><div class="fo">中吉</div></div>
+    <div class="stop"><div class="day">DAY2 ④</div><div class="nm">那谷寺</div><div class="rd">なたでら</div><div class="fo">末吉 ／ 転換点</div></div>
+    <div class="stop"><div class="day">DAY2 ⑤</div><div class="nm">菟橋神社</div><div class="rd">うはし</div><div class="fo">第四十一番 小吉</div></div>
+    <div class="stop"><div class="day">DAY2 ⑥</div><div class="nm">安宅住吉神社</div><div class="rd">あたかすみよし</div><div class="fo">第四十番 吉</div></div>
+  </div>
+  <div class="pivot">
+    <div class="ans d1"><div class="k">DAY1 の答え</div><div class="v">いったん止まって、整える。</div></div>
+    <div class="ans d2"><div class="k">DAY2 の答え</div><div class="v">方向転換ではなく、軌道修正。</div></div>
+  </div>
+</div></section>
+
+<!-- ============ DAY1 ============ -->
+<section id="day1"><div class="wrap">
+  <div class="sec-head"><span class="n">一</span><h2>DAY1 台本</h2></div>
+  <div class="ep-head">
+    <div class="t">石川編 DAY1</div>
+    <div class="st">「同じ警告が、何度も続いた日」</div>
+    <div class="ep-meta">目標尺 10〜14分／テーマ：止まって整える／BGM：静か・少し緊張感・和風アンビエント</div>
+  </div>
+
+  <article class="scene"><div class="rail"><span class="tc">0:00–0:35</span><span class="kind">コールドオープン</span><span class="id">cold_open</span></div>
+    <div class="body">
+      <div class="row"><span class="lab">映像</span><span class="c">金劔宮→末吉→白山比咩神社→小吉→別のおみくじ→服部神社→中吉を、高速すぎないテンポで。</span></div>
+      <div class="row"><span class="lab">ナレ</span><div class="nara">金運で知られる神社から始まった、今回の石川の旅。
+最初のおみくじに書かれていたのは、
+「商売、思いがけぬ損あり」
+でした。
+そして次に訪れた神社でも、
+また別のおみくじでも、
+なぜか似たような言葉が続きます。
+これは偶然なのか。
+今回は、おみくじを一枚ずつではなく、
+旅の流れとして読んでみます。</div></div>
+      <div class="row"><span class="lab">演出</span><span class="beat">「思いがけぬ損あり」を見せた直後に0.5秒の間。SEは入れすぎない。</span></div>
+    </div>
+  </article>
+
+  <article class="scene"><div class="rail"><span class="tc">0:35–0:45</span><span class="kind">タイトル</span><span class="id">title</span></div>
+    <div class="body">
+      <div class="row"><span class="lab">テロップ</span><span class="telops"><span class="chip">叶結び</span><span class="chip big">石川編 DAY1</span><span class="chip">「同じ警告が、何度も続いた日」</span></span></div>
+      <div class="row"><span class="lab">映像</span><span class="c">代表カット（境内・参道）を背景に、明朝で静かに。</span></div>
+    </div>
+  </article>
+
+  <article class="scene"><div class="rail"><span class="tc">0:45–</span><span class="kind">金劔宮</span><span class="id">kinkengu</span></div>
+    <div class="body">
+      <div class="row"><span class="lab">ロケ札</span><span class="telops"><span class="chip">金劔宮</span><span class="chip">石川県</span></span></div>
+      <div class="row"><span class="lab">おみくじ</span><span class="telops"><span class="chip big">末吉</span></span></div>
+      <blockquote class="mk"><p>商売　<mark class="key">思いがけぬ損</mark>あり</p><p><mark class="key">小さい処</mark>に注意なさい</p></blockquote>
+      <div class="row"><span class="lab">ナレ</span><div class="nara">最初に訪れたのは金劔宮。
+金運のことも少し意識しながら来た場所でした。
+ところが引いたおみくじは、末吉。
+しかも商売の欄には、
+「思いがけぬ損あり」
+とあります。
+さらに全体では、
+大きな問題というより、
+小さなところを疎かにしないこと。
+思いがけない出来事に慌てないこと。
+そんな注意が書かれていました。
+正直、この時はまだ、
+「まあ、おみくじだからこういう時もある」
+くらいに思っていました。</div></div>
+      <div class="row"><span class="lab">演出</span><span class="beat">「思いがけぬ損あり」の後に0.5秒。軽く「ん？」と思わせる程度。</span></div>
+    </div>
+  </article>
+
+  <article class="scene"><div class="rail"><span class="tc"></span><span class="kind">白山比咩神社 開運みくじ</span><span class="id">shirayama_kaiun</span></div>
+    <div class="body">
+      <div class="row"><span class="lab">ロケ札</span><span class="telops"><span class="chip">白山比咩神社</span><span class="chip">石川県</span></span></div>
+      <div class="row"><span class="lab">テロップ</span><span class="telops"><span class="chip">第二十番</span><span class="chip big">小吉</span><span class="chip">風地観</span></span></div>
+      <div class="row"><span class="lab">サブ主題</span><span class="c">外を見るより、自分を見る。</span></div>
+      <div class="row"><span class="lab">ナレ</span><div class="nara">次は白山比咩神社。
+ここでは、開運みくじを引きました。
+第二十番、小吉。
+風地観。
+内容を読んでいて、
+一つ気になったことがあります。
+外へ向かって何かを増やすより、
+まず自分自身をよく見る。
+精神的な努力を重ねる。
+自分を磨く。
+そんな意味合いがとても強いおみくじでした。</div></div>
+    </div>
+  </article>
+
+  <article class="scene"><div class="rail"><span class="tc"></span><span class="kind">開運みくじ・お金の欄</span><span class="id">shirayama_kaiun_money</span></div>
+    <div class="body">
+      <blockquote class="mk"><p><mark class="key">意外の失費</mark>　<mark class="key">他人の金儲け</mark>ばかり目につく</p></blockquote>
+      <div class="row"><span class="lab">ナレ</span><div class="nara">そして、お金の部分。
+意外な出費。
+他人の金儲けが目につきやすい。
+ここで私は少し引っかかりました。
+金劔宮でも、
+「思いがけぬ損」
+と言われたばかりだったからです。</div></div>
+    </div>
+  </article>
+
+  <article class="scene"><div class="rail"><span class="tc"></span><span class="kind">白山比咩神社 普通のおみくじ</span><span class="id">shirayama_futsu</span></div>
+    <div class="body">
+      <div class="row"><span class="lab">テロップ</span><span class="telops"><span class="chip">第二十七番</span><span class="chip big">小吉</span><span class="chip">山雷頤</span></span></div>
+      <blockquote class="mk"><p>「<mark class="key">口</mark>は禍の門」　<mark class="key">言語に注意</mark></p></blockquote>
+      <div class="row"><span class="lab">ナレ</span><div class="nara">さらに、普通のおみくじも引いてみました。
+こちらも小吉。
+そして、また似た言葉が出ます。
+他人の出世を羨まない。
+自分の仕事を嫌にならない。
+欲を抑える。
+そして特に、
+「口」
+つまり言葉に注意すること。
+勢いで言う。
+感情で言う。
+大きなことを言い切る。
+そういったことへの注意が
+かなり強く書かれていました。</div></div>
+    </div>
+  </article>
+
+  <article class="scene"><div class="rail"><span class="tc"></span><span class="kind">間</span><span class="id">futsu_beat</span></div>
+    <div class="body">
+      <div class="row"><span class="lab">テロップ</span><span class="telops"><span class="chip big">また同じこと？</span></span></div>
+      <div class="row"><span class="lab">ナレ</span><div class="nara">……あれ？
+また同じ方向じゃない？</div></div>
+    </div>
+  </article>
+
+  <article class="scene"><div class="rail"><span class="tc"></span><span class="kind">中間まとめ</span><span class="id">midsummary</span></div>
+    <div class="body">
+      <div class="row"><span class="lab">テロップ</span><span class="telops"><span class="chip">焦らない</span><span class="chip">他人と比べない</span><span class="chip">お金を雑に使わない</span><span class="chip">言葉に注意</span><span class="chip">人と争わない</span><span class="chip">小さいことを疎かにしない</span></span></div>
+      <div class="row"><span class="lab">ナレ</span><div class="nara">吉か凶かは違っても、
+内容を並べてみると、
+不思議なくらい同じ方向を向いていました。
+新しいものを追うより、
+今あるものを整える。
+外を見るより、
+自分の足元を見る。
+そんな感じです。</div></div>
+    </div>
+  </article>
+
+  <article class="scene"><div class="rail"><span class="tc"></span><span class="kind">服部神社</span><span class="id">hattori</span></div>
+    <div class="body">
+      <div class="row"><span class="lab">ロケ札</span><span class="telops"><span class="chip">服部神社</span><span class="chip">石川県</span></span></div>
+      <div class="row"><span class="lab">おみくじ</span><span class="telops"><span class="chip big">中吉</span></span></div>
+      <div class="row"><span class="lab">和歌</span><span class="telops"><span class="chip">岩の上に根を張る松の</span><span class="arrow">→</span><span class="chip">風雪に耐えて</span><span class="arrow">→</span><span class="chip">常盤にみどり栄ゆる</span></span></div>
+      <blockquote class="mk"><p>岩に<mark class="key">根を張り</mark>栄えるように<mark class="key">楽しい時期が到来</mark>します</p></blockquote>
+      <div class="row"><span class="lab">ナレ</span><div class="nara">1日目、最後のおみくじ。
+ここで出てきたのは、
+岩の上に根を張る松。
+風や雪に耐えながら、
+それでも根を張り続ける。
+そして、やがて栄える。
+という言葉でした。</div></div>
+      <div class="row"><span class="lab">演出</span><span class="cue">和歌は一気に出さず、1行ずつ順番に提示。</span></div>
+    </div>
+  </article>
+
+  <article class="scene"><div class="rail"><span class="tc"></span><span class="kind">服部神社・読み</span><span class="id">hattori_read</span></div>
+    <div class="body">
+      <div class="row"><span class="lab">ナレ</span><div class="nara">ここまでのおみくじを重ねると、
+今すぐ大きく動け、
+ではない。
+むしろ、
+焦らず、
+余計なものを増やさず、
+今いる場所で根を張れ。
+そう言われているように、
+私には見えました。</div></div>
+    </div>
+  </article>
+
+  <article class="scene"><div class="rail"><span class="tc"></span><span class="kind">エンディング</span><span class="id">day1_ending</span></div>
+    <div class="body">
+      <div class="row"><span class="lab">テロップ</span><span class="telops"><span class="chip big">いったん止まって、整える。</span></span></div>
+      <div class="row"><span class="lab">映像</span><span class="c">画面中央・余白多め。</span></div>
+      <div class="row"><span class="lab">ナレ</span><div class="nara">石川の旅、1日目。
+私が受け取ったメッセージは、
+「いったん止まって、整える」
+でした。
+焦らない。
+人と比べない。
+言葉、人、お金、
+そして小さな部分を丁寧に扱う。
+ただ、この旅はここで終わりません。
+翌日。
+那谷寺を訪れたところから、
+おみくじの流れが、
+少し変わり始めます。</div></div>
+    </div>
+  </article>
+
+  <article class="scene"><div class="rail"><span class="tc"></span><span class="kind">次回予告</span><span class="id">next_ep</span></div>
+    <div class="body">
+      <div class="row"><span class="lab">テロップ</span><span class="telops"><span class="chip">次回</span><span class="chip">那谷寺で流れが変わった</span></span></div>
+      <div class="row"><span class="lab">CTA</span><span class="c">続きは石川編 DAY2へ。</span></div>
+    </div>
+  </article>
+</div></section>
+
+<!-- ============ DAY2 ============ -->
+<section id="day2"><div class="wrap">
+  <div class="sec-head"><span class="n">二</span><h2>DAY2 台本</h2></div>
+  <div class="ep-head">
+    <div class="t">石川編 DAY2</div>
+    <div class="st">「那谷寺で、流れが変わった」</div>
+    <div class="ep-meta">目標尺 10〜14分／テーマ：軌道修正／BGM：那谷寺以降は少し明るく、安宅住吉は穏やか・希望</div>
+  </div>
+
+  <article class="scene"><div class="rail"><span class="tc">0:00–0:30</span><span class="kind">コールドオープン</span><span class="id">cold_open</span></div>
+    <div class="body">
+      <div class="row"><span class="lab">映像</span><span class="c">那谷寺の奇岩から。DAY1とは明らかに空気を変える。</span></div>
+      <div class="row"><span class="lab">ナレ</span><div class="nara">前日のおみくじは、
+焦るな。
+整えろ。
+根を張れ。
+ほとんど同じ方向を向いていました。
+ところが2日目。
+那谷寺を境に、
+その流れが少し変わります。
+そして旅の最後。
+安宅住吉神社のおみくじで、
+今回の答えが、
+かなりはっきりしました。</div></div>
+    </div>
+  </article>
+
+  <article class="scene"><div class="rail"><span class="tc">–</span><span class="kind">タイトル</span><span class="id">title</span></div>
+    <div class="body">
+      <div class="row"><span class="lab">テロップ</span><span class="telops"><span class="chip">叶結び</span><span class="chip big">石川編 DAY2</span><span class="chip">「那谷寺で、流れが変わった」</span></span></div>
+    </div>
+  </article>
+
+  <article class="scene"><div class="rail"><span class="tc">〜0:25</span><span class="kind">DAY1 recap</span><span class="id">day1_recap</span></div>
+    <div class="body">
+      <div class="row"><span class="lab">テロップ</span><span class="telops"><span class="chip">DAY1</span><span class="chip">整える</span><span class="chip">焦らない</span><span class="chip">根を張る</span></span></div>
+      <div class="row"><span class="lab">ナレ</span><div class="nara">1日目は、守り。
+余計なことをせず、
+足元を整える。
+そんなメッセージが続きました。</div></div>
+      <div class="row"><span class="lab">尺</span><span class="cue">15〜25秒のみ。長くしない。</span></div>
+    </div>
+  </article>
+
+  <article class="scene"><div class="rail"><span class="tc"></span><span class="kind">那谷寺（見せ場）</span><span class="id">natadera</span></div>
+    <div class="body">
+      <div class="row"><span class="lab">ロケ札</span><span class="telops"><span class="chip">那谷寺</span><span class="chip">石川県</span></span></div>
+      <div class="row"><span class="lab">おみくじ</span><span class="telops"><span class="chip big">末吉</span></span></div>
+      <div class="row"><span class="lab">和歌</span><span class="telops"><span class="chip">もえ出ずる若葉の色ぞ美しき</span><span class="arrow">→</span><span class="chip">花さき実る末も見えつつ</span></span></div>
+      <blockquote class="mk"><p><mark class="key">次第次第に運がひらけて</mark>盛んになります</p><p><mark class="key">一足とび</mark>にとんで事をしようとするとあやまります</p></blockquote>
+      <div class="row"><span class="lab">映像</span><span class="c">奇岩遊仙境・岩窟・三重塔・自然・階段・鳥居。テンポを落とし、BGMを変える。自然音は一度ナレを止めて聞かせる。</span></div>
+      <div class="row"><span class="lab">ナレ</span><div class="nara">那谷寺で引いたおみくじは、末吉。
+でも文章を読んで、
+私は少し驚きました。
+若葉が芽を出す。
+やがて花が咲き、
+その先には実りがある。
+そして、
+「次第次第に運がひらけて盛んになります」
+とあります。</div></div>
+    </div>
+  </article>
+
+  <article class="scene"><div class="rail"><span class="tc"></span><span class="kind">間・転換</span><span class="id">natadera_beat</span></div>
+    <div class="body">
+      <div class="row"><span class="lab">テロップ</span><span class="telops"><span class="chip">止まって整える</span><span class="arrow">↓</span><span class="chip big">急がず育てる</span></span></div>
+      <div class="row"><span class="lab">ナレ</span><div class="nara">前日までとは、
+少し違います。</div></div>
+    </div>
+  </article>
+
+  <article class="scene"><div class="rail"><span class="tc"></span><span class="kind">那谷寺・読み</span><span class="id">natadera_read</span></div>
+    <div class="body">
+      <div class="row"><span class="lab">テロップ</span><span class="telops"><span class="chip">那谷寺</span><span class="chip big">今回の旅の転換点</span></span></div>
+      <div class="row"><span class="lab">ナレ</span><div class="nara">動くな、ではない。
+急ぐな。
+一足飛びに行こうとせず、
+今あるものを、
+これから育てていきなさい。
+私には、そんなふうに読めました。</div></div>
+    </div>
+  </article>
+
+  <article class="scene"><div class="rail"><span class="tc"></span><span class="kind">菟橋神社</span><span class="id">uhashi</span></div>
+    <div class="body">
+      <div class="row"><span class="lab">ロケ札</span><span class="telops"><span class="chip">菟橋神社（うはし）</span><span class="chip">石川県</span></span></div>
+      <div class="row"><span class="lab">テロップ</span><span class="telops"><span class="chip">第四十一番</span><span class="chip big">小吉</span></span></div>
+      <blockquote class="mk"><p>願望　<mark class="key">初めにきをつけねば</mark>中途でやぶれる</p><p>争事　相手を<mark class="key">見極めよ</mark></p></blockquote>
+      <div class="row"><span class="lab">ナレ</span><div class="nara">那谷寺の次に訪れた、うはし神社。
+ここでは、
+ただ待つ、
+というより、
+「見極める」
+という言葉が強くなります。
+特に、
+相手を見極める。
+最初を慎重にする。
+進むなら、
+何に向かって進むのかをよく見る。</div></div>
+    </div>
+  </article>
+
+  <article class="scene"><div class="rail"><span class="tc"></span><span class="kind">菟橋神社・読み</span><span class="id">uhashi_read</span></div>
+    <div class="body">
+      <div class="row"><span class="lab">ナレ</span><div class="nara">前日の、
+「何もしない方がいい」
+という感じとは少し違う。
+慎重ではあるけれど、
+少しずつ、
+「動く」
+方向へ変わってきました。</div></div>
+    </div>
+  </article>
+
+  <article class="scene"><div class="rail"><span class="tc"></span><span class="kind">安宅住吉神社（クライマックス）</span><span class="id">ataka</span></div>
+    <div class="body">
+      <div class="row"><span class="lab">ロケ札</span><span class="telops"><span class="chip">安宅住吉神社</span><span class="chip">石川県</span></span></div>
+      <div class="row"><span class="lab">テロップ</span><span class="telops"><span class="chip">第四十番</span><span class="chip big">吉</span></span></div>
+      <blockquote class="mk"><p><mark class="key">時期を考えて</mark>はやく<mark class="key">あらため</mark>進むがよい</p><p>人と人と互に<mark class="key">力あわせて</mark>すればよきみちあり</p><p>けれど<mark class="key">わるいみちと知りつつ</mark>進めばわるし</p></blockquote>
+      <div class="row"><span class="lab">映像</span><span class="c">木漏れ日重視。鳥居・石碑・参道・社殿の静かな写真。</span></div>
+      <div class="row"><span class="lab">ナレ</span><div class="nara">そして最後。
+安宅住吉神社。
+ここで引いたおみくじは、吉。
+書かれていたのは、
+時期を考えて、
+早く改めて進む。
+人と人と、
+互いに力を合わせれば、
+よい道がある。
+でも、
+悪い道だと分かっていながら
+進めば悪い。
+という言葉でした。</div></div>
+      <div class="row"><span class="lab">間</span><div class="nara">ここで、
+前日から続いていた言葉が、
+ようやく一つにつながった気がしました。</div></div>
+    </div>
+  </article>
+
+  <article class="scene"><div class="rail"><span class="tc"></span><span class="kind">旅の答え</span><span class="id">kidou_shusei</span></div>
+    <div class="body">
+      <div class="row"><span class="lab">テロップ</span><span class="telops"><span class="chip">方向転換ではなく、</span><span class="chip big">軌道修正。</span></span></div>
+      <div class="row"><span class="lab">ナレ</span><div class="nara">焦って、
+全部を変える必要はない。
+自分の根っこまで
+捨てる必要もない。
+でも、
+ここは違う。
+これはもう必要ない。
+そう分かっている部分まで、
+惰性で続ける必要もない。
+大きな方向は変えず、
+違っている部分だけを直す。
+方向転換ではなく、
+軌道修正。
+今回の旅で、
+私が一番強く受け取った答えは、
+これでした。</div></div>
+    </div>
+  </article>
+
+  <article class="scene"><div class="rail"><span class="tc"></span><span class="kind">神の教（裏面）</span><span class="id">kami_no_oshie</span></div>
+    <div class="body">
+      <div class="row"><span class="lab">テロップ</span><span class="telops"><span class="chip">神の教</span></span></div>
+      <blockquote class="mk"><p>散りゆく花に流す涙は、<mark class="key">稔りの秋の糧</mark>となる</p></blockquote>
+      <div class="row"><span class="lab">ナレ</span><div class="nara">そして裏面の「神の教」。
+散っていく花を見て流した涙も、
+やがて実りの秋の糧になる。
+春に咲いたものが一度散っても、
+それで終わりではない。
+夏を耐え、
+力を蓄えた先に、
+秋の実りがある。
+那谷寺の、
+若葉から花、
+そして実りへ。
+という言葉とも、
+不思議なくらいつながっていました。</div></div>
+    </div>
+  </article>
+
+  <article class="scene"><div class="rail"><span class="tc"></span><span class="kind">最終答え合わせ</span><span class="id">final_answer</span></div>
+    <div class="body">
+      <div class="row"><span class="lab">映像</span><span class="c">6か所を時系列で：金劔宮→白山比咩神社→服部神社→那谷寺→菟橋神社→安宅住吉神社。</span></div>
+      <div class="row"><span class="lab">テロップ</span><span class="telops"><span class="chip">DAY1：整理／警告／足元固め／根を張る</span><span class="arrow">→</span><span class="chip">DAY2：再生／育てる／見極める／軌道修正</span></span></div>
+      <div class="row"><span class="lab">ナレ</span><div class="nara">今回の石川の旅を、
+最後にもう一度つなげてみます。
+金劔宮から白山比咩神社。
+焦らない。
+足元を整える。
+服部神社。
+今いる場所で、
+根を張る。
+そして那谷寺。
+整えたものを、
+今度は育て始める。
+うはし神社。
+人と方向を、
+よく見極める。
+そして安宅住吉神社。
+間違っている部分は改め、
+人と力を合わせて進む。
+最初と最後では、
+言っていることが
+少し変わっています。
+でも、
+根本は矛盾していませんでした。</div></div>
+    </div>
+  </article>
+
+  <article class="scene"><div class="rail"><span class="tc"></span><span class="kind">締め</span><span class="id">closing</span></div>
+    <div class="body">
+      <div class="row"><span class="lab">テロップ</span><span class="telops"><span class="chip big">叶結び</span><span class="chip">神社で答え合わせ</span></span></div>
+      <div class="row"><span class="lab">ナレ</span><div class="nara">この旅で引いたおみくじは、
+未来を決める答えではありません。
+でも、
+違う場所で引いた言葉を
+こうして並べてみると、
+今の自分が何を気にしているのか。
+何を見直す必要があるのか。
+そんなことが、
+少し見えてくる気がします。
+これが、
+今回の「神社で答え合わせ」。
+あなたなら、
+このおみくじをどう読みますか？
+叶結びでは、
+これからも実際に神社を巡り、
+その場所で引いたおみくじを、
+旅の最後につないでいきます。</div></div>
+    </div>
+  </article>
+
+  <article class="scene"><div class="rail"><span class="tc"></span><span class="kind">CTA</span><span class="id">cta</span></div>
+    <div class="body">
+      <div class="row"><span class="lab">CTA</span><span class="c">チャンネル登録して、次の神社旅でまたお会いしましょう。</span></div>
+      <div class="row"><span class="lab">注意</span><span class="cue">過剰な登録アニメーションは入れない。</span></div>
+    </div>
+  </article>
+</div></section>
+
+<!-- ============ 資料 ============ -->
+<section id="shiryo"><div class="wrap">
+  <div class="sec-head"><span class="n">資料</span><h2>おみくじ翻刻</h2></div>
+  <p class="lead">六か所すべて実写真から翻刻（全カット確認済み）。原文は書き換えない。赤字＝動画で強調する語。</p>
+  <div class="slips">
+
+    <div class="slip">
+      <div class="hd"><div><div class="nm">金劔宮</div><div class="rd">きんけんぐう</div><div class="no">第十六番</div></div><div class="seal">末吉</div></div>
+      <p class="waka">のどけしと 見えし海原　風立ちて 小舟危き 沖つ白波</p>
+      <p class="desc">小舟が俄の嵐にあう様に、思いがけない事で災起る恐れがあります。決して色に溺れ不義の行をしないで、正しく一心に辛抱するがよい。小さい処に注意なさい。</p>
+      <div class="fields">
+        <div><b>願望</b><span>些の事から過り思う 事破れる恐あり</span></div>
+        <div><b>商売</b><span>思いがけぬ損あり</span></div>
+        <div><b>待人</b><span>さわりあり 来ず</span></div>
+        <div><b>相場</b><span>損をする用心せよ</span></div>
+        <div><b>学問</b><span>甘えを捨て全力を尽せ</span></div>
+        <div><b>縁談</b><span>無駄口より口舌起る 何も言うな</span></div>
+      </div>
+      <p class="keys"><b>赤字</b>　思いがけぬ損／小さい処に注意</p>
+    </div>
+
+    <div class="slip">
+      <div class="hd"><div><div class="nm">白山比咩神社 <span class="quiet" style="font-size:.7rem">開運みくじ</span></div><div class="rd">しらやまひめ</div><div class="no">第二十番 〔風地観〕</div></div><div class="seal">小吉</div></div>
+      <p class="desc">精神的の事には大いによいが、物質的・日常の俗事にはあまりよくない運勢。神仏を敬い我身を省みれば、禍を転じて福とすることが出来る。初めよくて後に悪い。油断すると俄かに事故が起り慌てる。人との争い・盗難・色情難を戒めよ。</p>
+      <div class="fields">
+        <div><b>売買</b><span>意外の失費で持っている金を使い、他人の金儲けばかり目につく</span></div>
+        <div><b>願事</b><span>遠山の桜。目に見えて手に取れぬ</span></div>
+        <div><b>職業</b><span>学者・芸術家・宗教家に吉運</span></div>
+        <div><b>旅行</b><span>神社仏閣の参拝は吉</span></div>
+      </div>
+      <p class="keys"><b>赤字</b>　意外の失費／他人の金儲けばかり目につく</p>
+    </div>
+
+    <div class="slip">
+      <div class="hd"><div><div class="nm">白山比咩神社 <span class="quiet" style="font-size:.7rem">普通みくじ</span></div><div class="rd">しらやまひめ</div><div class="no">第二十七番 〔山雷頤〕</div></div><div class="seal">小吉</div></div>
+      <p class="desc">他人の出世を羨み自分の仕事が嫌になる時。私欲を止めねば災を招く。心は動かさず旧を守るがよい。「口は禍の門」であるから、後の災を起さぬよう言語に注意することが第一。飲食も慎しみ、健康を害さぬよう。</p>
+      <div class="fields">
+        <div><b>願事</b><span>性急だと破れる。暫く待つがよい</span></div>
+        <div><b>職業</b><span>大言壮語すると末に不和になり易い</span></div>
+        <div><b>交友</b><span>一旦は有利でも後に凶</span></div>
+        <div><b>恋愛</b><span>話はうまく合うようだ</span></div>
+      </div>
+      <p class="keys"><b>赤字</b>　口は禍の門／言語に注意／性急だと破れる</p>
+    </div>
+
+    <div class="slip">
+      <div class="hd"><div><div class="nm">服部神社</div><div class="rd">はっとり</div><div class="no">御神籤</div></div><div class="seal">中吉</div></div>
+      <p class="waka">岩の上に根を張る松の　風雪に耐えて　常盤にみどり栄ゆる</p>
+      <p class="desc">他人にまでも災が及び心を痛めることがあるが、何事にも耐えしのんで御神意に任せ身を清め信神すれば、若松の岩に根を張り栄えるように、楽しい時期が到来する。諸事控えること。</p>
+      <div class="fields">
+        <div><b>願望</b><span>御加護を受けなさい 叶う</span></div>
+        <div><b>事業</b><span>金運に甘え遊ぶと災あり</span></div>
+        <div><b>縁談</b><span>誠を尽して祈れば成就する</span></div>
+        <div><b>就職</b><span>心を引締め尽せば叶う</span></div>
+      </div>
+      <p class="keys"><b>赤字</b>　根を張る／風雪に耐えて</p>
+    </div>
+
+    <div class="slip">
+      <div class="hd"><div><div class="nm">那谷寺</div><div class="rd">なたでら</div><div class="no">おみくじ</div></div><div class="seal">末吉</div></div>
+      <p class="waka">もえ出ずる若葉の色ぞ美しき　花さき実る末も見えつつ</p>
+      <p class="desc">次第次第に運がひらけて盛んになります。あまりに一足とびにとんで事をしようとするとあやまります。時を見て、心ながくのぞみを達しなさい。</p>
+      <div class="fields">
+        <div><b>商売</b><span>次第に上りて利</span></div>
+        <div><b>学問</b><span>早目に目標をたて全力を尽せ</span></div>
+        <div><b>相場</b><span>上がる気配あり</span></div>
+        <div><b>縁談</b><span>叶うともおそし さわげば破れる</span></div>
+      </div>
+      <p class="keys"><b>赤字</b>　次第次第に運がひらけて／一足とび</p>
+    </div>
+
+    <div class="slip">
+      <div class="hd"><div><div class="nm">菟橋神社</div><div class="rd">うはし</div><div class="no">第四十一番 御神籤</div></div><div class="seal">小吉</div></div>
+      <p class="waka">ひとかたになびくと見せて　青柳のゆくえさだめぬ人心かな</p>
+      <p class="desc">思うにまかすようで心にまかせぬことがあり、おもわぬ幸福ある様でもよく気をつけないと後で損する。色情にことをつけなさい。</p>
+      <div class="fields">
+        <div><b>願望</b><span>初めにきをつけねば中途でやぶれる</span></div>
+        <div><b>争事</b><span>相手を見極めよ</span></div>
+        <div><b>学問</b><span>自己を信じ勉学せよ</span></div>
+        <div><b>恋愛</b><span>周囲の理解が大切</span></div>
+      </div>
+      <div class="oshie"><span class="t">神の教（笑う門）</span>笑う門には幸来る、ねてもさめてもにこにこと。努めてもにこにこと笑いましょう。天の岩戸は笑いで開けた。曇りなき心の鏡に映る私達の笑顔を、神様はいつも見守っておいでです。</div>
+      <p class="keys"><b>赤字</b>　初めにきをつけねば／相手を見極めよ</p>
+    </div>
+
+    <div class="slip" style="grid-column:1/-1">
+      <div class="hd"><div><div class="nm">安宅住吉神社</div><div class="rd">あたかすみよし</div><div class="no">第四十番 御神籤　<span class="quiet">※仕様書の「第四十一番」は誤り（それは菟橋神社）。実物は第四十番。</span></div></div><div class="seal">吉</div></div>
+      <p class="waka">立ちよればそでに…　白萩の花のかと知りつつ、月の下かげ</p>
+      <p class="desc"><b style="color:var(--vermilion);font-family:var(--serif)">絶対に使う本文：</b>時期を考えてはやくあらため進むがよい／人と人と互に力あわせてすればよきみちあり／けれどわるいみちと知りつつ進めばわるし。</p>
+      <div class="fields">
+        <div><b>願望</b><span>早くすれば他人の助けありて調う</span></div>
+        <div><b>争事</b><span>勝つ 静かにせよ</span></div>
+        <div><b>恋愛</b><span>未来に幸福あり</span></div>
+        <div><b>病気</b><span>心を強くもてばなおる</span></div>
+        <div><b>転居</b><span>よろし 東が吉</span></div>
+        <div><b>縁談</b><span>叶う あまり返事をながびかすと悪い</span></div>
+      </div>
+      <div class="oshie"><span class="t">神の教（散りゆく花）</span>散りゆく花に流す涙は、稔りの秋の糧となる。春、咲き誇っていた花々も全て散りゆく運命であるが、暑い夏を耐えて力を蓄えれば、やがて稔りの秋が巡り来る。人生の山坂、涙にくれる時はあれども、苦しみ・悲しみの後には、そのぶん充実した喜びの実を、穏やかな幸福の種を、神様は屹度お与え下さる。拝む全ての人々に。</div>
+      <p class="keys"><b>赤字</b>　時期を考えて／力あわせて／わるいみちと知りつつ／稔りの秋の糧</p>
+    </div>
+
+  </div>
+  <p class="prov"><b>出典</b>　六か所すべてこのプロジェクトで受領した実写真から翻刻。おみくじ本文・神社名・番号は実物準拠。主な訂正：服部神社「常盤にみどり栄ゆる」（元原稿の「常盤に栄ゆる」を修正）／「うはし神社」＝菟橋神社／安宅住吉神社は第四十番（元原稿は第四十一番）。</p>
+</div></section>
+
+<!-- ============ NOTES ============ -->
+<section id="notes"><div class="wrap">
+  <div class="sec-head"><span class="n">備考</span><h2>制作メモ</h2></div>
+  <div class="notes">
+    <div class="note"><h3>尺・動画仕様</h3><ul>
+      <li>各回 10〜14分（素材量で±2分可）</li>
+      <li>1920×1080／30fps／16:9／H.264・AAC 48kHz（高解像度なら2560×1440も可）</li>
+      <li>音声：Integrated −14 LUFS／True Peak −1dB以下</li>
+    </ul></div>
+    <div class="note"><h3>字幕・フォント</h3><ul>
+      <li>最大2行・白文字・濃色の細い縁取り。最下部ギリギリに置かない</li>
+      <li>重要語だけ赤（または金）。全文を常時字幕にしすぎない</li>
+      <li>タイトル・章は明朝、通常字幕はゴシック可</li>
+    </ul></div>
+    <div class="note"><h3>BGM</h3><ul>
+      <li>DAY1：静か・少し緊張感・和風アンビエント</li>
+      <li>DAY2前半：静謐・自然・寺院。那谷寺以降は少し明るく</li>
+      <li>安宅住吉：穏やか・希望。ナレ中は大きく下げ、自然音の良い所は一時カット</li>
+    </ul></div>
+    <div class="note"><h3>やらないこと</h3><ul>
+      <li>おみくじ本文・神社名の書き換え／推測での加筆</li>
+      <li>AI生成の神社映像を混ぜる</li>
+      <li>過剰な光・桜吹雪・金粉・派手なトランジション</li>
+      <li>本編での1秒刻みTikTok的編集</li>
+    </ul></div>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <div class="fm">叶結び</div>
+  <p>神社で答え合わせ　／　石川編 DAY1・DAY2　完全台本＆資料</p>
+</div></footer>
