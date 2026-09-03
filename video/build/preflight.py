@@ -24,19 +24,22 @@ def _inventory_day_index() -> dict[str, int | None]:
     return {r["file"]: r.get("day") for r in util.read_json(inv_path)}
 
 
-def check(day: int) -> tuple[list[str], list[str], list[str]]:
+def check(slug: str) -> tuple[list[str], list[str], list[str]]:
     """returns (errors, warnings, manual_checklist)"""
     errors: list[str] = []
     warnings: list[str] = []
     manual: list[str] = []
 
-    tl_path = util.OUTPUTS_DIR / f"day{day}" / f"timeline_day{day}.json"
+    out_slug = util.cut(slug)["out"]
+    tl_path = util.OUTPUTS_DIR / out_slug / f"timeline_{out_slug}.json"
     if not tl_path.exists():
         return ([f"timeline が未生成: {tl_path}"], [], [])
     timeline = util.read_json(tl_path)
     project = util.load_project()
-    cfg = util.load_day_config(day)
-    inv_day = _inventory_day_index()
+    cfg = util.load_yaml(util.CONFIG_DIR / util.cut(slug)["config"])
+    # DAY混入チェックは旧2本立て(day1/day2)のみ。単一動画は両日の素材を1本に使う。
+    legacy_day = int(slug[-1]) if slug in ("day1", "day2") else None
+    inv_day = _inventory_day_index() if legacy_day else {}
 
     # 尺（目標 10〜14分 ±2）
     lo, hi = cfg["target_minutes"]
@@ -55,9 +58,9 @@ def check(day: int) -> tuple[list[str], list[str], list[str]]:
             # 同じ写真の連続使用（おみくじの意図的連続は allow_repeat で除外）
             if f and f == prev_file and not shot.get("allow_repeat"):
                 errors.append(f"[{sid}] 同じ写真を連続使用: {f}")
-            # DAY 混入チェック
-            if f and f in inv_day and inv_day[f] not in (None, day):
-                errors.append(f"[{sid}] DAY{inv_day[f]}の素材がDAY{day}に混入: {f}")
+            # DAY 混入チェック（旧2本立てのみ）
+            if legacy_day and f and f in inv_day and inv_day[f] not in (None, legacy_day):
+                errors.append(f"[{sid}] DAY{inv_day[f]}の素材がDAY{legacy_day}に混入: {f}")
             prev_file = f if f else prev_file
         # 素材不足（placeholder）→ warning
         n_ph = sum(1 for s in scene["shots"] if s["type"] == "placeholder")
@@ -85,9 +88,10 @@ def check(day: int) -> tuple[list[str], list[str], list[str]]:
         if scene.get("provenance_warning"):
             warnings.append(f"[{sid}] {scene['provenance_warning']}")
 
-        # 無音が不自然に長くないか（字幕もナレーションも無いのに尺が長い＝実質無音）
-        if not scene["audio"]["narration"] and not scene["captions"] and scene["duration"] > 6:
-            warnings.append(f"[{sid}] 字幕もナレーションも無く {scene['duration']:.0f}秒（無音が長い恐れ）")
+        # 無音が不自然に長くないか（字幕・ナレ・テロップいずれも無いのに尺が長い＝実質無音）
+        if (not scene["audio"]["narration"] and not scene["captions"]
+                and not scene.get("cards") and scene["duration"] > 6):
+            warnings.append(f"[{sid}] 字幕もナレも表示も無く {scene['duration']:.0f}秒（無音が長い恐れ）")
 
     # 目視必須項目
     manual += [
@@ -102,16 +106,17 @@ def check(day: int) -> tuple[list[str], list[str], list[str]]:
     inv_path = util.OUTPUTS_DIR / "asset_inventory.json"
     if inv_path.exists():
         portraits = [r["file"] for r in util.read_json(inv_path)
-                     if r.get("orientation") == "portrait" and r.get("day") == day]
+                     if r.get("orientation") == "portrait"
+                     and (legacy_day is None or r.get("day") == legacy_day)]
         if portraits:
             warnings.append(f"縦向き素材 {len(portraits)}枚あり（16:9では余白/ぼかし背景処理を確認）")
 
     return errors, warnings, manual
 
 
-def main(day: int) -> int:
-    errors, warnings, manual = check(day)
-    print(f"=== preflight DAY{day} ===")
+def main(slug: str) -> int:
+    errors, warnings, manual = check(slug)
+    print(f"=== preflight [{slug}] ===")
     if errors:
         print(f"[ERROR] {len(errors)}件:")
         for e in errors:
@@ -130,4 +135,4 @@ def main(day: int) -> int:
 
 if __name__ == "__main__":
     import sys
-    raise SystemExit(main(int(sys.argv[1]) if len(sys.argv) > 1 else 1))
+    raise SystemExit(main(sys.argv[1] if len(sys.argv) > 1 else "ishikawa"))

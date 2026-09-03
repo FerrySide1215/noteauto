@@ -49,13 +49,30 @@ def read_json(path: Path) -> Any:
         return json.load(fh)
 
 
+# ------------------------------------------------------------- cuts registry
+# 1本の書き出し単位（slug）→ 設定・原稿・音声・出力の対応。
+CUTS: dict[str, dict[str, str]] = {
+    "ishikawa": {"config": "ishikawa.yaml", "narration": "ishikawa_narration.txt",
+                 "vo": "ishikawa", "out": "ishikawa"},
+    # 旧2本立て（後方互換・参照用）
+    "day1": {"config": "day1.yaml", "narration": "day1_narration.txt", "vo": "day1", "out": "day1"},
+    "day2": {"config": "day2.yaml", "narration": "day2_narration.txt", "vo": "day2", "out": "day2"},
+}
+
+
+def cut(slug: str) -> dict[str, str]:
+    if slug not in CUTS:
+        raise KeyError(f"unknown cut: {slug} (choices: {', '.join(CUTS)})")
+    return CUTS[slug]
+
+
 # ------------------------------------------------------------- narration read
-def parse_narration(day: int) -> dict[str, list[str]]:
-    """scripts/dayN_narration.txt を {scene_id: [行, ...]} に。
+def parse_narration_file(name: str) -> dict[str, list[str]]:
+    """scripts/<name> を {scene_id: [行, ...]} に。
 
     '#' 始まりはコメント、'[id]' がブロック見出し。空行は行区切り扱い。
     """
-    path = SCRIPTS_DIR / f"day{day}_narration.txt"
+    path = SCRIPTS_DIR / name
     blocks: dict[str, list[str]] = {}
     cur: str | None = None
     for raw in path.read_text(encoding="utf-8").splitlines():
@@ -73,6 +90,11 @@ def parse_narration(day: int) -> dict[str, list[str]]:
             continue
         blocks[cur].append(line.strip())
     return blocks
+
+
+def parse_narration(day: int) -> dict[str, list[str]]:
+    """後方互換: dayN のナレーションを読む。"""
+    return parse_narration_file(f"day{day}_narration.txt")
 
 
 # ------------------------------------------------------------ ffmpeg wrappers

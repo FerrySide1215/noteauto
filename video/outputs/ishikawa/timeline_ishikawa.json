@@ -1,0 +1,1279 @@
+{
+  "slug": "ishikawa",
+  "theme": "方向転換ではなく、軌道修正。",
+  "resolution": [
+    1920,
+    1080
+  ],
+  "fps": 30,
+  "total_duration": 251.8,
+  "fonts": {
+    "mincho": "Hiragino Mincho ProN",
+    "gothic": "Hiragino Kaku Gothic ProN"
+  },
+  "scenes": [
+    {
+      "id": "title",
+      "kind": "title",
+      "start": 0.0,
+      "duration": 14.0,
+      "shots": [
+        {
+          "path": null,
+          "type": "placeholder",
+          "label": "石川・神社仏閣の旅",
+          "dur": 14.0,
+          "kenburns": "none"
+        }
+      ],
+      "audio": {
+        "narration": null,
+        "narration_dur": null,
+        "bgm_key": "op"
+      },
+      "captions": [],
+      "cards": [
+        {
+          "start": 0.4,
+          "end": 13.7,
+          "lines": [
+            {
+              "text": "叶結び",
+              "style": "title",
+              "dy": -59
+            },
+            {
+              "text": "石川・神社仏閣の旅",
+              "style": "subtitle",
+              "dy": 59
+            }
+          ]
+        }
+      ],
+      "nat_sound_break": false
+    },
+    {
+      "id": "intro",
+      "kind": "intro",
+      "start": 14.0,
+      "duration": 18.4,
+      "shots": [
+        {
+          "path": null,
+          "type": "placeholder",
+          "label": "intro",
+          "dur": 18.4,
+          "kenburns": "none"
+        }
+      ],
+      "audio": {
+        "narration": null,
+        "narration_dur": null,
+        "bgm_key": "op"
+      },
+      "captions": [
+        {
+          "start": 0.0,
+          "end": 3.31,
+          "text": "石川県を、二日間で巡りました。",
+          "red": []
+        },
+        {
+          "start": 3.31,
+          "end": 6.77,
+          "text": "訪ねたのは、六か所の神社とお寺。",
+          "red": []
+        },
+        {
+          "start": 6.77,
+          "end": 10.55,
+          "text": "どの場所でも、おみくじを引きました。",
+          "red": []
+        },
+        {
+          "start": 10.55,
+          "end": 15.55,
+          "text": "どんな言葉が出て、旅の終わりに、どうつながったのか。",
+          "red": []
+        },
+        {
+          "start": 15.55,
+          "end": 18.4,
+          "text": "静かに、たどってみます。",
+          "red": []
+        }
+      ],
+      "cards": [],
+      "nat_sound_break": false
+    },
+    {
+      "id": "kinkengu",
+      "kind": "shrine",
+      "start": 32.4,
+      "duration": 24.26,
+      "shots": [
+        {
+          "path": null,
+          "type": "placeholder",
+          "label": "金劔宮",
+          "dur": 6.67,
+          "kenburns": "none"
+        },
+        {
+          "path": null,
+          "type": "placeholder",
+          "label": "金劔宮",
+          "dur": 6.67,
+          "kenburns": "none"
+        },
+        {
+          "path": null,
+          "type": "placeholder",
+          "label": "末吉",
+          "dur": 10.92,
+          "kenburns": "none"
+        }
+      ],
+      "audio": {
+        "narration": null,
+        "narration_dur": null,
+        "bgm_key": "day1_amb"
+      },
+      "captions": [
+        {
+          "start": 0.0,
+          "end": 4.62,
+          "text": "はじめに向かったのは、金劔宮（きんけんぐう）。",
+          "red": []
+        },
+        {
+          "start": 4.62,
+          "end": 8.61,
+          "text": "古くから、金運の信仰で知られています。",
+          "red": []
+        },
+        {
+          "start": 8.61,
+          "end": 12.13,
+          "text": "けれど、引いたおみくじは、末吉。",
+          "red": []
+        },
+        {
+          "start": 12.13,
+          "end": 16.75,
+          "text": "商売の欄には、思いがけない損に気をつけて、と。",
+          "red": []
+        },
+        {
+          "start": 16.75,
+          "end": 20.9,
+          "text": "大きく動くより、小さなところを、丁寧に。",
+          "red": []
+        },
+        {
+          "start": 20.9,
+          "end": 24.26,
+          "text": "そんな注意を、受け取りました。",
+          "red": []
+        }
+      ],
+      "cards": [
+        {
+          "start": 0.5,
+          "end": 4.0,
+          "lines": [
+            {
+              "text": "金劔宮（きんけんぐう）",
+              "style": "location",
+              "dy": 380
+            },
+            {
+              "text": "石川県",
+              "style": "location",
+              "dy": 430
+            }
+          ]
+        },
+        {
+          "start": 6.7928000000000015,
+          "end": 9.392800000000001,
+          "lines": [
+            {
+              "text": "末吉",
+              "style": "onscreen",
+              "dy": 0
+            }
+          ]
+        },
+        {
+          "start": 10.92,
+          "end": 16.27,
+          "lines": [
+            {
+              "text": "商売　思いがけぬ損あり",
+              "style": "onscreen",
+              "red": [
+                "思いがけぬ損"
+              ],
+              "dy": 300
+            }
+          ]
+        },
+        {
+          "start": 15.77,
+          "end": 21.12,
+          "lines": [
+            {
+              "text": "小さい処に注意なさい",
+              "style": "onscreen",
+              "red": [
+                "小さい処"
+              ],
+              "dy": 300
+            }
+          ]
+        },
+        {
+          "start": 13.34,
+          "end": 24.26,
+          "lines": [
+            {
+              "text": "小さなところを、丁寧に",
+              "style": "vtext",
+              "vertical": true,
+              "dy": 0
+            }
+          ]
+        }
+      ],
+      "nat_sound_break": false
+    },
+    {
+      "id": "shirayama",
+      "kind": "shrine",
+      "start": 56.66,
+      "duration": 25.42,
+      "shots": [
+        {
+          "path": null,
+          "type": "placeholder",
+          "label": "白山比咩神社",
+          "dur": 6.99,
+          "kenburns": "none"
+        },
+        {
+          "path": null,
+          "type": "placeholder",
+          "label": "白山比咩神社",
+          "dur": 6.99,
+          "kenburns": "none"
+        },
+        {
+          "path": null,
+          "type": "placeholder",
+          "label": "小吉",
+          "dur": 11.44,
+          "kenburns": "none"
+        }
+      ],
+      "audio": {
+        "narration": null,
+        "narration_dur": null,
+        "bgm_key": "day1_amb"
+      },
+      "captions": [
+        {
+          "start": 0.0,
+          "end": 4.41,
+          "text": "次は、白山比咩神社（しらやまひめじんじゃ）。",
+          "red": []
+        },
+        {
+          "start": 4.41,
+          "end": 8.19,
+          "text": "石川で、最も大きな神社のひとつです。",
+          "red": []
+        },
+        {
+          "start": 8.19,
+          "end": 12.13,
+          "text": "ここでは、二枚のおみくじを引きました。",
+          "red": []
+        },
+        {
+          "start": 12.13,
+          "end": 14.37,
+          "text": "どちらも、小吉。",
+          "red": []
+        },
+        {
+          "start": 14.37,
+          "end": 18.47,
+          "text": "外へ求めるより、まず、自分を省みること。",
+          "red": []
+        },
+        {
+          "start": 18.47,
+          "end": 21.48,
+          "text": "そして、言葉を、慎むこと。",
+          "red": []
+        },
+        {
+          "start": 21.48,
+          "end": 25.42,
+          "text": "また、同じ方を向いている気がしました。",
+          "red": []
+        }
+      ],
+      "cards": [
+        {
+          "start": 0.5,
+          "end": 4.0,
+          "lines": [
+            {
+              "text": "白山比咩神社（しらやまひめじんじゃ）",
+              "style": "location",
+              "dy": 380
+            },
+            {
+              "text": "石川県",
+              "style": "location",
+              "dy": 430
+            }
+          ]
+        },
+        {
+          "start": 7.117600000000001,
+          "end": 9.717600000000001,
+          "lines": [
+            {
+              "text": "小吉",
+              "style": "onscreen",
+              "dy": 0
+            }
+          ]
+        },
+        {
+          "start": 11.44,
+          "end": 17.02,
+          "lines": [
+            {
+              "text": "意外の失費　他人の金儲けばかり目につく",
+              "style": "onscreen",
+              "red": [
+                "意外の失費",
+                "他人の金儲け"
+              ],
+              "dy": 300
+            }
+          ]
+        },
+        {
+          "start": 16.52,
+          "end": 22.11,
+          "lines": [
+            {
+              "text": "「口は禍の門」　言語に注意",
+              "style": "onscreen",
+              "red": [
+                "口",
+                "言語に注意"
+              ],
+              "dy": 300
+            }
+          ]
+        },
+        {
+          "start": 13.98,
+          "end": 20.32,
+          "lines": [
+            {
+              "text": "まず、自分を省みる",
+              "style": "vtext",
+              "vertical": true,
+              "dy": 0
+            }
+          ]
+        },
+        {
+          "start": 19.32,
+          "end": 25.42,
+          "lines": [
+            {
+              "text": "言葉を、慎む",
+              "style": "vtext",
+              "vertical": true,
+              "dy": 0
+            }
+          ]
+        }
+      ],
+      "nat_sound_break": false
+    },
+    {
+      "id": "hattori",
+      "kind": "shrine",
+      "start": 82.08,
+      "duration": 21.68,
+      "shots": [
+        {
+          "path": null,
+          "type": "placeholder",
+          "label": "服部神社",
+          "dur": 5.96,
+          "kenburns": "none"
+        },
+        {
+          "path": null,
+          "type": "placeholder",
+          "label": "服部神社",
+          "dur": 5.96,
+          "kenburns": "none"
+        },
+        {
+          "path": null,
+          "type": "placeholder",
+          "label": "中吉",
+          "dur": 9.76,
+          "kenburns": "none"
+        }
+      ],
+      "audio": {
+        "narration": null,
+        "narration_dur": null,
+        "bgm_key": "day1_amb"
+      },
+      "captions": [
+        {
+          "start": 0.0,
+          "end": 4.57,
+          "text": "一日目の最後は、服部神社（はっとりじんじゃ）。",
+          "red": []
+        },
+        {
+          "start": 4.57,
+          "end": 6.97,
+          "text": "おみくじは、中吉。",
+          "red": []
+        },
+        {
+          "start": 6.97,
+          "end": 10.3,
+          "text": "和歌には、岩の上に根を張る松。",
+          "red": []
+        },
+        {
+          "start": 10.3,
+          "end": 13.94,
+          "text": "風や雪に耐えて、なお緑を保つ、と。",
+          "red": []
+        },
+        {
+          "start": 13.94,
+          "end": 18.04,
+          "text": "今すぐ動くより、今いる場所で、根を張る。",
+          "red": []
+        },
+        {
+          "start": 18.04,
+          "end": 21.68,
+          "text": "一日目は、そんな言葉が続きました。",
+          "red": []
+        }
+      ],
+      "cards": [
+        {
+          "start": 0.5,
+          "end": 4.0,
+          "lines": [
+            {
+              "text": "服部神社（はっとりじんじゃ）",
+              "style": "location",
+              "dy": 380
+            },
+            {
+              "text": "石川県",
+              "style": "location",
+              "dy": 430
+            }
+          ]
+        },
+        {
+          "start": 6.0704,
+          "end": 8.6704,
+          "lines": [
+            {
+              "text": "中吉",
+              "style": "onscreen",
+              "dy": 0
+            }
+          ]
+        },
+        {
+          "start": 8.24,
+          "end": 11.73,
+          "lines": [
+            {
+              "text": "岩の上に根を張る松の",
+              "style": "onscreen",
+              "dy": 0
+            }
+          ]
+        },
+        {
+          "start": 11.13,
+          "end": 14.62,
+          "lines": [
+            {
+              "text": "風雪に耐えて",
+              "style": "onscreen",
+              "dy": 0
+            }
+          ]
+        },
+        {
+          "start": 14.02,
+          "end": 17.51,
+          "lines": [
+            {
+              "text": "常盤にみどり栄ゆる",
+              "style": "onscreen",
+              "dy": 0
+            }
+          ]
+        },
+        {
+          "start": 11.92,
+          "end": 21.68,
+          "lines": [
+            {
+              "text": "今いる場所で、根を張る",
+              "style": "vtext",
+              "vertical": true,
+              "dy": 0
+            }
+          ]
+        }
+      ],
+      "nat_sound_break": false
+    },
+    {
+      "id": "turn",
+      "kind": "interstitial",
+      "start": 103.76,
+      "duration": 14.0,
+      "shots": [
+        {
+          "path": null,
+          "type": "placeholder",
+          "label": "turn",
+          "dur": 14.0,
+          "kenburns": "none"
+        }
+      ],
+      "audio": {
+        "narration": null,
+        "narration_dur": null,
+        "bgm_key": "silence"
+      },
+      "captions": [
+        {
+          "start": 0.0,
+          "end": 4.23,
+          "text": "そして、翌日。",
+          "red": []
+        },
+        {
+          "start": 4.23,
+          "end": 14.0,
+          "text": "旅は、那谷寺（なたでら）から続きます。",
+          "red": []
+        }
+      ],
+      "cards": [
+        {
+          "start": 0.4,
+          "end": 13.7,
+          "lines": [
+            {
+              "text": "そして翌日",
+              "style": "onscreen",
+              "dy": 0
+            }
+          ]
+        }
+      ],
+      "nat_sound_break": false
+    },
+    {
+      "id": "natadera",
+      "kind": "shrine",
+      "start": 117.76,
+      "duration": 26.42,
+      "shots": [
+        {
+          "path": null,
+          "type": "placeholder",
+          "label": "那谷寺",
+          "dur": 7.27,
+          "kenburns": "none"
+        },
+        {
+          "path": null,
+          "type": "placeholder",
+          "label": "那谷寺",
+          "dur": 7.27,
+          "kenburns": "none"
+        },
+        {
+          "path": null,
+          "type": "placeholder",
+          "label": "末吉",
+          "dur": 11.89,
+          "kenburns": "none"
+        }
+      ],
+      "audio": {
+        "narration": null,
+        "narration_dur": null,
+        "bgm_key": "natadera"
+      },
+      "captions": [
+        {
+          "start": 0.0,
+          "end": 4.63,
+          "text": "二日目、最初に訪れたのは、那谷寺（なたでら）。",
+          "red": []
+        },
+        {
+          "start": 4.63,
+          "end": 8.47,
+          "text": "奇岩と緑に包まれた、静かなお寺です。",
+          "red": []
+        },
+        {
+          "start": 8.47,
+          "end": 10.89,
+          "text": "おみくじは、末吉。",
+          "red": []
+        },
+        {
+          "start": 10.89,
+          "end": 14.42,
+          "text": "けれど、言葉が少し変わりました。",
+          "red": []
+        },
+        {
+          "start": 14.42,
+          "end": 18.74,
+          "text": "若葉が芽吹き、花が咲き、やがて実をむすぶ。",
+          "red": []
+        },
+        {
+          "start": 18.74,
+          "end": 22.1,
+          "text": "次第に、運がひらけていく、と。",
+          "red": []
+        },
+        {
+          "start": 22.1,
+          "end": 26.42,
+          "text": "急がず、育てていきなさい。そう読めました。",
+          "red": []
+        }
+      ],
+      "cards": [
+        {
+          "start": 0.5,
+          "end": 4.0,
+          "lines": [
+            {
+              "text": "那谷寺（なたでら）",
+              "style": "location",
+              "dy": 380
+            },
+            {
+              "text": "石川県",
+              "style": "location",
+              "dy": 430
+            }
+          ]
+        },
+        {
+          "start": 7.3976000000000015,
+          "end": 9.997600000000002,
+          "lines": [
+            {
+              "text": "末吉",
+              "style": "onscreen",
+              "dy": 0
+            }
+          ]
+        },
+        {
+          "start": 10.04,
+          "end": 15.92,
+          "lines": [
+            {
+              "text": "もえ出ずる若葉の色ぞ美しき",
+              "style": "onscreen",
+              "dy": 0
+            }
+          ]
+        },
+        {
+          "start": 15.32,
+          "end": 21.21,
+          "lines": [
+            {
+              "text": "花さき実る末も見えつつ",
+              "style": "onscreen",
+              "dy": 0
+            }
+          ]
+        },
+        {
+          "start": 11.89,
+          "end": 17.67,
+          "lines": [
+            {
+              "text": "次第次第に運がひらけて盛んになります",
+              "style": "onscreen",
+              "red": [
+                "次第次第に運がひらけて"
+              ],
+              "dy": 300
+            }
+          ]
+        },
+        {
+          "start": 17.17,
+          "end": 22.96,
+          "lines": [
+            {
+              "text": "一足とびにとんで事をしようとするとあやまります",
+              "style": "onscreen",
+              "red": [
+                "一足とび"
+              ],
+              "dy": 300
+            }
+          ]
+        },
+        {
+          "start": 14.53,
+          "end": 26.42,
+          "lines": [
+            {
+              "text": "急がず、育てる",
+              "style": "vtext",
+              "vertical": true,
+              "dy": 0
+            }
+          ]
+        }
+      ],
+      "nat_sound_break": true
+    },
+    {
+      "id": "uhashi",
+      "kind": "shrine",
+      "start": 144.18,
+      "duration": 20.28,
+      "shots": [
+        {
+          "path": null,
+          "type": "placeholder",
+          "label": "菟橋神社",
+          "dur": 5.58,
+          "kenburns": "none"
+        },
+        {
+          "path": null,
+          "type": "placeholder",
+          "label": "菟橋神社",
+          "dur": 5.58,
+          "kenburns": "none"
+        },
+        {
+          "path": null,
+          "type": "placeholder",
+          "label": "第四十一番　小吉",
+          "dur": 9.13,
+          "kenburns": "none"
+        }
+      ],
+      "audio": {
+        "narration": null,
+        "narration_dur": null,
+        "bgm_key": "natadera"
+      },
+      "captions": [
+        {
+          "start": 0.0,
+          "end": 3.7,
+          "text": "次は、菟橋神社（うはしじんじゃ）。",
+          "red": []
+        },
+        {
+          "start": 3.7,
+          "end": 6.12,
+          "text": "おみくじは、小吉。",
+          "red": []
+        },
+        {
+          "start": 6.12,
+          "end": 8.39,
+          "text": "初めを、慎重に。",
+          "red": []
+        },
+        {
+          "start": 8.39,
+          "end": 12.09,
+          "text": "そして、相手を、よく見極めること。",
+          "red": []
+        },
+        {
+          "start": 12.09,
+          "end": 15.63,
+          "text": "ただ待つのではなく、見て、選ぶ。",
+          "red": []
+        },
+        {
+          "start": 15.63,
+          "end": 20.28,
+          "text": "少しずつ、動く方へ。言葉が、変わってきました。",
+          "red": []
+        }
+      ],
+      "cards": [
+        {
+          "start": 0.5,
+          "end": 4.0,
+          "lines": [
+            {
+              "text": "菟橋神社（うはし）",
+              "style": "location",
+              "dy": 380
+            },
+            {
+              "text": "石川県",
+              "style": "location",
+              "dy": 430
+            }
+          ]
+        },
+        {
+          "start": 5.678400000000001,
+          "end": 8.278400000000001,
+          "lines": [
+            {
+              "text": "第四十一番　小吉",
+              "style": "onscreen",
+              "dy": 0
+            }
+          ]
+        },
+        {
+          "start": 9.13,
+          "end": 13.68,
+          "lines": [
+            {
+              "text": "願望　初めにきをつけねば中途でやぶれる",
+              "style": "onscreen",
+              "red": [
+                "初めにきをつけねば"
+              ],
+              "dy": 300
+            }
+          ]
+        },
+        {
+          "start": 13.18,
+          "end": 17.74,
+          "lines": [
+            {
+              "text": "争事　相手を見極めよ",
+              "style": "onscreen",
+              "red": [
+                "見極めよ"
+              ],
+              "dy": 300
+            }
+          ]
+        },
+        {
+          "start": 11.15,
+          "end": 20.28,
+          "lines": [
+            {
+              "text": "見極めて、選ぶ",
+              "style": "vtext",
+              "vertical": true,
+              "dy": 0
+            }
+          ]
+        }
+      ],
+      "nat_sound_break": false
+    },
+    {
+      "id": "ataka",
+      "kind": "shrine",
+      "start": 164.46,
+      "duration": 28.14,
+      "shots": [
+        {
+          "path": null,
+          "type": "placeholder",
+          "label": "安宅住吉神社",
+          "dur": 7.74,
+          "kenburns": "none"
+        },
+        {
+          "path": null,
+          "type": "placeholder",
+          "label": "安宅住吉神社",
+          "dur": 7.74,
+          "kenburns": "none"
+        },
+        {
+          "path": null,
+          "type": "placeholder",
+          "label": "第四十番　吉",
+          "dur": 12.66,
+          "kenburns": "none"
+        }
+      ],
+      "audio": {
+        "narration": null,
+        "narration_dur": null,
+        "bgm_key": "ataka"
+      },
+      "captions": [
+        {
+          "start": 0.0,
+          "end": 5.04,
+          "text": "旅の最後は、安宅住吉神社（あたかすみよしじんじゃ）。",
+          "red": []
+        },
+        {
+          "start": 5.04,
+          "end": 9.3,
+          "text": "難関を突破する神様として、知られています。",
+          "red": []
+        },
+        {
+          "start": 9.3,
+          "end": 11.55,
+          "text": "おみくじは、吉。",
+          "red": []
+        },
+        {
+          "start": 11.55,
+          "end": 15.19,
+          "text": "時期を見て、あらためて進むとよい。",
+          "red": [
+            "あらため"
+          ]
+        },
+        {
+          "start": 15.19,
+          "end": 18.84,
+          "text": "人と力を合わせれば、よい道がある。",
+          "red": []
+        },
+        {
+          "start": 18.84,
+          "end": 23.57,
+          "text": "でも、悪いと分かっている道を、進んではいけない。",
+          "red": []
+        },
+        {
+          "start": 23.57,
+          "end": 28.14,
+          "text": "ここまでの言葉が、ひとつに、つながり始めます。",
+          "red": []
+        }
+      ],
+      "cards": [
+        {
+          "start": 0.5,
+          "end": 4.0,
+          "lines": [
+            {
+              "text": "安宅住吉神社（あたかすみよし）",
+              "style": "location",
+              "dy": 380
+            },
+            {
+              "text": "石川県",
+              "style": "location",
+              "dy": 430
+            }
+          ]
+        },
+        {
+          "start": 7.879200000000001,
+          "end": 10.4792,
+          "lines": [
+            {
+              "text": "第四十番　吉",
+              "style": "onscreen",
+              "dy": 0
+            }
+          ]
+        },
+        {
+          "start": 12.66,
+          "end": 16.91,
+          "lines": [
+            {
+              "text": "時期を考えてはやくあらため進むがよい",
+              "style": "onscreen",
+              "red": [
+                "時期を考えて",
+                "あらため"
+              ],
+              "dy": 300
+            }
+          ]
+        },
+        {
+          "start": 16.41,
+          "end": 20.67,
+          "lines": [
+            {
+              "text": "人と人と互に力あわせてすればよきみちあり",
+              "style": "onscreen",
+              "red": [
+                "力あわせて"
+              ],
+              "dy": 300
+            }
+          ]
+        },
+        {
+          "start": 20.17,
+          "end": 24.42,
+          "lines": [
+            {
+              "text": "けれどわるいみちと知りつつ進めばわるし",
+              "style": "onscreen",
+              "red": [
+                "わるいみちと知りつつ"
+              ],
+              "dy": 300
+            }
+          ]
+        },
+        {
+          "start": 15.48,
+          "end": 28.14,
+          "lines": [
+            {
+              "text": "あらためて、進む",
+              "style": "vtext",
+              "vertical": true,
+              "dy": 0
+            }
+          ]
+        }
+      ],
+      "nat_sound_break": false
+    },
+    {
+      "id": "soukatsu",
+      "kind": "summary_woman",
+      "start": 192.6,
+      "duration": 50.42,
+      "shots": [
+        {
+          "path": null,
+          "type": "placeholder",
+          "label": "（女性静止画＝バナー）",
+          "dur": 50.42,
+          "kenburns": "none"
+        }
+      ],
+      "audio": {
+        "narration": null,
+        "narration_dur": null,
+        "bgm_key": "soukatsu"
+      },
+      "captions": [
+        {
+          "start": 0.0,
+          "end": 3.4,
+          "text": "六か所の言葉を、並べてみます。",
+          "red": []
+        },
+        {
+          "start": 3.4,
+          "end": 7.12,
+          "text": "金劔宮は、小さなところを、丁寧に。",
+          "red": []
+        },
+        {
+          "start": 7.12,
+          "end": 11.32,
+          "text": "白山比咩神社は、自分を省み、言葉を慎む。",
+          "red": []
+        },
+        {
+          "start": 11.32,
+          "end": 15.19,
+          "text": "服部神社は、今いる場所で、根を張る。",
+          "red": []
+        },
+        {
+          "start": 15.19,
+          "end": 20.51,
+          "text": "ここまでが、一日目。止まって、足元を整える流れでした。",
+          "red": []
+        },
+        {
+          "start": 20.51,
+          "end": 23.59,
+          "text": "那谷寺は、急がず、育てる。",
+          "red": []
+        },
+        {
+          "start": 23.59,
+          "end": 26.83,
+          "text": "菟橋神社は、見極めて、選ぶ。",
+          "red": []
+        },
+        {
+          "start": 26.83,
+          "end": 30.55,
+          "text": "安宅住吉神社は、あらためて、進む。",
+          "red": []
+        },
+        {
+          "start": 30.55,
+          "end": 35.07,
+          "text": "二日目は、見極めて、必要な部分を直して進む。",
+          "red": []
+        },
+        {
+          "start": 35.07,
+          "end": 39.11,
+          "text": "最初と最後で、言葉は少し変わりました。",
+          "red": []
+        },
+        {
+          "start": 39.11,
+          "end": 42.18,
+          "text": "でも、矛盾はしていません。",
+          "red": []
+        },
+        {
+          "start": 42.18,
+          "end": 45.42,
+          "text": "方向転換ではなく、軌道修正。",
+          "red": []
+        },
+        {
+          "start": 45.42,
+          "end": 50.42,
+          "text": "今回の旅を振り返った時、私は、そう受け取りました。",
+          "red": []
+        }
+      ],
+      "cards": [
+        {
+          "start": 27.73,
+          "end": 49.91,
+          "lines": [
+            {
+              "text": "方向転換ではなく、軌道修正",
+              "style": "vtext_em",
+              "vertical": true,
+              "dy": 0
+            }
+          ]
+        }
+      ],
+      "nat_sound_break": false
+    },
+    {
+      "id": "ending",
+      "kind": "outro",
+      "start": 243.02,
+      "duration": 8.78,
+      "shots": [
+        {
+          "path": null,
+          "type": "placeholder",
+          "label": "ending",
+          "dur": 8.78,
+          "kenburns": "none"
+        }
+      ],
+      "audio": {
+        "narration": null,
+        "narration_dur": null,
+        "bgm_key": "ed"
+      },
+      "captions": [
+        {
+          "start": 0.0,
+          "end": 5.26,
+          "text": "この旅の言葉が、今、必要としている方へ届きますように。",
+          "red": []
+        },
+        {
+          "start": 5.26,
+          "end": 8.78,
+          "text": "また次の旅で、お会いしましょう。",
+          "red": []
+        }
+      ],
+      "cards": [
+        {
+          "start": 0.4,
+          "end": 8.479999999999999,
+          "lines": [
+            {
+              "text": "叶結び",
+              "style": "title",
+              "dy": -59
+            },
+            {
+              "text": "神社で答え合わせ",
+              "style": "subtitle",
+              "dy": 59
+            }
+          ]
+        }
+      ],
+      "nat_sound_break": false
+    }
+  ],
+  "warnings": [
+    "[title] グループ 'title_bg' に素材なし → placeholder",
+    "[intro] グループ 'broll' に素材なし → placeholder",
+    "[kinkengu] グループ 'kinkengu' に素材なし → placeholder",
+    "[kinkengu] グループ 'kinkengu' に素材なし → placeholder",
+    "[kinkengu] おみくじ素材 'kinkengu_omikuji' なし → placeholder",
+    "[shirayama] グループ 'shirayama' に素材なし → placeholder",
+    "[shirayama] グループ 'shirayama' に素材なし → placeholder",
+    "[shirayama] おみくじ素材 'shirayama_kaiun_omikuji' なし → placeholder",
+    "[hattori] グループ 'hattori' に素材なし → placeholder",
+    "[hattori] グループ 'hattori' に素材なし → placeholder",
+    "[hattori] おみくじ素材 'hattori_omikuji' なし → placeholder",
+    "[turn] グループ 'broll' に素材なし → placeholder",
+    "[natadera] グループ 'natadera' に素材なし → placeholder",
+    "[natadera] グループ 'natadera' に素材なし → placeholder",
+    "[natadera] おみくじ素材 'natadera_omikuji' なし → placeholder",
+    "[uhashi] グループ 'uhashi' に素材なし → placeholder",
+    "[uhashi] グループ 'uhashi' に素材なし → placeholder",
+    "[uhashi] おみくじ素材 'uhashi_omikuji' なし → placeholder",
+    "[ataka] グループ 'ataka' に素材なし → placeholder",
+    "[ataka] グループ 'ataka' に素材なし → placeholder",
+    "[ataka] おみくじ素材 'ataka_omikuji' なし → placeholder",
+    "[soukatsu] グループ 'woman' に素材なし → placeholder",
+    "[ending] グループ 'woman' に素材なし → placeholder"
+  ]
+}

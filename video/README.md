@@ -1,8 +1,9 @@
 # 叶結び 石川編 — 動画ビルドパイプライン
 
-実写の神社・おみくじを主役に、複数のおみくじを旅の流れとしてつなぐ動画（DAY1 / DAY2）を、
+実写の神社・おみくじを主役に、6か所のおみくじを旅の流れとしてつなぐ **1本・約10分の動画** を、
 **素材フォルダ＋ffmpeg があるローカル環境で** 自動生成するためのツール一式です。
-仕様書（叶結び YouTube「石川編」完全仕様書）に準拠しています。
+見た目はチャンネルのバナー世界観（ピンク・桜・柔らかい光・きらめき）で統一。
+台本・資料は `docs/ishikawa_script.html`（構成表／ナレーション全文／縦書き／BGM）も参照。
 
 > ⚠️ **このパイプラインはあなたのMac（素材とffmpegがある場所）で動かします。**
 > クラウド側のセッションはあなたの `ダウンロード` フォルダや ffmpeg にアクセスできないため、
@@ -19,23 +20,24 @@ video/
 ├── requirements.txt
 ├── omikuji_transcriptions.md     おみくじ翻刻＋出典管理（写真確認済 / 仕様書のみ を明示）
 ├── config/
-│   ├── project.yaml              解像度・fps・音量・色・フォント・BGM・素材分類の全体設定
-│   ├── day1.yaml                 DAY1 編集台本（シーン順・テロップ・おみくじ強調）
-│   └── day2.yaml                 DAY2 編集台本
+│   ├── project.yaml              解像度・fps・音量・色（ブランド配色）・フォント・BGM の全体設定
+│   ├── ishikawa.yaml             ★本番：単一動画の編集台本（シーン順・テロップ・縦書き・おみくじ）
+│   ├── day1.yaml / day2.yaml     旧2本立て（参照用）
 ├── scripts/
-│   ├── day1_narration.txt        DAY1 ナレーション確定稿
-│   └── day2_narration.txt        DAY2 ナレーション確定稿
+│   ├── ishikawa_narration.txt    ★本番：ナレーション確定稿（各所20〜30秒・ふりがな付き）
+│   └── day1_/day2_narration.txt  旧2本立て（参照用）
+├── docs/ishikawa_script.html     台本＆資料ページ（アーティファクト公開元）
 ├── build/                        Python パイプライン本体
 │   ├── scan_assets.py            素材スキャン→inventory＋manifest雛形
-│   ├── timeline.py               台本＋manifest＋ナレーション→timeline_dayN.json
-│   ├── ass.py                    ASS字幕・テロップ生成
+│   ├── timeline.py               台本＋manifest＋ナレーション→timeline_<slug>.json
+│   ├── ass.py                    ASS字幕・テロップ・縦書き生成
 │   ├── srt.py                    SRT生成
-│   ├── preflight.py              レンダー前チェック（§25）
+│   ├── preflight.py              レンダー前チェック
 │   ├── render.py                 ffmpegレンダー（Ken Burns/字幕焼込/ラウドネス）
 │   ├── tts_draft.py              仮ナレーション（DRAFT_TTS・確認用のみ）
 │   └── cli.py                    オーケストレータ
 ├── assets/        （あなたが用意）撮影素材とmanifest.yaml   ※gitignore
-├── voiceover/     （あなたが用意）録音ナレーション dayN/<scene>.wav ※gitignore
+├── voiceover/     （あなたが用意）録音ナレーション ishikawa/<scene>.wav ※gitignore
 ├── supplied_audio/（あなたが用意）BGM素材                   ※gitignore
 └── outputs/        生成物（timeline / srt / mp4 …）
 ```
@@ -54,57 +56,59 @@ pip install -r requirements.txt
 ### 1. 素材を置く
 石川旅行の写真・動画を `video/assets/` に入れる（サブフォルダ可）。
 BGMがあれば `video/supplied_audio/` に、録音ナレーションがあれば
-`video/voiceover/day1/<scene>.wav`（scene は台本の `[id]`）に置く。
+`video/voiceover/ishikawa/<scene>.wav`（scene は台本の `[id]`）に置く。
 
 ### 2. スキャン（inventory＋重複判定＋日付分類）
 ```bash
 cd video && python -m build.cli scan ./assets
 ```
 `outputs/asset_inventory.json` / `.csv` と、`assets/manifest.yaml` の**雛形**が出ます。
-撮影日で DAY1(2026-08-22)/DAY2(2026-08-23) を自動仕分け。神社の判定は自動でしません。
+撮影日で日付を記録（1本にまとめるので DAY 分けは不要）。神社の判定は自動でしません。
 
 ### 3. manifest を埋める（重要）
-`assets/manifest.yaml` の各素材に `group:` を記入します。グループ名:
+`assets/manifest.yaml` の各素材に `group:` を記入します。グループ名（単一動画 ishikawa）:
 
-- **DAY1**: `kinkengu` `kinkengu_omikuji` `shirayama` `shirayama_kaiun_omikuji`
-  `shirayama_futsu_omikuji` `hattori` `hattori_omikuji` `broll_day1`
-- **DAY2**: `natadera` `natadera_omikuji` `uhashi` `uhashi_omikuji`
-  `ataka` `ataka_omikuji` `broll_day2`
+- `kinkengu` `kinkengu_omikuji`
+- `shirayama` `shirayama_kaiun_omikuji` `shirayama_futsu_omikuji`
+- `hattori` `hattori_omikuji`
+- `natadera` `natadera_omikuji`
+- `uhashi` `uhashi_omikuji`
+- `ataka` `ataka_omikuji`
+- `title_bg`（OP背景）・`broll`（導入/転換/ED）・`woman`（総括＝バナーの女性）
 - 判別不能: `travel_broll`
 
 `*_omikuji` にはおみくじの寄りカットを入れてください。
 
-### 4. タイムライン→チェック→レンダー
+### 4. タイムライン→チェック→レンダー（1本）
 ```bash
-python -m build.cli day1 --step all       # timeline→srt→preflight→render
-python -m build.cli day2 --step all
+python -m build.cli ishikawa --step all       # timeline→srt→preflight→render
 ```
 段階実行も可能:
 ```bash
-python -m build.cli day1 --step timeline    # timeline_day1.json だけ
-python -m build.cli day1 --step preflight    # §25 チェックだけ
-python -m build.cli day1 --step render --quality wqhd   # 2560x1440
-python -m build.cli day1 --step render --preview-only    # プレビューだけ素早く
+python -m build.cli ishikawa --step timeline     # timeline_ishikawa.json だけ
+python -m build.cli ishikawa --step preflight     # チェックだけ
+python -m build.cli ishikawa --step render --quality wqhd    # 2560x1440
+python -m build.cli ishikawa --step render --preview-only     # プレビューだけ素早く
 ```
+※ 旧2本立て（`day1` / `day2`）も参照用に残していますが、本番は `ishikawa` 1本です。
 
 ### （任意）仮ナレーションで尺確認
 録音前に構成を確認したいとき（macOSのみ）:
 ```bash
-python -m build.cli day1 --step tts-draft   # voiceover/day1/DRAFT_TTS_*.wav
+python -m build.cli ishikawa --step tts-draft   # voiceover/ishikawa/DRAFT_TTS_*.wav
 ```
 これは**確認専用**。本番は `DRAFT_TTS_` を外した `<scene>.wav` に録音を置き換えます。
 
-## 出力（§24）
+## 出力
 ```
 outputs/
-├── day1/  kanau_musubi_ishikawa_day1.mp4  / _no_caption.mp4 / _preview.mp4
-│          timeline_day1.json / day1.srt / cards.ass / captions.ass
-├── day2/  （同上）
+├── ishikawa/  kanau_musubi_ishikawa.mp4  / _no_caption.mp4 / _preview.mp4
+│              timeline_ishikawa.json / ishikawa.srt / cards.ass / captions.ass
 ├── asset_inventory.json / .csv
 ```
 
 ## 尺・同期について
-- 録音音声 `voiceover/dayN/<scene>.wav` があれば、その実尺でシーン長が決まります。
+- 録音音声 `voiceover/ishikawa/<scene>.wav` があれば、その実尺でシーン長が決まります。
 - 無い場合はナレーション文字数からの**見積り**でドラフト尺を組みます（`--preview-only`向き）。
 - 字幕はシーン内で文字数比により配置します。精密な口パク同期が要る場合は、
   録音後に `captions.ass` を微調整するか、whisper 等での整音を検討してください。

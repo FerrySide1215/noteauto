@@ -35,18 +35,20 @@ audio:
   bgm_gain_db: -22.0            # BGMベースのゲイン
   bgm_duck_db: -12.0           # ナレーション区間でさらに下げる量（ducking）
 
-# 色（仕様書 §5）。ピンクのキラキラ系は禁止。
+# 色：チャンネルのブランド世界（ピンク・桜・金）。ASSは &HBBGGRR&
+# ※華やかさは出すが、桜や光は優しく・量は控えめに（速い点滅はしない）。
 colors:
-  kinari: "&HF2F4F5&"      # 生成り（ASSは &HBBGGRR& / AABBGGRR）
+  kinari: "&HF3EFFB&"      # 桜ピンクの地 (RGB FBEFF3 → BGR F3EFFB)
   white:  "&HFFFFFF&"
-  sumi:   "&H1A1A1A&"      # 墨色
-  vermilion: "&H2430C0&"   # 神社の朱色 (RGB C03024 → BGR 2430C0)
-  gold:   "&H2FA8C8&"      # 控えめな金色 (RGB C8A82F)
+  sumi:   "&H373F55&"      # 温かい茶＝ロゴ色 (RGB 553F37 → BGR 373F55)
+  vermilion: "&H2F45C8&"   # 鳥居の朱 (RGB C8452F → BGR 2F45C8)
+  gold:   "&H2C87B0&"      # 金 (RGB B0872C → BGR 2C87B0)
+  rose:   "&H6B46C6&"      # ブランドのローズ (RGB C6466B → BGR 6B46C6)
   # 字幕用
   caption_fill: "&HFFFFFF&"        # 白文字
-  caption_outline: "&H1A1A1A&"     # 濃色の薄い縁取り
-  keyword_red: "&H2430C0&"         # 重要語＝赤
-  keyword_gold: "&H2FA8C8&"        # 重要語＝金（代替）
+  caption_outline: "&H382A4A&"     # 深いプラムの細い縁取り (RGB 4A2A38 → BGR 382A4A)
+  keyword_red: "&H6B46C6&"         # 重要語＝ローズ
+  keyword_gold: "&H2C87B0&"        # 重要語＝金（代替）
 
 # フォント（仕様書 §4）。ローカルにインストールされている名前を上から順に探す。
 # タイトル・章タイトルは明朝、通常字幕はゴシック可。
@@ -57,6 +59,7 @@ fonts:
   chapter_size: 64
   caption_size: 52
   onscreen_size: 72
+  vtext_size: 84          # 中央の縦書き（受け取った言葉）
 
 # 字幕ルール（仕様書 §4）
 caption:
@@ -78,12 +81,19 @@ stills:
   omikuji_zoom_dur: 4.5
 
 # BGMムード → supplied_audio/ 内の該当ファイル名（存在すれば使用、無ければ無音）
-# 仕様書 §21。外部から著作権不明の曲を勝手にDLしない。
+# 外部から著作権不明の曲を勝手にDLしない。単一動画（石川編）のキュー。
 bgm:
-  day1: "bgm_day1_quiet_tension.*"       # 静か・少し緊張感・和風アンビエント
-  day2_early: "bgm_day2_serene.*"        # 静謐・自然・寺院
-  day2_natadera: "bgm_day2_brighten.*"   # 那谷寺以降 少し明るく
-  day2_ataka: "bgm_day2_hope.*"          # 穏やか・希望
+  op: "bgm_op_theme.*"           # 共通OP：やさしい・和・きらめき（シリーズ統一）
+  day1_amb: "bgm_day1_amb.*"     # 一日目：やさしい・淡い
+  natadera: "bgm_natadera.*"     # 那谷寺以降：少し明るい
+  ataka: "bgm_ataka_hope.*"      # 安宅：穏やか・希望
+  soukatsu: "bgm_soukatsu.*"     # 総括：静かに満ちる
+  ed: "bgm_ed_theme.*"           # 共通ED（シリーズ統一）
+  # 旧2本立て用（後方互換）
+  day1: "bgm_op_theme.*"
+  day2_early: "bgm_natadera.*"
+  day2_natadera: "bgm_natadera.*"
+  day2_ataka: "bgm_ataka_hope.*"
 
 # 素材の分類（仕様書 §3）
 assets:

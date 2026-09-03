@@ -185,7 +185,7 @@ def _burn(video: Path, audio: Path, ass_files: list[Path], out: Path,
               "-movflags", "+faststart", str(out)], quiet=False)
 
 
-def render(day: int, quality: str = "hd", only_preview: bool = False) -> None:
+def render(slug: str, quality: str = "hd", only_preview: bool = False) -> None:
     if not util.have_ffmpeg():
         raise SystemExit(
             "ffmpeg/ffprobe が見つかりません。ローカル環境（素材とffmpegがある場所）で実行してください。\n"
@@ -196,13 +196,14 @@ def render(day: int, quality: str = "hd", only_preview: bool = False) -> None:
     project["fonts"]["_resolved_mincho"] = util.resolve_font(project["fonts"]["mincho_priority"])
     project["fonts"]["_resolved_gothic"] = util.resolve_font(project["fonts"]["gothic_priority"])
 
-    tl_path = util.OUTPUTS_DIR / f"day{day}" / f"timeline_day{day}.json"
+    out_slug = util.cut(slug)["out"]
+    tl_path = util.OUTPUTS_DIR / out_slug / f"timeline_{out_slug}.json"
     timeline = util.read_json(tl_path)
     res = timeline["resolution"]
     if quality == "wqhd":
         res = project["video"]["wqhd"]
     fps = timeline["fps"]
-    outdir = util.OUTPUTS_DIR / f"day{day}"
+    outdir = util.OUTPUTS_DIR / out_slug
     outdir.mkdir(parents=True, exist_ok=True)
 
     # ASS 生成
@@ -211,7 +212,7 @@ def render(day: int, quality: str = "hd", only_preview: bool = False) -> None:
     cards_ass.write_text(ass.build_cards(timeline, project), encoding="utf-8")
     caps_ass.write_text(ass.build_captions(timeline, project), encoding="utf-8")
 
-    with tempfile.TemporaryDirectory(prefix=f"kanau_day{day}_") as td:
+    with tempfile.TemporaryDirectory(prefix=f"kanau_{out_slug}_") as td:
         tmp = Path(td)
         # 視覚（ショット→連結）
         clips = []
@@ -228,16 +229,16 @@ def render(day: int, quality: str = "hd", only_preview: bool = False) -> None:
         # 音声
         audio = _build_audio(timeline, project, tmp)
 
-        base = f"kanau_musubi_ishikawa_day{day}"
+        base = f"kanau_musubi_{out_slug}"
         if not only_preview:
             _burn(master, audio, [cards_ass, caps_ass], outdir / f"{base}.mp4", project)
             _burn(master, audio, [cards_ass], outdir / f"{base}_no_caption.mp4", project)
         _burn(master, audio, [cards_ass, caps_ass], outdir / f"{base}_preview.mp4",
               project, preview=True)
 
-    print(f"レンダー完了 DAY{day} → {outdir}")
+    print(f"レンダー完了 [{slug}] → {outdir}")
 
 
 if __name__ == "__main__":
     import sys
-    render(int(sys.argv[1]) if len(sys.argv) > 1 else 1)
+    render(sys.argv[1] if len(sys.argv) > 1 else "ishikawa")

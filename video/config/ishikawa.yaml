@@ -1,0 +1,158 @@
+# 叶結び 石川編 — 単一動画（6か所・1本・約10分）編集台本(EDL)
+# バナー世界観（ピンク・桜・柔らかい光・きらめき）で統一。写真とおみくじが主役。
+# narration_ref は scripts/ishikawa_narration.txt の [id] と対応。
+# vtext = 画面中央に縦書きで出す「受け取った言葉」。
+
+slug: ishikawa
+title_text: "石川・神社仏閣の旅"
+theme: "方向転換ではなく、軌道修正。"
+target_minutes: [9, 11]
+
+rules:
+  no_ai_footage: true
+  omikuji_no_rewrite: true
+  # 桜・光・きらめきは優しく、量は控えめ。速い切り替え・強い点滅はしない。
+  brand_soft_sparkle: true
+
+scenes:
+  # 共通タイトル（統一OP）
+  - id: title
+    kind: title
+    fixed_seconds: 14
+    bgm: op
+    group: title_bg
+    onscreen:
+      - { text: "叶結び", style: title }
+      - { text: "石川・神社仏閣の旅", style: subtitle }
+
+  # 短い導入（内容は説明しない）
+  - id: intro
+    kind: intro
+    narration_ref: intro
+    bgm: op
+    group: broll
+
+  # ── 一日目 ─────────────────────────────
+  - id: kinkengu
+    kind: shrine
+    narration_ref: kinkengu
+    bgm: day1_amb
+    group: kinkengu
+    location_card: { name: "金劔宮", reading: "きんけんぐう", region: "石川県" }
+    omikuji:
+      group: kinkengu_omikuji
+      label: "末吉"
+      highlights:
+        - { text: "商売　思いがけぬ損あり", red: ["思いがけぬ損"] }
+        - { text: "小さい処に注意なさい", red: ["小さい処"] }
+    vtext: ["小さなところを、丁寧に"]
+
+  - id: shirayama
+    kind: shrine
+    narration_ref: shirayama
+    bgm: day1_amb
+    group: shirayama
+    location_card: { name: "白山比咩神社", reading: "しらやまひめじんじゃ", region: "石川県" }
+    omikuji:
+      group: shirayama_kaiun_omikuji
+      label: "小吉"
+      highlights:
+        - { text: "意外の失費　他人の金儲けばかり目につく", red: ["意外の失費", "他人の金儲け"] }
+        - { text: "「口は禍の門」　言語に注意", red: ["口", "言語に注意"] }
+    vtext: ["まず、自分を省みる", "言葉を、慎む"]
+
+  - id: hattori
+    kind: shrine
+    narration_ref: hattori
+    bgm: day1_amb
+    group: hattori
+    location_card: { name: "服部神社", reading: "はっとりじんじゃ", region: "石川県" }
+    omikuji:
+      group: hattori_omikuji
+      label: "中吉"
+      waka_reveal:
+        - "岩の上に根を張る松の"
+        - "風雪に耐えて"
+        - "常盤にみどり栄ゆる"
+    vtext: ["今いる場所で、根を張る"]
+
+  # 転換（そして翌日）
+  - id: turn
+    kind: interstitial
+    narration_ref: turn
+    fixed_seconds: 14
+    bgm: silence
+    group: broll
+    onscreen:
+      - { text: "そして翌日", style: onscreen }
+
+  # ── 二日目 ─────────────────────────────
+  - id: natadera
+    kind: shrine
+    narration_ref: natadera
+    bgm: natadera
+    group: natadera
+    location_card: { name: "那谷寺", reading: "なたでら", region: "石川県" }
+    nat_sound_break: true
+    omikuji:
+      group: natadera_omikuji
+      label: "末吉"
+      waka_reveal:
+        - "もえ出ずる若葉の色ぞ美しき"
+        - "花さき実る末も見えつつ"
+      highlights:
+        - { text: "次第次第に運がひらけて盛んになります", red: ["次第次第に運がひらけて"] }
+        - { text: "一足とびにとんで事をしようとするとあやまります", red: ["一足とび"] }
+    vtext: ["急がず、育てる"]
+
+  - id: uhashi
+    kind: shrine
+    narration_ref: uhashi
+    bgm: natadera
+    group: uhashi
+    location_card: { name: "菟橋神社", reading: "うはし", region: "石川県" }
+    omikuji:
+      group: uhashi_omikuji
+      label: "第四十一番　小吉"
+      highlights:
+        - { text: "願望　初めにきをつけねば中途でやぶれる", red: ["初めにきをつけねば"] }
+        - { text: "争事　相手を見極めよ", red: ["見極めよ"] }
+    vtext: ["見極めて、選ぶ"]
+
+  - id: ataka
+    kind: shrine
+    narration_ref: ataka
+    bgm: ataka
+    group: ataka
+    location_card: { name: "安宅住吉神社", reading: "あたかすみよし", region: "石川県" }
+    prefer_komorebi: true
+    omikuji:
+      group: ataka_omikuji
+      label: "第四十番　吉"
+      highlights:
+        - { text: "時期を考えてはやくあらため進むがよい", red: ["時期を考えて", "あらため"] }
+        - { text: "人と人と互に力あわせてすればよきみちあり", red: ["力あわせて"] }
+        - { text: "けれどわるいみちと知りつつ進めばわるし", red: ["わるいみちと知りつつ"] }
+    vtext: ["あらためて、進む"]
+
+  # 総括（女性静止画）
+  - id: soukatsu
+    kind: summary_woman
+    narration_ref: soukatsu
+    bgm: soukatsu
+    group: woman
+    woman_still: true
+    timeline_sequence: [kinkengu, shirayama, hattori, natadera, uhashi, ataka]
+    vtext_emphasis: true
+    vtext: ["方向転換ではなく、軌道修正"]
+
+  # 共通エンディング
+  - id: ending
+    kind: outro
+    narration_ref: ending
+    bgm: ed
+    group: woman
+    onscreen:
+      - { text: "叶結び", style: title }
+      - { text: "神社で答え合わせ", style: subtitle }
+    cta: "チャンネル登録して、次の神社旅でまたお会いしましょう。"

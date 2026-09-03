@@ -82,6 +82,11 @@ def _styles(project: dict) -> list[str]:
         # ロケーション札（左下・ゴシック・小）
         f"Style: location,{gothic},44,{white},{white},{outline},&H64000000,"
         f"0,0,0,0,100,100,1,0,1,2.0,0,1,120,120,140,1",
+        # 縦書き（中央・受け取った言葉）
+        f"Style: vtext,{mincho},{f.get('vtext_size',84)},{white},{white},{sumi},&H50000000,"
+        f"0,0,0,0,100,100,4,0,1,3.0,1,5,60,60,60,1",
+        f"Style: vtext_em,{mincho},{f.get('vtext_size',84)},{_c(col['keyword_red'])},{white},{sumi},&H50000000,"
+        f"0,0,0,0,100,100,4,0,1,3.0,1,5,60,60,60,1",
     ]
 
 
@@ -140,8 +145,11 @@ def build_cards(timeline: dict, project: dict) -> str:
             e = scene["start"] + card["end"]
             for i, item in enumerate(card["lines"]):
                 style = item.get("style", "onscreen")
-                # 複数行は縦にずらして中央寄せ
-                text = colorize(item["text"], item.get("red", []), base, accent)
+                if item.get("vertical"):
+                    # 縦書き簡易：1文字ずつ改行して縦の列に（中央）
+                    text = "\\N".join(_escape(c) for c in item["text"])
+                else:
+                    text = colorize(item["text"], item.get("red", []), base, accent)
                 dy = item.get("dy")
                 if dy is not None:
                     text = f"{{\\pos({res[0]//2},{res[1]//2 + dy})}}" + text

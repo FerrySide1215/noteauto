@@ -15,14 +15,15 @@ from pathlib import Path
 from . import util
 
 
-def main(day: int) -> None:
+def main(slug: str) -> None:
+    cut = util.cut(slug)
     say = shutil.which("say")
     if not say:
         print("macOS の `say` が見つかりません。仮ナレーションはスキップします。")
-        print("（本番は voiceover/day%d/<scene>.wav に録音音声を置いてください）" % day)
+        print(f"（本番は voiceover/{cut['vo']}/<scene>.wav に録音音声を置いてください）")
         return
-    blocks = util.parse_narration(day)
-    outdir = util.VOICEOVER_DIR / f"day{day}"
+    blocks = util.parse_narration_file(cut["narration"])
+    outdir = util.VOICEOVER_DIR / cut["vo"]
     outdir.mkdir(parents=True, exist_ok=True)
     for sid, lines in blocks.items():
         if not lines:
@@ -40,4 +41,4 @@ def main(day: int) -> None:
 
 if __name__ == "__main__":
     import sys
-    main(int(sys.argv[1]) if len(sys.argv) > 1 else 1)
+    main(sys.argv[1] if len(sys.argv) > 1 else "ishikawa")

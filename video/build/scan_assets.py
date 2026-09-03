@@ -166,11 +166,15 @@ def write_manifest_skeleton(items: list[dict], project: dict) -> Path:
         return path
     lines = [
         "# 素材 → グループ割当。各 file の group: を埋める（推測での自動判定はしない）。",
-        "# DAY1 groups: kinkengu, kinkengu_omikuji, shirayama, shirayama_kaiun_omikuji,",
-        "#              shirayama_futsu_omikuji, hattori, hattori_omikuji, broll_day1",
-        "# DAY2 groups: natadera, natadera_omikuji, uhashi, uhashi_omikuji, ataka,",
-        "#              ataka_omikuji, broll_day2",
-        "# omikuji 系グループにはおみくじの寄りカットを入れる。判別不能は travel_broll。",
+        "# 単一動画(ishikawa)のグループ:",
+        "#   kinkengu / kinkengu_omikuji",
+        "#   shirayama / shirayama_kaiun_omikuji / shirayama_futsu_omikuji",
+        "#   hattori / hattori_omikuji",
+        "#   natadera / natadera_omikuji",
+        "#   uhashi / uhashi_omikuji",
+        "#   ataka / ataka_omikuji",
+        "#   title_bg（OP背景） / broll（導入・転換・ED） / woman（総括=バナーの女性）",
+        "# omikuji 系にはおみくじの寄りカットを。判別不能は travel_broll。",
         "assets:",
     ]
     for rec in sorted(items, key=_sort_key):
