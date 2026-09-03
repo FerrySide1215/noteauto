@@ -3,24 +3,30 @@
   @import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;600;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap');
 
   :root{
-    --ground:#F3EFE6; --surface:#FAF7F0; --surface-2:#ECE5D6; --sunk:#EAE3D3;
-    --ink:#23201B; --muted:#6E665A; --faint:#988C79;
-    --vermilion:#B23A2E; --gold:#9C7A34; --hairline:#DBD3C2; --hair-strong:#C9BEA6;
+    --ground:#FBEFF3; --surface:#FFFFFF; --surface-2:#FBE2EA; --sunk:#FDEDF1;
+    --ink:#553F37; --muted:#8B6F68; --faint:#B79AA3;
+    --vermilion:#C6466B; --gold:#B0872C; --hairline:#F1D7E0; --hair-strong:#E6BECC;
+    --mast-bg:linear-gradient(180deg,#FDEFF4 0%,#FBE6EE 55%,var(--ground) 100%);
+    --petal:#F3B9CC;
     --serif:"Shippori Mincho B1","Hiragino Mincho ProN","Yu Mincho",serif;
     --sans:"Zen Kaku Gothic New","Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;
     --wrap:960px;
   }
   @media (prefers-color-scheme:dark){
     :root:not([data-theme="light"]){
-      --ground:#15120B; --surface:#1E1A12; --surface-2:#262016; --sunk:#120F09;
-      --ink:#ECE5D6; --muted:#B6AB97; --faint:#8A7F6D;
-      --vermilion:#DB6150; --gold:#C9A24A; --hairline:#3A3225; --hair-strong:#4A4132;
+      --ground:#241820; --surface:#2E2029; --surface-2:#3A2A33; --sunk:#33232C;
+      --ink:#F3E1E8; --muted:#C6A9B3; --faint:#9C8089;
+      --vermilion:#EE8DAB; --gold:#D9B75A; --hairline:#43303A; --hair-strong:#573F4A;
+      --mast-bg:linear-gradient(180deg,#33232C 0%,#2A1C24 55%,var(--ground) 100%);
+      --petal:#5A3B48;
     }
   }
   :root[data-theme="dark"]{
-    --ground:#15120B; --surface:#1E1A12; --surface-2:#262016; --sunk:#120F09;
-    --ink:#ECE5D6; --muted:#B6AB97; --faint:#8A7F6D;
-    --vermilion:#DB6150; --gold:#C9A24A; --hairline:#3A3225; --hair-strong:#4A4132;
+    --ground:#241820; --surface:#2E2029; --surface-2:#3A2A33; --sunk:#33232C;
+    --ink:#F3E1E8; --muted:#C6A9B3; --faint:#9C8089;
+    --vermilion:#EE8DAB; --gold:#D9B75A; --hairline:#43303A; --hair-strong:#573F4A;
+    --mast-bg:linear-gradient(180deg,#33232C 0%,#2A1C24 55%,var(--ground) 100%);
+    --petal:#5A3B48;
   }
 
   *{box-sizing:border-box}
@@ -34,7 +40,13 @@
   .eyebrow{font-size:.72rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);font-weight:700}
   .quiet{color:var(--muted)}
 
-  header.mast{padding:78px 0 34px;border-bottom:1px solid var(--hairline)}
+  header.mast{padding:78px 0 40px;background:var(--mast-bg);border-bottom:1px solid var(--hairline);position:relative;overflow:hidden}
+  .petal{position:absolute;width:24px;height:24px;background:var(--petal);opacity:.45;
+    border-radius:0 100% 0 100%;pointer-events:none}
+  .petal.p1{top:44px;left:5%;transform:rotate(18deg);width:20px;height:20px;opacity:.38}
+  .petal.p2{top:130px;right:9%;transform:rotate(-38deg);opacity:.32}
+  .petal.p3{bottom:40px;left:15%;transform:rotate(58deg);width:16px;height:16px;opacity:.28}
+  .mast .wrap{position:relative;z-index:1}
   .mark{font-family:var(--serif);font-weight:800;font-size:clamp(2.6rem,7vw,4.2rem);
     letter-spacing:.14em;line-height:1;margin:0}
   .mast .sub{margin:.7rem 0 0;font-family:var(--serif);font-size:1.1rem;color:var(--muted);letter-spacing:.24em}
@@ -163,16 +175,18 @@
   @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
 </style>
 
-<header class="mast"><div class="wrap">
-  <div class="eyebrow">神社で答え合わせ</div>
+<header class="mast">
+  <span class="petal p1"></span><span class="petal p2"></span><span class="petal p3"></span>
+  <div class="wrap">
+  <div class="eyebrow">開運・おみくじ・ご縁の旅</div>
   <h1 class="mark">叶結び</h1>
   <p class="sub">石川・神社仏閣の旅</p>
-  <p class="doc">六か所を一本にまとめた、約10分の静かな映像作品。旅行Vlogでも解説動画でもない。
-  写真・おみくじ・音楽・縦書きの言葉・短いナレーションで見せる。現地映像が少ないことを前提にした構成です。</p>
+  <p class="doc">六か所を一本にまとめた、約10分。桜と柔らかい光——チャンネルのブランド世界（ピンク・和・きらめき）でまとめる、開運とご縁の旅。
+  写真・おみくじ・縦書きの言葉・短いナレーションで見せます。旅行Vlogでも解説動画でもありません。</p>
   <div class="badges">
     <span class="badge">6か所 ／ 1本</span><span class="badge">約10分</span>
     <span class="badge">各所ナレ 20〜30秒</span><span class="badge">写真・おみくじ主役</span>
-    <span class="badge">余白と静けさ</span>
+    <span class="badge">桜と柔らかい光</span>
   </div>
 </div></header>
 
@@ -189,23 +203,24 @@
 <!-- 演出方針 -->
 <section id="hoshin"><div class="wrap">
   <div class="sec-head"><span class="n">方針</span><h2>この一本の作り方</h2></div>
-  <p class="lead">断定はしない。「私はこう受け取った」という視点で、静かに共通点を拾う。最後の言葉は
-  <b class="quiet">方向転換ではなく、軌道修正</b>——ただし神様の断定ではなく、旅を振り返った私の受け取りとして置く。</p>
+  <p class="lead">断定はしない。「私はこう受け取った」という視点で、やさしく共通点を拾う。最後の言葉は
+  <b class="quiet">方向転換ではなく、軌道修正</b>——ただし神様の断定ではなく、旅を振り返った私の受け取りとして置く。
+  見た目は、チャンネルのバナー世界（ピンク・桜・柔らかい光・きらめき）で統一します。</p>
   <div class="stance-grid">
     <div class="stance"><h3>やること</h3><ul>
       <li>写真とおみくじを主役にする</li>
+      <li>ブランド世界（ピンク・桜・柔らかい光・きらめき）で全体を統一</li>
       <li>おみくじの要点は、画面中央の縦書きで見せる</li>
       <li>ナレーションは短く。全文は読み上げない</li>
       <li>写真はゆっくりした拡大・移動だけ</li>
-      <li>女性の静止画は、最後の総括だけに登場</li>
-      <li>共通タイトル・オープニング・エンディングで統一</li>
+      <li>共通タイトル・OP・ED、そして総括の女性でシリーズを統一</li>
     </ul></div>
     <div class="stance"><h3>やらないこと</h3><ul>
       <li class="no">DAY1・DAY2の2本に分ける</li>
       <li class="no">長い解説・Vlogにする</li>
       <li class="no">おみくじ全文を読み上げる</li>
-      <li class="no">派手な光・金粉・桜吹雪</li>
-      <li class="no">速い切り替え・強いトランジション</li>
+      <li class="no">「神様がこう言った」と断定する</li>
+      <li class="no">速い切り替え・うるさい演出（桜や光は優しく、量は控えめに）</li>
     </ul></div>
   </div>
 </div></section>
@@ -241,7 +256,7 @@
   <article class="scene"><div class="rail"><span class="tc">0:00–0:14</span><span class="kind">共通タイトル</span><span class="du">14秒</span></div>
     <div class="body">
       <div class="row"><span class="lab">演出</span><span class="c cue">生成りの地に墨の明朝。「叶結び」→やや間を置いて「石川・神社仏閣の旅」。ナレーションは入れず、音楽だけ。デザインとOP曲はシリーズ共通（地域名の行だけ差し替える）。</span></div>
-      <div class="row"><span class="lab">BGM</span><span class="c bgm"><b>共通OPテーマ</b>（静か・和・毎回同じ）</span></div>
+      <div class="row"><span class="lab">BGM</span><span class="c bgm"><b>共通OPテーマ</b>（やさしい・和・きらめき・毎回同じ）</span></div>
       <div class="row"><span class="lab">テロップ</span><span class="c"><span class="telops"><span class="chip big">叶結び</span><span class="chip">石川・神社仏閣の旅</span></span></span></div>
     </div>
   </article>
@@ -262,7 +277,7 @@
     <div class="body">
       <div class="row"><span class="lab">中間ﾀｲﾄﾙ</span><span class="c"><span class="telops"><span class="chip big">金劔宮</span><span class="chip">きんけんぐう</span></span></span></div>
       <div class="row"><span class="lab">写真</span><span class="c cue">境内・鳥居・参道をゆっくりPan/Zoom → おみくじ実物（末吉）→ 柔らかくぼかしたバナー風背景へ。</span></div>
-      <div class="row"><span class="lab">BGM</span><span class="c bgm">一日目アンビエント<b>A</b>（静・低い緊張）。おみくじ提示で<b>B</b>（残響・静止）へ切替。</span></div>
+      <div class="row"><span class="lab">BGM</span><span class="c bgm">一日目アンビエント<b>A</b>（やさしい・淡い）。おみくじ提示で<b>B</b>（残響・きらめき）へ切替。</span></div>
       <div class="row"><span class="lab">ナレ</span><div class="c nara">はじめに向かったのは、金劔宮（きんけんぐう）。
 古くから、金運の信仰で知られています。
 けれど、引いたおみくじは、末吉。
@@ -362,7 +377,7 @@
 
   <article class="scene"><div class="rail"><span class="tc">9:10–10:00</span><span class="kind">総括</span><span class="rd">女性静止画</span><span class="du">50秒</span></div>
     <div class="body">
-      <div class="row"><span class="lab">映像</span><span class="c cue">チャンネルのバナーの女性（着物姿・後ろ姿でおみくじを見上げる／朱鳥居・桜・光）の静止画。口は動かさず、ゆっくり拡大。背景の光や粒子だけを、ごくわずかに動かす。おみくじ写真を一枚ずつ小さく重ねて振り返る。<b>作品の静けさに合わせ、彩度をやや抑えた生成り寄りのトーンで</b>（ブランドのピンクは残しつつ落ち着かせる）。</span></div>
+      <div class="row"><span class="lab">映像</span><span class="c cue">チャンネルのバナーの女性（着物姿・後ろ姿でおみくじを見上げる／朱鳥居・桜・光）の静止画を<b>そのままの世界観で</b>。口は動かさず、ゆっくり拡大。桜の花びら・光・粒子をやさしく、ごくわずかに動かす。おみくじ写真を一枚ずつ小さく重ねて振り返る。</span></div>
       <div class="row"><span class="lab">BGM</span><span class="c bgm">静かに満ちる<b>E</b>。ナレの下で控えめに。</span></div>
       <div class="row"><span class="lab">ナレ</span><div class="c nara">六か所の言葉を、並べてみます。
 金劔宮は、小さなところを、丁寧に。
@@ -477,7 +492,7 @@
     </div>
     <div class="card"><h3 id="bgm">⑤ BGMを切り替える位置</h3>
       <div class="bgmlist">
-        <div class="bgmrow"><span class="t">0:00</span><span>共通OPテーマ（静か・和・シリーズ統一）。導入まで薄く継続。</span></div>
+        <div class="bgmrow"><span class="t">0:00</span><span>共通OPテーマ（やさしい・和・きらめき・シリーズ統一）。導入まで薄く継続。</span></div>
         <div class="bgmrow"><span class="t">0:40</span><span>一日目アンビエント<b>A</b>。各所の「おみくじ→縦書き」で<b>B</b>（残響・静止）へ、次の神社頭でAへ戻す。</span></div>
         <div class="bgmrow"><span class="t">4:44</span><span>転換：ほぼ無音＋かすかな環境音。</span></div>
         <div class="bgmrow"><span class="t">4:58</span><span>那谷寺：明るめ<b>C</b>。奇岩カットは自然音のみ（BGM一時カット）。</span></div>
@@ -488,8 +503,7 @@
     </div>
   </div>
   <p class="flag"><b>④ 使用写真の当て込みメモ</b>　おみくじ実物写真は6か所ぶん確認済みで使用可。境内・自然の現地写真は、白山比咩神社（拝殿）と那谷寺（奇岩・三重塔）が手元にあり。金劔宮・服部神社・菟橋神社・安宅住吉神社の境内写真は、手持ちの鳥居・社殿・参道カットを充てる（不足時はおみくじ＋縦書き＋ぼかし背景で持たせる）。<b>総括の女性静止画＝受領済みのチャンネルバナー</b>（着物の女性・朱鳥居・桜）を使用。写真の動きはゆっくりした拡大・移動のみ。</p>
-  <p class="flag"><b>ブランドと静けさの棲み分け</b>　バナーはピンク×桜のブランド世界。本編映像は「静けさ・生成り」で作るため、次のように使い分ける——
-  <b>共通タイトル／OP／ED</b>と各所の<b>ぼかしバナー風背景</b>はブランドのピンクをそのまま柔らかく（シリーズの顔として統一）。<b>本編の写真パート</b>は生成り・墨の静かなトーン。<b>総括の女性</b>はバナーを使うが彩度をやや抑え、クライマックスの静けさを保つ。これでブランド感と「ピンクのキラキラ系にしない」を両立させる。</p>
+  <p class="flag"><b>トーン：ブランド世界で全体を統一</b>　バナーのピンク×桜×柔らかい光×きらめきを、動画全体の基調にする。<b>共通タイトル／OP／ED・各所のぼかしバナー風背景・テロップ・総括の女性</b>まで、すべてこの世界観で。写真とおみくじが主役である点は変えない。桜の花びらや光・きらめきは<b>優しく、量は控えめに</b>——華やかさは出しつつ、うるさくならないように（速い切り替えや強い点滅はしない）。</p>
 </div></section>
 
 <!-- おみくじ資料 -->
