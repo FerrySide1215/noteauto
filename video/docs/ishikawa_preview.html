@@ -1,0 +1,345 @@
+<title>叶結び 石川編 試写</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;600;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap">
+<style>
+  :root{
+    --chrome:#241820; --chrome-2:#2E1F28;
+    --sakura-1:#FCE9F0; --sakura-2:#F7D9E4; --sakura-3:#F2C9D9;
+    --rose:#C6466B; --rose-soft:#E48AAA; --gold:#B0872C; --gold-2:#C9A24A;
+    --ink:#553F37; --ink-soft:#8B6F68; --white:#FFFFFF;
+    --petal:#F4B7CB; --torii:#C8452F;
+    --serif:"Shippori Mincho B1","Hiragino Mincho ProN","Yu Mincho",serif;
+    --sans:"Zen Kaku Gothic New","Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%}
+  body{background:var(--chrome);color:var(--white);font-family:var(--sans);
+    display:flex;flex-direction:column;min-height:100vh;overflow-x:hidden}
+
+  .topbar{display:flex;align-items:center;gap:14px;padding:12px 18px;color:#E9D9E0}
+  .topbar .logo{font-family:var(--serif);font-weight:800;letter-spacing:.14em;font-size:1.15rem}
+  .topbar .tag{font-size:.72rem;letter-spacing:.22em;color:var(--gold-2)}
+  .topbar .note{margin-left:auto;font-size:.72rem;color:#9C8590}
+
+  .stagewrap{flex:1;display:flex;align-items:center;justify-content:center;padding:8px 18px}
+  .stage{position:relative;width:100%;max-width:1120px;aspect-ratio:16/9;border-radius:12px;
+    overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.5);background:#000}
+
+  /* photo/background layer */
+  .photo{position:absolute;inset:0;overflow:hidden}
+  .photo .bg{position:absolute;inset:-6%;transition:transform 0.1s linear;
+    background:linear-gradient(160deg,var(--sakura-1),var(--sakura-2) 55%,var(--sakura-3));}
+  .bloom{position:absolute;width:60%;height:60%;right:-6%;top:-14%;border-radius:50%;
+    background:radial-gradient(circle,rgba(255,247,236,.95),rgba(255,240,220,.25) 45%,transparent 70%);
+    filter:blur(6px);pointer-events:none}
+  /* simple torii silhouette */
+  .torii{position:absolute;right:9%;bottom:8%;width:210px;height:230px;opacity:.5;pointer-events:none}
+  .torii i{position:absolute;background:var(--torii);border-radius:2px}
+  .torii .top{top:6px;left:-6px;right:-6px;height:16px;border-radius:4px}
+  .torii .top2{top:34px;left:6px;right:6px;height:11px}
+  .torii .p1{top:14px;bottom:0;left:34px;width:16px}
+  .torii .p2{top:14px;bottom:0;right:34px;width:16px}
+  .phototag{position:absolute;left:14px;top:12px;font-size:.66rem;letter-spacing:.06em;
+    color:#8a6b62;background:rgba(255,255,255,.6);border:1px solid rgba(150,110,100,.25);
+    padding:3px 9px;border-radius:999px}
+  .scrim{position:absolute;inset:0;background:
+    linear-gradient(180deg,rgba(30,15,25,.05),rgba(30,15,25,.02) 40%,rgba(60,25,45,.28));pointer-events:none}
+
+  /* petals */
+  .petal{position:absolute;width:16px;height:16px;background:var(--petal);opacity:.55;
+    border-radius:0 100% 0 100%;pointer-events:none;top:-24px}
+  @keyframes fall{0%{transform:translateY(-30px) rotate(0)}100%{transform:translateY(760px) rotate(220deg)}}
+
+  /* location card */
+  .loc{position:absolute;left:26px;bottom:24px;opacity:0;transform:translateY(10px);
+    transition:opacity .6s ease,transform .6s ease}
+  .loc .nm{font-family:var(--serif);font-weight:800;font-size:2.0rem;color:var(--ink);
+    text-shadow:0 1px 10px rgba(255,255,255,.5)}
+  .loc .rd{font-size:.8rem;letter-spacing:.14em;color:var(--rose);margin-top:2px}
+  .loc .rg{font-size:.72rem;color:var(--ink-soft);margin-top:3px}
+
+  /* omikuji card */
+  .omi{position:absolute;left:26px;top:50%;transform:translateY(-42%) translateX(-8px);opacity:0;
+    transition:opacity .7s ease,transform .7s ease;max-width:44%}
+  .omi .seal{display:inline-flex;align-items:center;justify-content:center;min-width:50px;height:50px;
+    padding:0 10px;border:2px solid var(--rose);color:var(--rose);border-radius:9px;font-family:var(--serif);
+    font-weight:800;transform:rotate(-4deg);background:rgba(255,255,255,.7);font-size:1.02rem}
+  .omi .q{font-family:var(--serif);font-size:1.16rem;line-height:1.7;color:var(--ink);margin-top:12px;
+    background:rgba(255,255,255,.72);border-left:3px solid var(--rose);border-radius:3px;padding:8px 13px;
+    box-shadow:0 6px 20px rgba(150,80,110,.14)}
+  .omi .q em{font-style:normal;color:var(--rose);font-weight:700}
+
+  /* center vertical text */
+  .vwrap{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none}
+  .vtext{writing-mode:vertical-rl;text-orientation:upright;font-family:var(--serif);font-weight:700;
+    font-size:clamp(1.6rem,4.4vw,3.1rem);letter-spacing:.14em;color:var(--ink);
+    text-shadow:0 2px 16px rgba(255,255,255,.7),0 0 2px rgba(255,255,255,.9);max-height:78%}
+  .vtext.em{color:var(--rose)}
+  .vtext .c{opacity:0;transform:translateY(-12px);transition:opacity .5s ease,transform .5s ease}
+  .vtext.show .c{opacity:1;transform:none}
+
+  /* big center title (title/turn/ending) */
+  .big{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    gap:10px;text-align:center;opacity:0;transition:opacity .9s ease}
+  .big .t1{font-family:var(--serif);font-weight:800;font-size:clamp(2.2rem,6vw,4rem);letter-spacing:.16em;color:var(--ink)}
+  .big .t2{font-family:var(--serif);font-size:clamp(1rem,2.6vw,1.5rem);letter-spacing:.2em;color:var(--rose)}
+  .big .knot{width:52px;height:52px;border:2px solid var(--gold);border-radius:50%;
+    display:flex;align-items:center;justify-content:center;color:var(--gold);font-family:var(--serif);margin-bottom:4px}
+
+  /* captions */
+  .cap{position:absolute;left:0;right:0;bottom:5.5%;display:flex;justify-content:center;padding:0 8%;pointer-events:none}
+  .cap span{font-family:var(--serif);font-size:clamp(.95rem,2.2vw,1.35rem);line-height:1.6;color:#fff;
+    background:rgba(52,24,42,.42);padding:6px 16px;border-radius:6px;backdrop-filter:blur(2px);
+    text-shadow:0 1px 3px rgba(0,0,0,.5);opacity:0;transition:opacity .35s ease;max-width:84%;text-align:center}
+  .cap span.on{opacity:1}
+
+  /* play overlay */
+  .play-ov{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+    background:rgba(36,18,28,.28);cursor:pointer;transition:opacity .3s;z-index:5}
+  .play-ov .btn{width:88px;height:88px;border-radius:50%;background:rgba(255,255,255,.9);
+    display:flex;align-items:center;justify-content:center;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+  .play-ov .btn::after{content:"";border-left:26px solid var(--rose);border-top:16px solid transparent;
+    border-bottom:16px solid transparent;margin-left:6px}
+  .play-ov.hidden{opacity:0;pointer-events:none}
+
+  /* controls */
+  .controls{max-width:1120px;width:100%;margin:0 auto;padding:10px 4px 4px;display:flex;flex-direction:column;gap:8px}
+  .scrub{position:relative;height:16px;display:flex;align-items:center;cursor:pointer}
+  .scrub .track{position:absolute;left:0;right:0;height:5px;border-radius:3px;background:#4a3540}
+  .scrub .fill{position:absolute;left:0;height:5px;border-radius:3px;background:linear-gradient(90deg,var(--rose),var(--gold-2))}
+  .scrub .tick{position:absolute;width:2px;height:12px;background:#6c5460;top:2px;transform:translateX(-1px)}
+  .ctl-row{display:flex;align-items:center;gap:14px;color:#E9D9E0;font-size:.82rem;flex-wrap:wrap}
+  button.ct{background:var(--chrome-2);color:#F3E4EA;border:1px solid #4a3540;border-radius:8px;
+    padding:7px 13px;font-family:var(--sans);font-size:.82rem;cursor:pointer}
+  button.ct:hover{border-color:var(--rose-soft)}
+  button.ct[aria-pressed="true"]{background:var(--rose);border-color:var(--rose);color:#fff}
+  .time{font-variant-numeric:tabular-nums;color:#C6A9B3}
+  .chaptitle{font-family:var(--serif);color:#F3E4EA;letter-spacing:.06em}
+  .sp{margin-left:auto}
+  .chips{display:flex;gap:6px;flex-wrap:wrap;max-width:1120px;margin:6px auto 30px;padding:0 4px}
+  .chip{font-size:.72rem;color:#C6A9B3;border:1px solid #4a3540;border-radius:999px;padding:4px 10px;cursor:pointer;
+    font-variant-numeric:tabular-nums}
+  .chip:hover{border-color:var(--rose-soft);color:#fff}
+  .chip.cur{background:var(--rose);border-color:var(--rose);color:#fff}
+  .foot{max-width:1120px;margin:0 auto 40px;padding:0 6px;color:#8C7580;font-size:.76rem;line-height:1.7}
+  @media (prefers-reduced-motion:reduce){.petal{display:none}}
+  :focus-visible{outline:2px solid var(--rose-soft);outline-offset:2px}
+</style>
+
+<div class="topbar">
+  <span class="logo">叶結び</span><span class="tag">石川・神社仏閣の旅</span>
+  <span class="note">試写版（アニマティック）／写真はプレースホルダ・音声は任意ON</span>
+</div>
+
+<div class="stagewrap">
+  <div class="stage" id="stage">
+    <div class="photo">
+      <div class="bg" id="bg"></div>
+      <div class="bloom"></div>
+      <div class="torii" id="torii"><i class="top"></i><i class="top2"></i><i class="p1"></i><i class="p2"></i></div>
+      <div class="scrim"></div>
+      <div class="phototag" id="phototag">［写真差し替え位置］</div>
+    </div>
+    <div id="petals"></div>
+    <div class="omi" id="omi"><span class="seal" id="seal">末吉</span><div class="q" id="omiq"></div></div>
+    <div class="loc" id="loc"><div class="nm" id="locnm"></div><div class="rd" id="locrd"></div><div class="rg" id="locrg">石川県</div></div>
+    <div class="vwrap"><div class="vtext" id="vtext"></div></div>
+    <div class="big" id="big"><div class="knot">結</div><div class="t1" id="bigt1"></div><div class="t2" id="bigt2"></div></div>
+    <div class="cap"><span id="cap"></span></div>
+    <div class="play-ov" id="playov"><div class="btn"></div></div>
+  </div>
+</div>
+
+<div class="controls">
+  <div class="scrub" id="scrub"><div class="track"></div><div class="fill" id="fill"></div></div>
+  <div class="ctl-row">
+    <button class="ct" id="playbtn">▶ 再生</button>
+    <span class="chaptitle" id="chap">共通タイトル</span>
+    <span class="time"><span id="tcur">0:00</span> / <span id="ttot">10:14</span></span>
+    <span class="sp"></span>
+    <button class="ct" id="narbtn" aria-pressed="false">🔊 ナレーション：OFF</button>
+    <button class="ct" id="speedbtn">速さ ×1</button>
+  </div>
+</div>
+<div class="chips" id="chips"></div>
+<div class="foot">
+  これは構成確認用の「試写版」です。実際の写真・BGM・本番ナレーションを差し替えると完成尺（約10分）になります。
+  縦書きの言葉・テロップ・おみくじ原文・タイミングは本番台本と同じ。ナレーションはブラウザの音声合成（ja-JP）で、対応環境のみ再生されます。
+</div>
+
+<script>
+const SC = [
+  {id:"title", chap:"共通タイトル", sec:14, kind:"big", motif:"torii", bright:1,
+    big:["叶結び","石川・神社仏閣の旅"], caps:[]},
+  {id:"intro", chap:"導入", sec:26, kind:"plain", motif:"nature",
+    caps:["石川県を、二日間で巡りました。","訪ねたのは、六か所の神社とお寺。","どの場所でも、おみくじを引きました。","旅の終わりに、その言葉がどうつながるのか。","静かに、たどってみます。"]},
+  {id:"kinkengu", chap:"金劔宮", sec:80, kind:"shrine", motif:"torii",
+    loc:["金劔宮","きんけんぐう"], seal:"末吉",
+    quotes:[["商売　思いがけぬ損あり",["思いがけぬ損"]],["小さい処に注意なさい",["小さい処"]]],
+    v:["小さなところを、丁寧に"],
+    caps:["はじめに向かったのは、金劔宮。","金運の信仰で知られる場所です。","でも、引いたのは末吉。","思いがけない損に、気をつけて、と。","小さなところを、丁寧に。"]},
+  {id:"shirayama", chap:"白山比咩神社", sec:88, kind:"shrine", motif:"torii",
+    loc:["白山比咩神社","しらやまひめじんじゃ"], seal:"小吉",
+    quotes:[["意外の失費　他人の金儲けばかり目につく",["意外の失費","他人の金儲け"]],["「口は禍の門」　言語に注意",["口","言語に注意"]]],
+    v:["まず、自分を省みる","言葉を、慎む"],
+    caps:["次は、白山比咩神社。","二枚のおみくじは、どちらも小吉。","外へ求めるより、まず自分を省みる。","そして、言葉を慎むこと。","また、同じ方を向いていました。"]},
+  {id:"hattori", chap:"服部神社", sec:76, kind:"shrine", motif:"nature",
+    loc:["服部神社","はっとりじんじゃ"], seal:"中吉",
+    quotes:[["岩の上に根を張る松の",[]],["風雪に耐えて　常盤にみどり栄ゆる",["根を張","栄ゆる"]]],
+    v:["今いる場所で、根を張る"],
+    caps:["一日目の最後は、服部神社。","中吉。岩に根を張る松。","風や雪に耐えて、なお緑を保つ。","今いる場所で、根を張る。","一日目は、そんな言葉が続きました。"]},
+  {id:"turn", chap:"転換", sec:14, kind:"big", motif:"nature", dim:1,
+    big:["そして翌日",""], caps:["そして、翌日。","旅は、那谷寺から続きます。"]},
+  {id:"natadera", chap:"那谷寺", sec:86, kind:"shrine", motif:"nature", bright:1,
+    loc:["那谷寺","なたでら"], seal:"末吉",
+    quotes:[["次第次第に運がひらけて盛んになります",["次第次第に運がひらけて"]],["一足とびにとぶとあやまります",["一足とび"]]],
+    v:["急がず、育てる"],
+    caps:["二日目、最初は那谷寺。","おみくじは末吉。","でも、言葉が変わりました。","若葉が芽吹き、花が咲き、実をむすぶ。","急がず、育てていきなさい。"]},
+  {id:"uhashi", chap:"菟橋神社", sec:76, kind:"shrine", motif:"torii", bright:1,
+    loc:["菟橋神社","うはし"], seal:"第四十一番　小吉",
+    quotes:[["初めにきをつけねば中途でやぶれる",["初めにきをつけねば"]],["争事　相手を見極めよ",["見極めよ"]]],
+    v:["見極めて、選ぶ"],
+    caps:["次は、菟橋神社。","初めを、慎重に。","相手を、よく見極めること。","ただ待つより、見て、選ぶ。","少しずつ、動く方へ。"]},
+  {id:"ataka", chap:"安宅住吉神社", sec:90, kind:"shrine", motif:"komorebi", bright:1,
+    loc:["安宅住吉神社","あたかすみよし"], seal:"第四十番　吉",
+    quotes:[["時期を考えてはやくあらため進むがよい",["時期を考えて","あらため"]],["人と人と互に力あわせてすればよきみちあり",["力あわせて"]],["けれどわるいみちと知りつつ進めばわるし",["わるいみちと知りつつ"]]],
+    v:["あらためて、進む"],
+    caps:["旅の最後は、安宅住吉神社。","吉。時期を見て、あらためて進む。","人と力を合わせれば、よい道がある。","でも、悪い道と知って進めば、悪い。","言葉が、ひとつにつながり始めます。"]},
+  {id:"soukatsu", chap:"総括", sec:50, kind:"woman", motif:"woman", bright:1,
+    v:["方向転換ではなく、軌道修正"], vem:1,
+    caps:["六か所の言葉を、並べてみます。","一日目は、止まって、足元を整える。","二日目は、見極めて、直して進む。","最初と最後で、言葉は変わりました。","でも、矛盾はしていません。","方向転換ではなく、軌道修正。","旅を振り返った時、私は、そう受け取りました。"]},
+  {id:"ending", chap:"共通エンディング", sec:14, kind:"big", motif:"torii", bright:1,
+    big:["叶結び","神社で答え合わせ"],
+    caps:["この言葉が、必要な方へ届きますように。","また次の旅で、お会いしましょう。"]},
+];
+const TOTAL = SC.reduce((a,s)=>a+s.sec,0);
+const starts=[]; {let t=0; for(const s of SC){starts.push(t); t+=s.sec;}}
+
+const $=id=>document.getElementById(id);
+const bg=$("bg"), torii=$("torii"), tag=$("phototag"), loc=$("loc"), locnm=$("locnm"), locrd=$("locrd"), locrg=$("locrg");
+const omi=$("omi"), omiq=$("omiq"), seal=$("seal"), vtext=$("vtext"), big=$("big"), bigt1=$("bigt1"), bigt2=$("bigt2");
+const cap=$("cap"), fill=$("fill"), tcur=$("tcur"), chap=$("chap"), playbtn=$("playbtn"), playov=$("playov");
+const narbtn=$("narbtn"), speedbtn=$("speedbtn"), chips=$("chips"), scrub=$("scrub");
+
+function fmt(s){s=Math.max(0,Math.floor(s));return Math.floor(s/60)+":"+String(s%60).padStart(2,"0");}
+$("ttot").textContent=fmt(TOTAL);
+
+// palette per scene (subtle variety within brand)
+const PAL={
+  torii:["#FCE9F0","#F7D9E4","#F2C9D9"],
+  nature:["#F3EEF0","#EAD9E0","#E6D3CE"],
+  komorebi:["#FBEFE9","#F5DFE0","#E8D2C8"],
+  woman:["#FCE7EF","#F6D4E1","#EFC4D6"],
+};
+
+let cur=-1, spokenFor=-1;
+function paint(i){
+  const s=SC[i];
+  const pal=PAL[s.motif]||PAL.torii;
+  bg.style.background=`linear-gradient(160deg,${pal[0]},${pal[1]} 55%,${pal[2]})`;
+  torii.style.display=(s.motif==="torii")?"block":"none";
+  tag.textContent = s.kind==="woman" ? "［バナーの女性静止画］"
+      : s.loc ? `［写真：${s.loc[0]} 境内 差し替え］`
+      : s.kind==="big" ? "［OP/ED 背景 差し替え］" : "［写真差し替え位置］";
+  // location
+  if(s.loc){locnm.textContent=s.loc[0];locrd.textContent=s.loc[1];}
+  loc.dataset.on=s.loc?"1":"0";
+  // omikuji
+  if(s.seal){seal.textContent=s.seal;}
+  omi.dataset.on=(s.quotes&&s.quotes.length)?"1":"0";
+  // big
+  if(s.kind==="big"){bigt1.textContent=s.big[0];bigt2.textContent=s.big[1]||"";}
+  // vtext build
+  vtext.className="vtext"+(s.vem?" em":"");
+  vtext.innerHTML="";
+  if(s.v){const str=s.v.join("　");for(const ch of str){const sp=document.createElement("span");sp.className="c";sp.textContent=ch;vtext.appendChild(sp);}}
+  cur=i;
+}
+function esc(t){return t.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+function omiHTML(q){let t=esc(q[0]);for(const w of (q[1]||[])){if(!w)continue;t=t.split(esc(w)).join("<em>"+esc(w)+"</em>");}return t;}
+
+function render(t){
+  let i=SC.length-1; for(let k=0;k<SC.length;k++){if(t>=starts[k])i=k;else break;}
+  const s=SC[i]; const p=Math.min(1,(t-starts[i])/s.sec);
+  if(i!==cur)paint(i);
+  chap.textContent=s.chap; tcur.textContent=fmt(t);
+  fill.style.width=(t/TOTAL*100)+"%";
+  document.querySelectorAll(".chip").forEach((c,k)=>c.classList.toggle("cur",k===i));
+  // ken burns
+  const sc=1.04+0.08*p; const tx=(i%2? -1:1)*3*p; const ty=(i%3? -1:1)*2*p;
+  bg.style.transform=`scale(${sc.toFixed(4)}) translate(${tx.toFixed(2)}%,${ty.toFixed(2)}%)`;
+  // big（タイトル/転換/ED）— 静止フレームでも見えるように
+  big.style.opacity=(s.kind==="big"&&p<0.95)?"1":"0";
+  // location fade window
+  setOn(loc, loc.dataset.on==="1" && p>0.04 && p<0.9);
+  // omikuji window + rotating quote
+  const showOmi = omi.dataset.on==="1" && p>0.33 && p<0.82;
+  setOn(omi, showOmi);
+  if(showOmi){const q=s.quotes;const idx=Math.min(q.length-1,Math.floor((p-0.33)/(0.49)*q.length));omiq.innerHTML=omiHTML(q[idx]);}
+  // vtext reveal
+  const showV = s.v && p>0.5;
+  vtext.classList.toggle("show",!!showV);
+  // captions
+  if(s.caps&&s.caps.length){
+    const a=0.05,b=0.97;const seg=(b-a)/s.caps.length;
+    if(p<a){cap.classList.remove("on");}
+    else{const ci=Math.min(s.caps.length-1,Math.floor((p-a)/seg));
+      const txt=s.caps[ci];
+      if(cap.textContent!==txt){cap.textContent=txt;cap.classList.remove("on");void cap.offsetWidth;cap.classList.add("on");}
+      cap.classList.add("on");}
+  } else {cap.classList.remove("on");}
+  // narration
+  if(narOn&&playing&&i!==spokenFor){speak(s.caps);spokenFor=i;}
+}
+function setOn(el,on){el.style.opacity=on?"1":"0";
+  if(el===loc)el.style.transform=on?"translateY(0)":"translateY(10px)";
+  if(el===omi)el.style.transform=on?"translateY(-42%) translateX(0)":"translateY(-42%) translateX(-8px)";}
+
+// speech
+let narOn=false, voiceJa=null;
+function pickVoice(){const vs=speechSynthesis.getVoices();voiceJa=vs.find(v=>/ja(-|_)?JP/i.test(v.lang))||vs.find(v=>/^ja/i.test(v.lang))||null;}
+if("speechSynthesis" in window){pickVoice();speechSynthesis.onvoiceschanged=pickVoice;}
+function speak(lines){if(!("speechSynthesis" in window)||!lines||!lines.length)return;
+  speechSynthesis.cancel();
+  const u=new SpeechSynthesisUtterance(lines.join("。"));
+  if(voiceJa)u.voice=voiceJa; u.lang="ja-JP"; u.rate=0.98; u.pitch=1.0;
+  speechSynthesis.speak(u);}
+function stopSpeak(){if("speechSynthesis" in window)speechSynthesis.cancel();spokenFor=-1;}
+
+// player clock
+let playing=false, elapsed=0, last=0, speed=1;
+function loop(ts){
+  if(playing){const dt=(ts-last)/1000*speed;last=ts;elapsed+=dt;
+    if(elapsed>=TOTAL){elapsed=TOTAL;render(elapsed);pause(true);}
+    else render(elapsed);}
+  requestAnimationFrame(loop);
+}
+requestAnimationFrame(t=>{last=t;render(0);requestAnimationFrame(loop);});
+
+function play(){playing=true;last=performance.now();spokenFor=-1;playbtn.textContent="❚❚ 一時停止";playov.classList.add("hidden");}
+function pause(end){playing=false;playbtn.textContent=end?"↻ もう一度":"▶ 再生";stopSpeak();if(end){playov.classList.remove("hidden");}}
+function toggle(){if(playing)pause(false);else{if(elapsed>=TOTAL)elapsed=0;play();}}
+playbtn.onclick=toggle; playov.onclick=toggle;
+narbtn.onclick=()=>{narOn=!narOn;narbtn.setAttribute("aria-pressed",narOn);narbtn.textContent="🔊 ナレーション："+(narOn?"ON":"OFF");if(!narOn)stopSpeak();else spokenFor=-1;};
+const speeds=[1,1.5,2]; let si=0;
+speedbtn.onclick=()=>{si=(si+1)%speeds.length;speed=speeds[si];speedbtn.textContent="速さ ×"+speed;};
+scrub.onclick=e=>{const r=scrub.getBoundingClientRect();elapsed=Math.max(0,Math.min(TOTAL,(e.clientX-r.left)/r.width*TOTAL));stopSpeak();render(elapsed);};
+
+// chapters + ticks
+SC.forEach((s,i)=>{
+  const c=document.createElement("div");c.className="chip";c.textContent=fmt(starts[i])+" "+s.chap;
+  c.onclick=()=>{elapsed=starts[i];stopSpeak();render(elapsed);};chips.appendChild(c);
+  if(i>0){const tk=document.createElement("div");tk.className="tick";tk.style.left=(starts[i]/TOTAL*100)+"%";scrub.appendChild(tk);}
+});
+
+// gentle petals
+if(!matchMedia("(prefers-reduced-motion:reduce)").matches){
+  const host=$("petals");
+  for(let k=0;k<7;k++){const p=document.createElement("div");p.className="petal";
+    p.style.left=(6+Math.random()*88)+"%";const d=9+Math.random()*8;
+    p.style.animation=`fall ${d}s linear ${(-Math.random()*d)}s infinite`;
+    p.style.opacity=(.3+Math.random()*.35).toFixed(2);const sz=(10+Math.random()*10)|0;
+    p.style.width=p.style.height=sz+"px";host.appendChild(p);}
+}
+</script>
