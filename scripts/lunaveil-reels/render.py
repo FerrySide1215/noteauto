@@ -564,7 +564,7 @@ def sc_new_moon_sky(c, A, seed):
         t = i / 15
         c.glow(80 + t * 1080, 1800 - t * 1550, 190, (95, 70, 160), 0.07)
     c.stars(1000, seed)
-    c.moon(880, 420, 100, "new")
+    c.moon(900, 560, 100, "new")
     c.glow(621, 2350, 760, (130, 70, 170), 0.4)
     c.glow(621, 2300, 520, (235, 170, 90), 0.13)
     A.random_tw(26, seed, y1=1700)
@@ -683,7 +683,7 @@ def sc_torii_glow(c, A, seed):
 def sc_full_moon(c, A, seed):
     c.vgrad([(0, (5, 7, 28)), (0.5, (17, 19, 58)), (1, (9, 8, 24))])
     c.stars(600, seed)
-    c.moon(621, 520, 230, "full", halo=1.2)
+    c.moon(621, 660, 230, "full", halo=1.2)
     rng = np.random.default_rng(seed + 61)
     for _ in range(16):
         c.glow(rng.uniform(0, 1242), rng.uniform(1250, 1800), rng.uniform(180, 380), (150, 150, 215),
@@ -703,7 +703,7 @@ def sc_moon_window(c, A, seed):
 def sc_two_stones(c, A, seed):
     c.vgrad([(0, (6, 4, 16)), (0.6, (20, 10, 34)), (1, (8, 5, 12))])
     c.stars(520, seed, y1=1300)
-    c.moon(621, 330, 70, "new")
+    c.moon(930, 540, 70, "new")
     c.table(1560, top=(36, 20, 40), bot=(9, 5, 10), seed=seed)
     c.gem(A, 380, 1730, 150, (245, 182, 64), seed)
     c.gem(A, 862, 1730, 150, (84, 146, 255), seed + 1)
