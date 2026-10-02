@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>10/11 新月×一粒万倍日</title>
+<link rel="stylesheet" href="node_modules/@fontsource/shippori-mincho/500.css">
+<link rel="stylesheet" href="node_modules/@fontsource/shippori-mincho/700.css">
+<link rel="stylesheet" href="node_modules/@fontsource/zen-kaku-gothic-new/500.css">
+<link rel="stylesheet" href="node_modules/@fontsource/zen-kaku-gothic-new/700.css">
+<link rel="stylesheet" href="node_modules/@fontsource/cormorant-garamond/500.css">
+<link rel="stylesheet" href="node_modules/@fontsource/cormorant-garamond/600.css">
+<style>
+:root{
+  --gold:#ecd29a; --gold2:#c99f56; --ink:#f6f1e7; --sub:rgba(246,241,231,.74);
+  --line:rgba(236,210,154,.55);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#060a1c}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;
+  background:linear-gradient(180deg,#05081a 0%,#0c1236 34%,#18184a 66%,#271f50 100%);
+  color:var(--ink);font-family:'Shippori Mincho',serif;
+  -webkit-font-smoothing:antialiased;font-feature-settings:"palt" 1;}
+canvas{position:absolute;inset:0}
+.ov{position:absolute;inset:0;opacity:0;pointer-events:none}
+#warm{background:radial-gradient(ellipse 70% 40% at 50% 32%,rgba(236,190,110,.22),rgba(236,190,110,0) 70%)}
+#dawn{background:radial-gradient(ellipse 120% 55% at 50% 112%,rgba(255,176,128,.42),rgba(214,140,170,.16) 45%,rgba(0,0,0,0) 75%)}
+#noise{position:absolute;inset:0;opacity:.05;mix-blend-mode:overlay}
+
+#halo,#moon{position:absolute;border-radius:50%}
+#moon{
+  background:radial-gradient(circle at 36% 32%,#1d2457 0%,#0d1233 55%,#070a1f 100%);
+  box-shadow:0 0 0 2px rgba(236,210,154,.62),0 0 36px 4px rgba(236,210,154,.42),
+    0 0 140px 34px rgba(160,140,255,.20),inset -26px -30px 70px rgba(0,0,0,.55),
+    inset 10px 12px 34px rgba(236,210,154,.10);
+}
+#halo{background:radial-gradient(circle,rgba(236,210,154,0) 52%,rgba(236,210,154,.16) 58%,rgba(190,170,255,.07) 66%,rgba(236,210,154,0) 76%)}
+#libra{position:absolute;left:0;top:0;width:100%;height:100%;opacity:0}
+
+.a{position:absolute;left:0;right:0;text-align:center;opacity:0;will-change:transform,opacity,filter}
+.min{font-family:'Shippori Mincho',serif}
+.goth{font-family:'Zen Kaku Gothic New',sans-serif}
+.lat{font-family:'Cormorant Garamond',serif;font-variant-numeric:lining-nums}
+.gold{color:var(--gold)}
+.gg{background:linear-gradient(180deg,#fbe9bf 0%,#e6c27e 55%,#c3954b 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sh{text-shadow:0 2px 28px rgba(4,6,22,.75)}
+.label{font-variant-numeric:lining-nums;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:40px;letter-spacing:.32em;color:var(--gold)}
+.pill{display:inline-block;border:2px solid var(--line);border-radius:999px;padding:14px 38px 16px;
+  font-family:'Zen Kaku Gothic New',sans-serif;font-weight:500;font-size:38px;color:var(--ink);
+  background:rgba(10,14,44,.35);letter-spacing:.04em}
+.rule{position:absolute;left:50%;width:140px;height:2px;margin-left:-70px;opacity:0;
+  background:linear-gradient(90deg,rgba(236,210,154,0),var(--gold),rgba(236,210,154,0))}
+.chip{display:inline-block;border:2px solid var(--line);border-radius:999px;padding:12px 30px 14px;
+  font-family:'Zen Kaku Gothic New',sans-serif;font-weight:500;font-size:40px;margin:0 9px;background:rgba(10,14,44,.35)}
+
+#card{left:110px;right:110px;height:470px;border:2px solid rgba(236,210,154,.45);border-radius:40px;
+  background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.025))}
+.trow{position:absolute;left:0;right:0;display:flex;justify-content:center;align-items:flex-start;gap:20px}
+.tcol{width:330px;text-align:center}
+.tnum{font-variant-numeric:lining-nums;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:176px;line-height:1;letter-spacing:.01em}
+.tcap{font-family:'Zen Kaku Gothic New',sans-serif;font-weight:500;font-size:36px;color:var(--sub);margin-top:18px}
+.tdash{width:70px;height:2px;margin-top:92px;background:var(--gold)}
+
+.row{position:absolute;left:110px;width:860px;display:flex;align-items:center;gap:36px;opacity:0;text-align:left}
+.num{font-variant-numeric:lining-nums;flex:none;width:100px;height:100px;border-radius:50%;border:2px solid var(--line);display:flex;align-items:center;justify-content:center;
+  font-family:'Cormorant Garamond',serif;font-weight:600;font-size:58px;color:var(--gold);background:rgba(10,14,44,.35);padding-bottom:6px}
+.rmain{font-family:'Shippori Mincho',serif;font-weight:700;font-size:52px;line-height:1.35}
+.rsub{font-family:'Zen Kaku Gothic New',sans-serif;font-weight:500;font-size:34px;color:var(--sub);margin-top:8px}
+</style>
+</head>
+<body>
+<div id="stage">
+  <canvas id="sky" width="1080" height="1920"></canvas>
+  <div id="warm" class="ov"></div>
+  <div id="dawn" class="ov"></div>
+  <div id="halo"></div>
+  <div id="moon">
+    <svg id="libra" viewBox="0 0 100 100" fill="none" stroke="#ecd29a" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M24 66 H76"/>
+      <path d="M24 54 H38 A15 15 0 1 1 62 54 H76"/>
+    </svg>
+  </div>
+  <canvas id="fx" width="1080" height="1920"></canvas>
+
+  <!-- persistent header -->
+  <div class="a label" style="top:300px;font-size:38px" data-s="3.9" data-e="99">2026.10.11 SUN</div>
+
+  <!-- S1 hook 0–3.8 -->
+  <div class="a label" style="top:842px;font-size:46px" data-s="0.05" data-e="3.8">2026</div>
+  <div class="a lat sh" style="top:880px;font-weight:600;font-size:270px;line-height:1" data-s="0.1" data-e="3.8" data-z="1">10<span style="font-size:200px;font-weight:500;margin:0 6px;position:relative;top:-14px">/</span>11<span class="min" style="font-size:66px;font-weight:500;margin-left:14px">(日)</span></div>
+  <div class="a min sh" style="top:1176px;font-weight:700;font-size:94px;line-height:1.2" data-s="0.4" data-e="3.8">新月<span class="gold" style="font-weight:500;margin:0 22px">×</span>一粒万倍日</div>
+  <div class="a min sh" style="top:1306px;font-weight:500;font-size:50px" data-s="0.85" data-e="3.8">が重なる、願いの種まき日</div>
+  <div class="a" style="top:1402px" data-s="1.25" data-e="3.8"><span class="pill">保存して、当日見返してね</span></div>
+
+  <!-- S2 new moon 3.8–9.4 -->
+  <div class="a label" style="top:790px" data-s="4.5" data-e="9.4">NEW MOON in LIBRA</div>
+  <div class="a min sh" style="top:868px;font-weight:500;font-size:54px" data-s="4.8" data-e="9.4">新月は</div>
+  <div class="a min sh" style="top:944px;font-weight:700;font-size:86px;line-height:1.3" data-s="5.05" data-e="9.4">新しいサイクルの<br>はじまり</div>
+  <div class="rule a" style="top:1196px" data-s="5.7" data-e="9.4"></div>
+  <div class="a goth sh" style="top:1232px;font-weight:500;font-size:40px;color:var(--sub)" data-s="5.9" data-e="9.4">天秤座の新月のテーマ</div>
+  <div class="a" style="top:1310px" data-s="6.3" data-e="9.4"><span class="chip">人間関係</span><span class="chip">バランス</span><span class="chip">心地よさ</span></div>
+
+  <!-- S3 ichiryu manbai 9.4–14.4 -->
+  <div class="a goth gold" style="top:842px;font-weight:500;font-size:34px;letter-spacing:.3em" data-s="10.3" data-e="14.4">いちりゅうまんばいび</div>
+  <div class="a min" style="top:888px;font-weight:700;font-size:128px;line-height:1.2" data-s="10.5" data-e="14.4" data-z="1"><span class="gg">一粒万倍日</span></div>
+  <div class="a min sh" style="top:1090px;font-weight:500;font-size:60px" data-s="11.2" data-e="14.4">一粒の種が</div>
+  <div class="a min sh" style="top:1172px;font-weight:700;font-size:92px;line-height:1.2" data-s="11.5" data-e="14.4"><span class="gg">万倍</span>に実る日</div>
+  <div class="a goth sh" style="top:1318px;font-weight:500;font-size:38px;color:var(--sub)" data-s="12.0" data-e="14.4">始めたことが大きく育つといわれる吉日</div>
+
+  <!-- S4 best time 14.4–20.8 -->
+  <div class="a label" style="top:462px" data-s="14.8" data-e="20.8">BEST TIME</div>
+  <div class="a min sh" style="top:522px;font-weight:700;font-size:92px;line-height:1.25" data-s="15.0" data-e="20.8">願いを書くなら</div>
+  <div class="a" id="card" style="top:700px" data-s="15.4" data-e="20.8"></div>
+  <div class="a label" style="top:752px;font-size:44px" data-s="15.6" data-e="20.8">10.11 SUN</div>
+  <div class="a" style="top:836px;height:300px" data-s="15.9" data-e="20.8">
+    <div class="trow">
+      <div class="tcol"><div class="tnum">0:50</div><div class="tcap">新月の瞬間</div></div>
+      <div class="tdash"></div>
+      <div class="tcol"><div class="tnum gold">8:00</div><div class="tcap">朝8時ごろまで</div></div>
+    </div>
+  </div>
+  <div class="a goth sh" style="top:1240px;font-weight:500;font-size:36px;color:var(--sub);line-height:1.6" data-s="16.8" data-e="20.8">※ 8:08〜翌0:22 は月のボイドタイム<br>この時間の願い事は避けるのがおすすめ</div>
+
+  <!-- S5 to do 20.8–26.6 -->
+  <div class="a min sh" style="top:440px;font-weight:700;font-size:76px;line-height:1.3" data-s="21.1" data-e="26.6">この日にやりたいこと</div>
+  <div class="rule a" style="top:560px" data-s="21.4" data-e="26.6"></div>
+  <div class="row a" style="top:630px" data-s="21.8" data-e="26.6">
+    <div class="num">1</div>
+    <div><div class="rmain">願いを「叶った形」で書く</div><div class="rsub">例）心地よい人たちに囲まれています</div></div>
+  </div>
+  <div class="row a" style="top:870px" data-s="22.9" data-e="26.6">
+    <div class="num">2</div>
+    <div><div class="rmain">小さく、ひとつ始める</div><div class="rsub">手帳・貯金・新しい習慣など</div></div>
+  </div>
+  <div class="row a" style="top:1110px" data-s="24.0" data-e="26.6">
+    <div class="num">3</div>
+    <div><div class="rmain">大切な人に「ありがとう」</div><div class="rsub">天秤座のテーマは、人とのつながり</div></div>
+  </div>
+
+  <!-- S6 caution + CTA 26.6–32 -->
+  <div class="a" style="top:440px;height:200px" data-s="26.9" data-e="99" data-grow="1">
+    <svg width="200" height="200" viewBox="0 0 200 200" fill="none" stroke="#ecd29a" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M100 186 V104"/>
+      <path d="M100 120 C100 78 72 58 34 60 C34 98 60 122 100 120 Z" fill="rgba(236,210,154,.16)"/>
+      <path d="M100 104 C100 58 128 32 170 34 C170 78 142 104 100 104 Z" fill="rgba(236,210,154,.16)"/>
+      <path d="M62 186 H138" stroke-opacity=".55"/>
+    </svg>
+  </div>
+  <div class="a min sh" style="top:690px;font-weight:500;font-size:52px" data-s="27.3" data-e="99">不成就日とも重なる日だから</div>
+  <div class="a min sh" style="top:782px;font-weight:500;font-size:60px" data-s="27.6" data-e="99">大きな決断より</div>
+  <div class="a min" style="top:874px;font-weight:700;font-size:124px;line-height:1.2" data-s="27.9" data-e="99" data-z="1"><span class="gg">種まき</span>の日に</div>
+  <div class="rule a" style="top:1068px" data-s="28.5" data-e="99"></div>
+  <div class="a goth sh" style="top:1110px;font-weight:700;font-size:46px" data-s="28.7" data-e="99">あなたの願い、コメントで教えてね</div>
+  <div class="a" style="top:1206px" data-s="29.1" data-e="99"><span class="pill">保存して、当日見返してね</span></div>
+
+  <canvas id="noise" width="1080" height="1920"></canvas>
+</div>
+
+<script>
+const DUR = 32;
+window.DUR = DUR;
+const clamp=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+const eOut=x=>1-Math.pow(1-x,3);
+const smooth=x=>x*x*(3-2*x);
+function rng(seed){let s=seed>>>0;return()=>{s=(s+0x6D2B79F5)>>>0;let t=s;t=Math.imul(t^(t>>>15),t|1);t^=t+Math.imul(t^(t>>>7),t|61);return((t^(t>>>14))>>>0)/4294967296}}
+
+// stars
+const R=rng(20261011);
+const stars=[];
+for(let i=0;i<280;i++){
+  const big=R()<0.08;
+  stars.push({x:R()*1080,y:R()*1920,r:big?1.6+R()*1.6:0.5+R()*1.2,a:0.25+R()*0.65,f:0.4+R()*1.6,p:R()*6.28,big});
+}
+// burst particles (一粒→万倍)
+const parts=[];
+const PR=rng(8);
+for(let i=0;i<260;i++){
+  const ang=PR()*Math.PI*2, sp=110+PR()*430;
+  parts.push({vx:Math.cos(ang)*sp,vy:Math.sin(ang)*sp*0.8-60,r:1.2+PR()*3.4,life:2.2+PR()*2.4,h:PR(),tw:PR()*6.28});
+}
+const rise=[];
+for(let i=0;i<70;i++) rise.push({x:120+PR()*840,y0:1500+PR()*500,v:60+PR()*120,r:1+PR()*2.4,t0:9.6+PR()*4.2,ph:PR()*6.28});
+
+const sky=document.getElementById('sky').getContext('2d');
+const fx=document.getElementById('fx').getContext('2d');
+
+function glowDot(ctx,x,y,r,a,col){
+  const g=ctx.createRadialGradient(x,y,0,x,y,r*4);
+  g.addColorStop(0,`rgba(${col},${a})`);g.addColorStop(0.25,`rgba(${col},${a*0.55})`);g.addColorStop(1,`rgba(${col},0)`);
+  ctx.fillStyle=g;ctx.beginPath();ctx.arc(x,y,r*4,0,Math.PI*2);ctx.fill();
+}
+
+function drawSky(t){
+  sky.clearRect(0,0,1080,1920);
+  for(const s of stars){
+    const tw=0.55+0.45*Math.sin(t*s.f*2+s.p);
+    const y=((s.y - t*6)%1920+1920)%1920;
+    const a=s.a*tw*(y<1500?1:0.8);
+    if(s.big){glowDot(sky,s.x,y,s.r*0.6,a*0.7,'255,246,226');sky.fillStyle=`rgba(255,252,244,${a})`;sky.beginPath();sky.arc(s.x,y,s.r*0.55,0,Math.PI*2);sky.fill();}
+    else{sky.fillStyle=`rgba(255,250,240,${a})`;sky.beginPath();sky.arc(s.x,y,s.r,0,Math.PI*2);sky.fill();}
+  }
+  // shooting stars
+  shoot(t,1.3,0.75,[1000,170],[700,420]);
+  shoot(t,29.6,0.75,[1010,1500],[760,1700]);
+}
+function shoot(t,t0,d,[x0,y0],[x1,y1]){
+  const p=(t-t0)/d; if(p<0||p>1)return;
+  const e=eOut(p); const x=x0+(x1-x0)*e, y=y0+(y1-y0)*e;
+  const tail=0.22; const tx=x-(x1-x0)*tail, ty=y-(y1-y0)*tail;
+  const a=Math.sin(p*Math.PI);
+  const g=sky.createLinearGradient(tx,ty,x,y);
+  g.addColorStop(0,'rgba(255,248,230,0)');g.addColorStop(1,`rgba(255,248,230,${0.9*a})`);
+  sky.strokeStyle=g;sky.lineWidth=2.4;sky.lineCap='round';
+  sky.beginPath();sky.moveTo(tx,ty);sky.lineTo(x,y);sky.stroke();
+  glowDot(sky,x,y,2.2,a,'255,248,230');
+}
+
+function drawFx(t){
+  fx.clearRect(0,0,1080,1920);
+  const cx=540, cy=600;
+  // the single grain
+  const g0=9.75, burst=10.75;
+  if(t>g0 && t<burst+1.2){
+    const grow=eOut(clamp((t-g0)/0.6));
+    const shrink=1-clamp((t-burst)/1.0);
+    const pulse=1+0.12*Math.sin((t-g0)*9);
+    const r=9*grow*pulse*(0.35+0.65*shrink);
+    glowDot(fx,cx,cy,r*3.2,0.55*grow*shrink+0.05,'236,200,130');
+    fx.fillStyle=`rgba(255,240,205,${grow*Math.max(shrink,0.2)})`;
+    fx.beginPath();fx.ellipse(cx,cy,r*0.75,r*1.1,0.5,0,Math.PI*2);fx.fill();
+  }
+  // flash
+  if(t>burst-0.05 && t<burst+0.6){
+    const f=1-clamp((t-burst)/0.6);
+    glowDot(fx,cx,cy,70,0.45*f,'255,226,170');
+  }
+  // burst
+  if(t>burst){
+    const dt=t-burst;
+    for(const p of parts){
+      if(dt>p.life)continue;
+      const k=1.6, m=(1-Math.exp(-k*dt))/k;
+      const x=cx+p.vx*m, y=cy+p.vy*m-18*dt*dt;
+      const life=dt/p.life;
+      const a=(1-life)*(0.6+0.4*Math.sin(dt*8+p.tw));
+      const col=p.h<0.7?'240,206,138':(p.h<0.9?'255,238,200':'214,190,255');
+      glowDot(fx,x,y,p.r,a*0.9,col);
+    }
+  }
+  // gentle rising sparkles through S3
+  for(const s of rise){
+    const dt=t-s.t0; if(dt<0)continue;
+    const y=s.y0-s.v*dt*2.2; if(y<200)continue;
+    const fade=clamp(dt/0.6)*clamp((14.6-t)/0.6);
+    if(fade<=0)continue;
+    const x=s.x+12*Math.sin(dt*1.5+s.ph);
+    glowDot(fx,x,y,s.r,0.5*fade,'240,206,138');
+  }
+}
+
+// moon keyframes: t, cx, cy, r, opacity
+const MK=[[0,540,610,158,0.35],[0.6,540,610,165,1],[3.7,540,610,180,1],[4.5,540,580,132,1],[9.4,540,580,138,1],[10.0,540,600,96,0],[DUR,540,600,96,0]];
+function moonAt(t){
+  for(let i=0;i<MK.length-1;i++){
+    const a=MK[i],b=MK[i+1];
+    if(t>=a[0]&&t<=b[0]){const p=smooth((t-a[0])/(b[0]-a[0]));return a.map((v,j)=>v+(b[j]-v)*p);}
+  }
+  return MK[MK.length-1];
+}
+const moonEl=document.getElementById('moon'), haloEl=document.getElementById('halo'), libraEl=document.getElementById('libra');
+function drawMoon(t){
+  const [,cx,cy,r,o]=moonAt(t);
+  const br=1+0.012*Math.sin(t*1.7);
+  const rr=r*br;
+  Object.assign(moonEl.style,{left:(cx-rr)+'px',top:(cy-rr)+'px',width:2*rr+'px',height:2*rr+'px',opacity:o});
+  const hr=rr*1.9;
+  Object.assign(haloEl.style,{left:(cx-hr)+'px',top:(cy-hr)+'px',width:2*hr+'px',height:2*hr+'px',opacity:o*(0.85+0.15*Math.sin(t*1.1))});
+  const lo=clamp((t-4.6)/0.8)*clamp((9.3-t)/0.4);
+  libraEl.style.opacity=lo;
+}
+
+const els=[...document.querySelectorAll('.a')];
+function drawText(t){
+  for(const el of els){
+    const s=+el.dataset.s, e=+el.dataset.e;
+    const pin=eOut(clamp((t-s+(s<0.2?0.25:0))/0.75)), pout=clamp((e-t)/0.45);
+    const op=pin*smooth(pout);
+    if(op<=0.001){el.style.opacity=0;continue;}
+    const dy=(1-pin)*36-(1-pout)*18;
+    const blur=(1-pin)*10+(1-pout)*6;
+    let tf=`translateY(${dy.toFixed(2)}px)`;
+    if(el.dataset.z) tf+=` scale(${(1.06-0.06*pin).toFixed(4)})`;
+    if(el.dataset.grow){const g=eOut(clamp((t-s)/1.3));tf=`scale(${0.4+0.6*g})`;el.style.transformOrigin='50% 100%';}
+    el.style.opacity=op.toFixed(3);
+    el.style.transform=tf;
+    el.style.filter=blur>0.05?`blur(${blur.toFixed(2)}px)`:'none';
+  }
+}
+function drawOverlays(t){
+  document.getElementById('warm').style.opacity=(clamp((t-9.7)/0.8)*clamp((14.6-t)/0.6)).toFixed(3);
+  document.getElementById('dawn').style.opacity=(clamp((t-26.6)/2.2)).toFixed(3);
+}
+
+function renderAt(t){drawSky(t);drawMoon(t);drawFx(t);drawText(t);drawOverlays(t);}
+window.renderAt=renderAt;
+
+// film grain (static) to prevent banding
+(function(){
+  const c=document.getElementById('noise').getContext('2d');
+  const img=c.createImageData(1080,1920);const NR=rng(3);
+  for(let i=0;i<img.data.length;i+=4){const v=NR()*255;img.data[i]=img.data[i+1]=img.data[i+2]=v;img.data[i+3]=255;}
+  c.putImageData(img,0,0);
+})();
+
+window.prepare=async()=>{
+  for(const el of els){el.style.opacity=0.01;}
+  await document.fonts.ready;
+  await new Promise(r=>setTimeout(r,300));
+  await document.fonts.ready;
+  renderAt(0);
+};
+renderAt(0);
+</script>
+</body>
+</html>
